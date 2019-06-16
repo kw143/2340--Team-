@@ -2,5 +2,7 @@
     <string name="app_name">Imperial Trader</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_create_player">New Player</string>
+    <string name="title_status">Current Status</string>
     <string name="title_notifications">Notifications</string>
 </resources>
