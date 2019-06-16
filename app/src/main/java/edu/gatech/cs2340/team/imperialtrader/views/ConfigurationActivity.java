@@ -58,7 +58,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         engineerField = findViewById(R.id.engineerPoints);
         Button button = findViewById(R.id.createPlayer);
 
-
+        //player = new Player("");
 
         nameField.setText(player.getName());
 
