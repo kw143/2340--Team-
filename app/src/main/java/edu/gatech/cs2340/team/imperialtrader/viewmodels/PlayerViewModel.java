@@ -11,7 +11,6 @@ import edu.gatech.cs2340.team.imperialtrader.model.PlayerInteractor;
 
 /**
  * This viewmodel would support activities that need to interact with player
- *
  */
 public class PlayerViewModel extends AndroidViewModel {
     private PlayerInteractor model;
@@ -27,5 +26,7 @@ public class PlayerViewModel extends AndroidViewModel {
         model.updatePlayer(p);
     }
 
-    public Player getPlayer() { return player; }
+    public Player getPlayer() {
+            return player;
+    }
 }

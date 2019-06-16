@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.ConfigurationActivity">
+    tools:context="edu.gatech.cs2340.team.imperialtrader.views.ConfigurationActivity">
 
     <TextView
         android:id="@+id/message"
@@ -158,7 +158,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:onClick="onCreatePressed"
+        android:onClick="onCreate"
         android:text="Create Player"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

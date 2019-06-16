@@ -2,6 +2,7 @@ package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.os.Bundle;
 import android.arch.lifecycle.ViewModelProviders;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,8 @@ public class ConfigurationActivity extends AppCompatActivity {
      * reference to our view model
      */
     private ConfigurationViewModel viewModel;
+
+
 
     /* ************************
         Widgets we will need for binding and getting information
@@ -73,7 +76,7 @@ public class ConfigurationActivity extends AppCompatActivity {
      *
      * @param view the button that was pressed
      */
-    public void onCreatePressed(View view) {
+    public void onCreate(View view) {
         Log.d("Create", "Create Player Pressed");
 
         player.setName(nameField.getText().toString());
