@@ -1,17 +1,13 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
+import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
+
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.model.Player;
@@ -22,16 +18,19 @@ import edu.gatech.cs2340.team.imperialtrader.viewmodels.ConfigurationViewModel;
  */
 public class ConfigurationActivity extends AppCompatActivity {
 
-    /** reference to our view model */
+    /**
+     * reference to our view model
+     */
     private ConfigurationViewModel viewModel;
 
     /* ************************
         Widgets we will need for binding and getting information
      */
-    private TextView idField;
     private EditText nameField;
-    private Spinner majorSpinner;
-    private Spinner classStandingSpinner;
+    private EditText pilotField;
+    private EditText fighterField;
+    private EditText traderField;
+    private EditText engineerField;
 
     /* ***********************
        Data for player being edited.
@@ -51,69 +50,39 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         /*
          * Grab the dialog widgets so we can get info for later
-         *//*
-        nameField = findViewById(R.id.student_name_input);
-        majorSpinner = findViewById(R.id.major_spinner);
-        classStandingSpinner = findViewById(R.id.classStanding_spinner);
-        idField = findViewById(R.id.student_id_field);
-        Button button = findViewById(R.id.add_button);
+         */
+        nameField = findViewById(R.id.playerName);
+        pilotField = findViewById(R.id.pilotPoints);
+        fighterField = findViewById(R.id.fighterPoints);
+        traderField = findViewById(R.id.traderPoints);
+        engineerField = findViewById(R.id.engineerPoints);
+        Button button = findViewById(R.id.createPlayer);
 
 
-        *//*
-           If a student has been passed in, this was an edit, if not, this is a new add
-         *//*
-        if (getIntent().hasExtra(CourseDetailActivity.STUDENT_DATA)) {
-            //Editing an existing student - set default data
-            student = (Student) getIntent().getSerializableExtra(CourseDetailActivity.STUDENT_DATA);
-            majorSpinner.setSelection(Student.findPosition(student.getMajor()));
-            classStandingSpinner.setSelection(student.getYear().ordinal());
-            editing = true;
-            button.setText("Update");
-            setTitle("Editing Existing Student");
-        } else {
-            //Adding a new student
-            student = new Student("Bob", "CS");
-            editing = false;
-            button.setText("Add");
-            setTitle("Adding New Student");
-        }
 
-        nameField.setText(student.getName());
-        idField.setText(String.format("Student ID: %d", student.getId()));
+        nameField.setText(player.getName());
 
-        viewModel = ViewModelProviders.of(this).get(EditAddStudentViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
     }
 
-    *//**
-     * Button handler for the add new student button
+    /**
+     * Button handler for the create new player button
      *
      * @param view the button that was pressed
-     *//*
+     */
     public void onAddPressed(View view) {
-        Log.d("Edit", "Add/Update Student Pressed");
+        Log.d("Create", "Create Player Pressed");
 
-        student.setName(nameField.getText().toString());
-        student.setMajor((String) majorSpinner.getSelectedItem());
-        student.setYear((ClassStanding) classStandingSpinner.getSelectedItem());
+        player.setName(nameField.getText().toString());
+        player.setPilotPoints(Integer.parseInt(pilotField.getText().toString()));
+        player.setFighterPoints(Integer.parseInt(fighterField.getText().toString()));
+        player.setTraderPoints(Integer.parseInt(traderField.getText().toString()));
+        player.setEngineerPoints(Integer.parseInt(engineerField.getText().toString()));
 
-        Log.d("Edit", "Got new student data: " + student);
+        Log.d("Edit", "Got new player data: " + player);
 
-        //do the right thing depending on whether this is a new student or an edit
-        if (editing) {
-            viewModel.updateStudent(student);
-        } else {
-            viewModel.addStudent(student);
-        }
+        viewModel.createPlayer(player);
 
         finish();
     }
-
-    *//**
-     * Button handler for cancel - just call back pressed
-     *
-     * @param view the button pressed
-     *//*
-    public void onCancelPressed(View view) {
-        onBackPressed();
-    }*/
 }
