@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.team.imperialtrader.model;
 
-import android.util.Log;
 
 public class Database {
     private Player player;
@@ -8,6 +7,8 @@ public class Database {
     public void createPlayer(Player p) {
         player = p;
     }
+
+    public Player getPlayer() { return player; }
 
     public void updatePlayer(Player p) {
         player.setPilotPoints(p.getPilotPoints());

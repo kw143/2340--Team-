@@ -13,6 +13,10 @@ public class PlayerInteractor extends Interactor {
         getData().createPlayer(p);
     }
 
+    public Player getPlayer () {
+        return getData().getPlayer();
+    }
+
     public void updatePlayer(Player p) {
         getData().updatePlayer(p);
         Log.d("APP", "Interactor: updating player: " + p);

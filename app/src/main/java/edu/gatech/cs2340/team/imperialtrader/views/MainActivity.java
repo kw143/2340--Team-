@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.create_player:
                 fragment = new CreatePlayerFrag();
                 break;
+            case R.id.player_status:
+                fragment = new StatusFrag();
+                break;
         }
         return loadFragment(fragment);
     }

@@ -20,10 +20,6 @@ public class ConfigurationViewModel extends AndroidViewModel {
         interactor = Model.getInstance().getPlayerInteractor();
     }
 
-    public void updatePlayer(Player p) {
-        interactor.updatePlayer(p);
-    }
-
     public void createPlayer(Player p) {
         interactor.createPlayer(p);
     }

@@ -70,7 +70,7 @@ public class ConfigurationActivity extends AppCompatActivity {
      *
      * @param view the button that was pressed
      */
-    public void onAddPressed(View view) {
+    public void onCreatePressed(View view) {
         Log.d("Create", "Create Player Pressed");
 
         player.setName(nameField.getText().toString());
