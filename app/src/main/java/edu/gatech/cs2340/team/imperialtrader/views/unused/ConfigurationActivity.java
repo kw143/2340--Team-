@@ -2,7 +2,6 @@ package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.os.Bundle;
 import android.arch.lifecycle.ViewModelProviders;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
