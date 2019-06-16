@@ -11,9 +11,9 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_create_player" />
 
-    <!--<item
-        android:id="@+id/navigation_notifications"
+    <item
+        android:id="@+id/player_status"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />-->
+        android:title="Status" />
 
 </menu>
