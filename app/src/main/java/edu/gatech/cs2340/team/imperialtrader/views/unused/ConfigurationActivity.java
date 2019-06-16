@@ -2,13 +2,12 @@ package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.os.Bundle;
 import android.arch.lifecycle.ViewModelProviders;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.model.Player;
@@ -34,6 +33,8 @@ public class ConfigurationActivity extends AppCompatActivity {
     private EditText fighterField;
     private EditText traderField;
     private EditText engineerField;
+    private TextView errorText;
+
 
     /* ***********************
        Data for player being edited.
@@ -59,6 +60,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         fighterField = findViewById(R.id.fighterPoints);
         traderField = findViewById(R.id.traderPoints);
         engineerField = findViewById(R.id.engineerPoints);
+        errorText = findViewById(R.id.pointError);
         Button button = findViewById(R.id.createPlayer);
 
         //player = new Player("");
@@ -81,11 +83,14 @@ public class ConfigurationActivity extends AppCompatActivity {
         player.setFighterPoints(Integer.parseInt(fighterField.getText().toString()));
         player.setTraderPoints(Integer.parseInt(traderField.getText().toString()));
         player.setEngineerPoints(Integer.parseInt(engineerField.getText().toString()));
+        if(player.getTotalPoints() != 16){
+            errorText.setVisibility(View.VISIBLE);
+        } else {
 
-        Log.d("Edit", "Got new player data: " + player);
+            Log.d("Edit", "Got new player data: " + player);
+            viewModel.createPlayer(player);
 
-        viewModel.createPlayer(player);
-
-        finish();
+            finish();
+        }
     }
 }

@@ -23,6 +23,7 @@ public class StatusFrag extends Fragment {
     private TextView fighterField;
     private TextView traderField;
     private TextView engineerField;
+    private TextView difficulty;
 
     private Player player;
 
@@ -42,12 +43,14 @@ public class StatusFrag extends Fragment {
         fighterField = view.findViewById(R.id.fighterPoints);
         traderField = view.findViewById(R.id.traderPoints);
         engineerField = view.findViewById(R.id.engineerPoints);
+        difficulty = view.findViewById(R.id.dif);
 
         nameField.setText(player.getName());
         pilotField.setText(String.valueOf(player.getPilotPoints()));
         fighterField.setText(String.valueOf(player.getFighterPoints()));
         traderField.setText(String.valueOf(player.getTraderPoints()));
         engineerField.setText(String.valueOf(player.getEngineerPoints()));
+        difficulty.setText(player.getDifficulty());
 
         return view;
     }
