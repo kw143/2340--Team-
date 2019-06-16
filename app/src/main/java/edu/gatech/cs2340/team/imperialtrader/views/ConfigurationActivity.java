@@ -89,7 +89,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         } else {
 
             Log.d("Edit", "Got new player data: " + player);
-
             viewModel.createPlayer(player);
 
             finish();

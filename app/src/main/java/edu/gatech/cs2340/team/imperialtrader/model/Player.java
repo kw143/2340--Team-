@@ -20,28 +20,29 @@ public class Player {
         this.fighterPoints = fighterPoints;
         this.traderPoints = traderPoints;
         this.engineerPoints = engineerPoints;
+        this.totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
     }
 
 
     /** setters and getters */
     public void setPilotPoints(int pilotPoints) {
         this.pilotPoints = pilotPoints;
-        totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
+        totalPoints = this.pilotPoints + fighterPoints + traderPoints + engineerPoints;
     }
 
     public void setFighterPoints(int fighterPoints) {
         this.fighterPoints = fighterPoints;
-        totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
+        totalPoints = pilotPoints + this.fighterPoints + traderPoints + engineerPoints;
     }
 
     public void setTraderPoints(int traderPoints) {
         this.traderPoints = traderPoints;
-        totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
+        totalPoints = pilotPoints + fighterPoints + this.traderPoints + engineerPoints;
     }
 
     public void setEngineerPoints(int engineerPoints) {
         this.engineerPoints = engineerPoints;
-        totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
+        totalPoints = pilotPoints + fighterPoints + traderPoints + this.engineerPoints;
     }
 
     public void setName(String n) { name = n; }
