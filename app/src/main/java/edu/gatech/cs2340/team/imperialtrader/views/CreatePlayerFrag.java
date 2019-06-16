@@ -16,6 +16,7 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.model.Player;
@@ -40,6 +41,8 @@ public class CreatePlayerFrag extends Fragment {
     private EditText traderField;
     private EditText engineerField;
     private Spinner  difficultySpinner;
+    private TextView errorText;
+    private TextView successfulText;
 
     /* ***********************
        Data for player being edited.
@@ -68,6 +71,8 @@ public class CreatePlayerFrag extends Fragment {
         traderField = view.findViewById(R.id.traderPoints);
         engineerField = view.findViewById(R.id.engineerPoints);
         difficultySpinner = view.findViewById(R.id.difficulty_spinner);
+        errorText = view.findViewById(R.id.pointError);
+        successfulText = view.findViewById(R.id.successfulIndicator);
         Button button = view.findViewById(R.id.createPlayer);
 
         List<String> dif = new ArrayList<>();
@@ -92,7 +97,6 @@ public class CreatePlayerFrag extends Fragment {
             public void onClick(View v)
             {
                 Log.d("Create", "Create Player Pressed");
-
                 player.setName(nameField.getText().toString());
                 player.setPilotPoints(Integer.parseInt(pilotField.getText().toString()));
                 player.setFighterPoints(Integer.parseInt(fighterField.getText().toString()));
@@ -100,9 +104,15 @@ public class CreatePlayerFrag extends Fragment {
                 player.setEngineerPoints(Integer.parseInt(engineerField.getText().toString()));
                 player.setDifficulty((String)difficultySpinner.getSelectedItem());
 
-                Log.d("Edit", "Got new player data: " + player);
-
-                viewModel.createPlayer(player);
+                if(player.getTotalPoints() != 16) {
+                    errorText.setVisibility(View.VISIBLE);
+                    successfulText.setVisibility(View.INVISIBLE);
+                } else {
+                    Log.d("Edit", "Got new player data: " + player);
+                    errorText.setVisibility(View.INVISIBLE);
+                    successfulText.setVisibility(View.VISIBLE);
+                    viewModel.createPlayer(player);
+                }
             }
         });
         return view;
