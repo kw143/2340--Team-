@@ -11,26 +11,30 @@ public class Player {
     private int traderPoints;
     private int engineerPoints;
 
-    public Player(String name) {
+    public Player(String name) { this(name, 0, 0, 0, 0); }
+
+    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints) {
         this.name = name;
+        this.pilotPoints = pilotPoints;
+        this.fighterPoints = fighterPoints;
+        this.traderPoints = traderPoints;
+        this.engineerPoints = engineerPoints;
     }
 
 
     /** setters and getters */
-    public void setPilotPoints(int points) {
-        pilotPoints = points;
+    public void setPilotPoints(int pilotPoints) {
+        this.pilotPoints = pilotPoints;
     }
 
-    public void setFighterPoints(int points) {
-        fighterPoints = points;
+    public void setFighterPoints(int fighterPoints) {
+        this.fighterPoints = fighterPoints;
     }
 
-    public void setTraderPoints(int points) {
-        traderPoints = points;
-    }
+    public void setTraderPoints(int traderPoints) { this.traderPoints = traderPoints; }
 
-    public void setEngineerPoints(int points) {
-        engineerPoints = points;
+    public void setEngineerPoints(int engineerPoints) {
+        this.engineerPoints = engineerPoints;
     }
 
     public void setName(String n) { name = n; }
