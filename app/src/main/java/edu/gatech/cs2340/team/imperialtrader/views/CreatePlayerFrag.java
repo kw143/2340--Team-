@@ -9,8 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.model.Player;
@@ -34,6 +39,7 @@ public class CreatePlayerFrag extends Fragment {
     private EditText fighterField;
     private EditText traderField;
     private EditText engineerField;
+    private Spinner  difficultySpinner;
 
     /* ***********************
        Data for player being edited.
@@ -61,7 +67,21 @@ public class CreatePlayerFrag extends Fragment {
         fighterField = view.findViewById(R.id.fighterPoints);
         traderField = view.findViewById(R.id.traderPoints);
         engineerField = view.findViewById(R.id.engineerPoints);
+        difficultySpinner = view.findViewById(R.id.difficulty_spinner);
         Button button = view.findViewById(R.id.createPlayer);
+
+        List<String> dif = new ArrayList<>();
+        dif.add("easy");
+        dif.add("normal");
+        dif.add("hard");
+        dif.add("suicidal");
+
+        /*
+          Set up the adapter to display the allowable difficulty in the spinner
+         */
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, dif);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        difficultySpinner.setAdapter(adapter);
 
         viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
         player = new Player("default");
@@ -78,6 +98,7 @@ public class CreatePlayerFrag extends Fragment {
                 player.setFighterPoints(Integer.parseInt(fighterField.getText().toString()));
                 player.setTraderPoints(Integer.parseInt(traderField.getText().toString()));
                 player.setEngineerPoints(Integer.parseInt(engineerField.getText().toString()));
+                player.setDifficulty((String)difficultySpinner.getSelectedItem());
 
                 Log.d("Edit", "Got new player data: " + player);
 

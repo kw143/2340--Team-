@@ -10,15 +10,17 @@ public class Player {
     private int fighterPoints;
     private int traderPoints;
     private int engineerPoints;
+    private String difficulty;
 
-    public Player(String name) { this(name, 0, 0, 0, 0); }
+    public Player(String name) { this(name, 0, 0, 0, 0, "easy"); }
 
-    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints) {
+    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, String dif) {
         this.name = name;
         this.pilotPoints = pilotPoints;
         this.fighterPoints = fighterPoints;
         this.traderPoints = traderPoints;
         this.engineerPoints = engineerPoints;
+        this.difficulty = dif;
     }
 
 
@@ -38,6 +40,10 @@ public class Player {
     }
 
     public void setName(String n) { name = n; }
+
+    public void setDifficulty (String d) {difficulty = d; }
+
+    public String getDifficulty () { return difficulty; }
 
     public String getName() { return name; }
 
