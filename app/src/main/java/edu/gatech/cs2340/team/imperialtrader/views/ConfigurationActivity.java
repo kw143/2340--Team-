@@ -47,11 +47,11 @@ public class ConfigurationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_player);
-        
+
 
         /*
          * Grab the dialog widgets so we can get info for later
-         */
+         *//*
         nameField = findViewById(R.id.student_name_input);
         majorSpinner = findViewById(R.id.major_spinner);
         classStandingSpinner = findViewById(R.id.classStanding_spinner);
@@ -59,9 +59,9 @@ public class ConfigurationActivity extends AppCompatActivity {
         Button button = findViewById(R.id.add_button);
 
 
-        /*
+        *//*
            If a student has been passed in, this was an edit, if not, this is a new add
-         */
+         *//*
         if (getIntent().hasExtra(CourseDetailActivity.STUDENT_DATA)) {
             //Editing an existing student - set default data
             student = (Student) getIntent().getSerializableExtra(CourseDetailActivity.STUDENT_DATA);
@@ -84,11 +84,11 @@ public class ConfigurationActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(EditAddStudentViewModel.class);
     }
 
-    /**
+    *//**
      * Button handler for the add new student button
      *
      * @param view the button that was pressed
-     */
+     *//*
     public void onAddPressed(View view) {
         Log.d("Edit", "Add/Update Student Pressed");
 
@@ -108,12 +108,12 @@ public class ConfigurationActivity extends AppCompatActivity {
         finish();
     }
 
-    /**
+    *//**
      * Button handler for cancel - just call back pressed
      *
      * @param view the button pressed
-     */
+     *//*
     public void onCancelPressed(View view) {
         onBackPressed();
-    }
+    }*/
 }
