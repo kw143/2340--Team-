@@ -2,7 +2,7 @@ package edu.gatech.cs2340.team.imperialtrader.model;
 
 
 public class Database {
-    private Player player;
+    private Player player = new Player("Default");
 
     public void createPlayer(Player p) {
         player = p;
