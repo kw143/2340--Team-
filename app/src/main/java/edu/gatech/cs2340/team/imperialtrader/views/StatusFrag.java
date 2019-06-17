@@ -24,6 +24,8 @@ public class StatusFrag extends Fragment {
     private TextView traderField;
     private TextView engineerField;
     private TextView difficulty;
+    private TextView ship;
+    private TextView money;
 
     private Player player;
 
@@ -44,6 +46,8 @@ public class StatusFrag extends Fragment {
         traderField = view.findViewById(R.id.traderPoints);
         engineerField = view.findViewById(R.id.engineerPoints);
         difficulty = view.findViewById(R.id.dif);
+        ship = view.findViewById(R.id.ship);
+        money = view.findViewById(R.id.mon);
 
         nameField.setText(player.getName());
         pilotField.setText(String.valueOf(player.getPilotPoints()));
@@ -51,6 +55,8 @@ public class StatusFrag extends Fragment {
         traderField.setText(String.valueOf(player.getTraderPoints()));
         engineerField.setText(String.valueOf(player.getEngineerPoints()));
         difficulty.setText(player.getDifficulty());
+        ship.setText(player.getShip());
+        money.setText(String.valueOf(player.getMoney()));
 
         return view;
     }

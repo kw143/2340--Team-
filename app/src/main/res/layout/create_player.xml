@@ -194,7 +194,7 @@
         android:text="Create Player"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/successfulIndicator"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner"
         app:layout_constraintVertical_bias="0.366" />
 
     <TextView
@@ -203,14 +203,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="99dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="31dp"
         android:text="Please enter points that add up to 16."
         android:textColor="#900"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/createPlayer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -222,19 +222,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="571dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="45dp"
         android:text="Please do not leave points empty."
         android:textColor="#900"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.964" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner" />
 
     <TextView
         android:id="@+id/successfulIndicator"
@@ -242,18 +241,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="99dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="25dp"
         android:text="Player created successfully!"
         android:textColor="#090"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner" />
 
 
 </android.support.constraint.ConstraintLayout>
