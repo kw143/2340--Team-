@@ -101,6 +101,8 @@ public class CreatePlayerFrag extends Fragment {
                 player.setName(nameField.getText().toString());
                 if (pilotField.getText().toString().equals("") || fighterField.getText().toString().equals("") || traderField.getText().toString().equals("") || engineerField.getText().toString().equals("")) {
                     errorNumText.setVisibility(View.VISIBLE);
+                    successfulText.setVisibility(View.INVISIBLE);
+                    errorText.setVisibility(View.INVISIBLE);
                 } else {
                     errorNumText.setVisibility(View.INVISIBLE);
                     player.setPilotPoints(Integer.parseInt(pilotField.getText().toString()));
