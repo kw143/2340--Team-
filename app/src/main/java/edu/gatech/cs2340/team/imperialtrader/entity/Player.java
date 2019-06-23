@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.team.imperialtrader.model;
+package edu.gatech.cs2340.team.imperialtrader.entity;
 
 public class Player {
 

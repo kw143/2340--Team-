@@ -5,7 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 
 import edu.gatech.cs2340.team.imperialtrader.model.Model;
-import edu.gatech.cs2340.team.imperialtrader.model.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.model.PlayerInteractor;
 
 /**

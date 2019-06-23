@@ -19,7 +19,7 @@ import java.util.List;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
-import edu.gatech.cs2340.team.imperialtrader.model.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.ConfigurationViewModel;
 
 public class CreatePlayerFrag extends Fragment {

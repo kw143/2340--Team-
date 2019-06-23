@@ -2,6 +2,8 @@ package edu.gatech.cs2340.team.imperialtrader.model;
 
 import android.util.Log;
 
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+
 
 public class PlayerInteractor extends Interactor {
     public PlayerInteractor(Database dat) {
