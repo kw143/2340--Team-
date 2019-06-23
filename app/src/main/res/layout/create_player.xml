@@ -245,7 +245,7 @@
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
         android:layout_marginBottom="25dp"
-        android:text="Player created successfully!"
+        android:text="Player created successfully! Game starts in 2 second!"
         android:textColor="#090"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
