@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,19 +17,34 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
-import edu.gatech.cs2340.team.imperialtrader.model.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.ConfigurationViewModel;
 
 public class CreatePlayerFrag extends Fragment {
+
+    private CreatePlayerClickListener cpClickListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            cpClickListener = (CreatePlayerClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
     /**
      * reference to our view model
      */
     private ConfigurationViewModel viewModel;
-
 
 
     /* ************************
@@ -39,7 +55,7 @@ public class CreatePlayerFrag extends Fragment {
     private EditText fighterField;
     private EditText traderField;
     private EditText engineerField;
-    private Spinner  difficultySpinner;
+    private Spinner difficultySpinner;
     private TextView errorText;
     private TextView errorNumText;
     private TextView successfulText;
@@ -92,11 +108,9 @@ public class CreatePlayerFrag extends Fragment {
         viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
         player = new Player("default");
 
-        button.setOnClickListener(new View.OnClickListener()
-        {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Log.d("Create", "Create Player Pressed");
                 player.setName(nameField.getText().toString());
                 if (pilotField.getText().toString().equals("") || fighterField.getText().toString().equals("") || traderField.getText().toString().equals("") || engineerField.getText().toString().equals("")) {
@@ -117,6 +131,13 @@ public class CreatePlayerFrag extends Fragment {
                         errorText.setVisibility(View.INVISIBLE);
                         successfulText.setVisibility(View.VISIBLE);
                         viewModel.createPlayer(player);
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        cpClickListener.onCreateClick();
+                                    }
+                                },
+                                2000);
                     }
                 }
             }
