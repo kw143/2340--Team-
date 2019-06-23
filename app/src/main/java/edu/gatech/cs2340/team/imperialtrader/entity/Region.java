@@ -59,7 +59,7 @@ public class Region {
 }
 
 
-
+/**
 new Region("Georgia", "Savannah");
 new Region("Portugal", "Lisbon");
 new Region("Spain", "Barcelona");
@@ -103,3 +103,4 @@ new Region("Taiwan", "Kaohsiung");
 new Region("New York", "New York City");
 new Region("Washington", "Seattle");
 new Region("Vietnam", "Ho Chi Minh City");
+*/
