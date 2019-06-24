@@ -12,7 +12,7 @@ public class Region {
     private int resource;
 
 
-    public Region(name, home, xcoord, ycoord, techLevel, resource) {
+    public Region(String name, String home, int xcoord, int ycoord, int techLevel, int resource) {
         this.name = name;
         this.home = home;
         this.xcoord = xcoord;
@@ -22,7 +22,7 @@ public class Region {
     }
 
     /** constructor chain */
-    public Region(name, home) {
+    public Region(String name, String home) {
         Random rand = new Random();
 
         int x = rand.nextInt(150);
@@ -30,7 +30,12 @@ public class Region {
         int t = rand.nextInt(8);
         int r = rand.nextInt(13);
 
-        this(name, home, x, y, t, r);
+        this.name = name;
+        this.home = home;
+        this.xcoord = x;
+        this.ycoord = y;
+        this.techLevel = t;
+        this.resource = r;
     }
 
     public void setName(String n) { name = n; }
