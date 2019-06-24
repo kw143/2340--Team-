@@ -44,10 +44,15 @@ public class Model {
      */
     private void registerInteractors() {
         interactorMap.put("Player", new PlayerInteractor(gameDat));
+        interactorMap.put("Region", new RegionInteractor(gameDat));
     }
 
 
     public PlayerInteractor getPlayerInteractor() {
         return (PlayerInteractor) interactorMap.get("Player");
+    }
+
+    public RegionInteractor getRegionInteractor() {
+        return (RegionInteractor) interactorMap.get("Region");
     }
 }
