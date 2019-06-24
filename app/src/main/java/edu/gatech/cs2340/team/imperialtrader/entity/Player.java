@@ -15,6 +15,7 @@ public class Player {
     private String ship;
     private int totalPoints;
     private Inventory inventory;
+    private Region curRegion;
 
     public Player(String name) { this(name, 0, 0, 0, 0, "easy", 1000, "Gnat Spcaeship"); }
 
@@ -51,6 +52,8 @@ public class Player {
         this.engineerPoints = engineerPoints;
         totalPoints = pilotPoints + fighterPoints + traderPoints + this.engineerPoints;
     }
+
+    public void setCurRegion(Region r) { curRegion = r; }
 
     public void setName(String n) { name = n; }
 
@@ -93,5 +96,7 @@ public class Player {
     public Inventory getInventory() {
         return inventory;
     }
+
+    public Region getCurRegion() { return curRegion; }
 
 }

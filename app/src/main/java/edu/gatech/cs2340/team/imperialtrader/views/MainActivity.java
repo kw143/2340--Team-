@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import edu.gatech.cs2340.team.imperialtrader.R;
 
 public class MainActivity extends AppCompatActivity
-        implements BottomNavigationView.OnNavigationItemSelectedListener, HomeClickListener, CreatePlayerClickListener {
+        implements BottomNavigationView.OnNavigationItemSelectedListener, HomeClickListener, CreatePlayerClickListener, MapClickListener, RegionClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,4 +63,10 @@ public class MainActivity extends AppCompatActivity
     public void onCreateClick() {
         loadFragment(new MapFrag());
     }
+
+    @Override
+    public void onButtonClicked() { loadFragment(new RegionFrag()); }
+
+    @Override
+    public void mapClicked() { loadFragment(new MapFrag()); }
 }

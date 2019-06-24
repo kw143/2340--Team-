@@ -5,6 +5,7 @@
     <string name="title_create_player">New Player</string>
     <string name="title_map">Map</string>
     <string name="title_status">Current Status</string>
+    <string name="region_status">Current Region</string>
     <string name="title_notifications">Notifications</string>
 
     <!-- TODO: Remove or change this placeholder text -->

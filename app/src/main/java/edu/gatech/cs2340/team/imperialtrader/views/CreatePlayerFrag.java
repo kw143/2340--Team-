@@ -22,7 +22,9 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.ConfigurationViewModel;
+import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
 public class CreatePlayerFrag extends Fragment {
 
@@ -44,7 +46,8 @@ public class CreatePlayerFrag extends Fragment {
     /**
      * reference to our view model
      */
-    private ConfigurationViewModel viewModel;
+    private ConfigurationViewModel ConfigViewModel;
+    private RegionViewModel regionViewModel;
 
 
     /* ************************
@@ -105,7 +108,8 @@ public class CreatePlayerFrag extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
 
-        viewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+        ConfigViewModel = ViewModelProviders.of(this).get(ConfigurationViewModel.class);
+        regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
         player = new Player("default");
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +128,7 @@ public class CreatePlayerFrag extends Fragment {
                     player.setTraderPoints(Integer.parseInt(traderField.getText().toString()));
                     player.setEngineerPoints(Integer.parseInt(engineerField.getText().toString()));
                     player.setDifficulty((String) difficultySpinner.getSelectedItem());
+                    player.setCurRegion(regionViewModel.getHomeRegion());
 
                     if (player.getTotalPoints() != 16) {
                         errorText.setVisibility(View.VISIBLE);
@@ -132,7 +137,7 @@ public class CreatePlayerFrag extends Fragment {
                         Log.d("Edit", "Got new player data: " + player);
                         errorText.setVisibility(View.INVISIBLE);
                         successfulText.setVisibility(View.VISIBLE);
-                        viewModel.createPlayer(player);
+                        ConfigViewModel.createPlayer(player);
                         new android.os.Handler().postDelayed(
                                 new Runnable() {
                                     public void run() {
