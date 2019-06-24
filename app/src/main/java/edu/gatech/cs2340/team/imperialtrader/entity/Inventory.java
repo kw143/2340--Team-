@@ -1,6 +1,8 @@
-package edu.gatech.cs2340.team.imperialtrader.model;
+package edu.gatech.cs2340.team.imperialtrader.entity;
 
 import java.util.HashMap;
+
+import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 
 public class Inventory {
     HashMap<Good, Integer> inventoryMap;

@@ -14,6 +14,7 @@ public class Player {
     private String difficulty;
     private String ship;
     private int totalPoints;
+    private Inventory inventory;
 
     public Player(String name) { this(name, 0, 0, 0, 0, "easy", 1000, "Gnat Spcaeship"); }
 

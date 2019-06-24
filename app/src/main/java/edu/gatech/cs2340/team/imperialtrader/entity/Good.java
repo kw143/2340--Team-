@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.team.imperialtrader.model;
+package edu.gatech.cs2340.team.imperialtrader.entity;
 
 public enum Good {
     WATER("Water", 42), FURS("Furs",285),
@@ -8,7 +8,7 @@ public enum Good {
     NARCOTICS("Narcotics", 3112), ROBOTS("Robots", 4225);
     private String name;
     private int price;
-    private Goods(String name, int price) {
+    private Good(String name, int price) {
         this.name = name;
         this.price = price;
     }
