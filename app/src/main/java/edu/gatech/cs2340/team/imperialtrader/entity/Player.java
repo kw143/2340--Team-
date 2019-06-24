@@ -60,6 +60,10 @@ public class Player {
 
     public void setShip (String s) { ship = s; }
 
+    public void setInventory(Inventory i) {
+        this.inventory = i;
+    }
+
     public String getDifficulty () { return difficulty; }
 
     public String getName() { return name; }
@@ -85,5 +89,9 @@ public class Player {
     }
 
     public int getTotalPoints(){ return totalPoints; }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
 
 }
