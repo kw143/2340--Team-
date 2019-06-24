@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
-import edu.gatech.cs2340.team.imperialtrader.model.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class StatusFrag extends Fragment {
@@ -23,6 +23,9 @@ public class StatusFrag extends Fragment {
     private TextView fighterField;
     private TextView traderField;
     private TextView engineerField;
+    private TextView difficulty;
+    private TextView ship;
+    private TextView money;
 
     private Player player;
 
@@ -42,12 +45,18 @@ public class StatusFrag extends Fragment {
         fighterField = view.findViewById(R.id.fighterPoints);
         traderField = view.findViewById(R.id.traderPoints);
         engineerField = view.findViewById(R.id.engineerPoints);
+        difficulty = view.findViewById(R.id.dif);
+        ship = view.findViewById(R.id.ship);
+        money = view.findViewById(R.id.mon);
 
         nameField.setText(player.getName());
         pilotField.setText(String.valueOf(player.getPilotPoints()));
         fighterField.setText(String.valueOf(player.getFighterPoints()));
         traderField.setText(String.valueOf(player.getTraderPoints()));
         engineerField.setText(String.valueOf(player.getEngineerPoints()));
+        difficulty.setText(player.getDifficulty());
+        ship.setText(player.getShip());
+        money.setText(String.valueOf(player.getMoney()));
 
         return view;
     }

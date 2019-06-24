@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.team.imperialtrader.model;
+package edu.gatech.cs2340.team.imperialtrader.entity;
 
 public class Player {
 
@@ -10,17 +10,23 @@ public class Player {
     private int fighterPoints;
     private int traderPoints;
     private int engineerPoints;
+    private int money;
+    private String difficulty;
+    private String ship;
     private int totalPoints;
 
-    public Player(String name) { this(name, 0, 0, 0, 0); }
+    public Player(String name) { this(name, 0, 0, 0, 0, "easy", 1000, "Gnat Spcaeship"); }
 
-    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints) {
+    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, String dif, int mon, String sh) {
         this.name = name;
         this.pilotPoints = pilotPoints;
         this.fighterPoints = fighterPoints;
         this.traderPoints = traderPoints;
         this.engineerPoints = engineerPoints;
+        this.difficulty = dif;
         this.totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
+        money = mon;
+        ship = sh;
     }
 
 
@@ -47,7 +53,19 @@ public class Player {
 
     public void setName(String n) { name = n; }
 
+    public void setDifficulty (String d) {difficulty = d; }
+
+    public void setMoney (int m) { money = m; }
+
+    public void setShip (String s) { ship = s; }
+
+    public String getDifficulty () { return difficulty; }
+
     public String getName() { return name; }
+
+    public String getShip() { return ship;}
+
+    public int getMoney() { return money;}
 
     public int getPilotPoints() {
         return pilotPoints;

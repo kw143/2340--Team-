@@ -3,16 +3,11 @@ package edu.gatech.cs2340.team.imperialtrader.views;
 import android.os.Bundle;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 
 import edu.gatech.cs2340.team.imperialtrader.R;
-import edu.gatech.cs2340.team.imperialtrader.model.Database;
-import edu.gatech.cs2340.team.imperialtrader.model.Player;
-import edu.gatech.cs2340.team.imperialtrader.viewmodels.ConfigurationViewModel;
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class PlayerStatusActivity extends AppCompatActivity {

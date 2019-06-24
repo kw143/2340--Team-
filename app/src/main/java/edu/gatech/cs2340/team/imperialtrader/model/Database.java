@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.team.imperialtrader.model;
 
 
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+
 public class Database {
     private Player player = new Player("Default");
 

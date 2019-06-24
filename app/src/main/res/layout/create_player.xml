@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,11 +60,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Assign your skill points below. Make sure they add up to 16."
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202" />
+        app:layout_constraintTop_toBottomOf="@+id/playerName"
+        app:layout_constraintVertical_bias="0.722" />
 
     <TextView
         android:id="@+id/textView2"
@@ -152,18 +155,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.651" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Difficulty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/engineerPoints" />
+
+    <Spinner
+        android:id="@+id/difficulty_spinner"
+        android:layout_width="170dp"
+        android:layout_height="24dp"
+        android:layout_above="@+id/createPlayer"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/numError"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.166" />
+
+
     <Button
         android:id="@+id/createPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:onClick="onCreate"
+        android:layout_marginTop="8dp"
         android:text="Create Player"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner"
+        app:layout_constraintVertical_bias="0.366" />
 
     <TextView
         android:id="@+id/pointError"
@@ -171,34 +203,55 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="596dp"
+        android:layout_marginTop="99dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="116dp"
-        android:text="Please enter points that add up to 16"
+        android:layout_marginBottom="31dp"
+        android:text="Please enter points that add up to 16."
+        android:textColor="#900"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner" />
+
+    <TextView
+        android:id="@+id/numError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="571dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginRight="157dp"
+        android:layout_marginBottom="45dp"
+        android:text="Please do not leave points empty."
         android:textColor="#900"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner" />
+
     <TextView
         android:id="@+id/successfulIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="596dp"
+        android:layout_marginTop="99dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="116dp"
-        android:text="Player created successfully!"
+        android:layout_marginBottom="25dp"
+        android:text="Player created successfully! Game starts in 2 second!"
         android:textColor="#090"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner" />
 
 
 </android.support.constraint.ConstraintLayout>
