@@ -15,7 +15,7 @@ import java.util.Map;
 public class Model {
 
     /** the data repository */
-    private Database gameDat;
+    private Universe gameDat;
 
     private Map<String, Object> interactorMap;
 
@@ -32,7 +32,7 @@ public class Model {
      * Make a new Model instance
      */
     private Model() {
-        gameDat = new Database();
+        gameDat = new Universe();
         interactorMap = new HashMap<>();
         registerInteractors();
     }
