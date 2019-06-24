@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.player_status:
                 fragment = new StatusFrag();
                 break;
+            case R.id.port:
+                fragment = new PortFrag();
         }
         return loadFragment(fragment);
     }
