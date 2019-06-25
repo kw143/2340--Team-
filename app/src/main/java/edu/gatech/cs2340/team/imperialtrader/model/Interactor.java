@@ -5,13 +5,13 @@ package edu.gatech.cs2340.team.imperialtrader.model;
  */
 public abstract class Interactor {
 
-    private Database gameData;
+    private Universe gameData;
 
-    protected Interactor(Database dat) {
+    protected Interactor(Universe dat) {
         gameData = dat;
     }
 
-    protected Database getData() {
+    protected Universe getUniverse() {
         return gameData;
     }
 }
