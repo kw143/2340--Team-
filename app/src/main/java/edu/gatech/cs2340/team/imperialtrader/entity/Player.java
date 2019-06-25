@@ -14,6 +14,8 @@ public class Player {
     private String difficulty;
     private String ship;
     private int totalPoints;
+    private Inventory inventory;
+    private Region curRegion;
 
     public Player(String name) { this(name, 0, 0, 0, 0, "easy", 1000, "Gnat Spcaeship"); }
 
@@ -51,6 +53,8 @@ public class Player {
         totalPoints = pilotPoints + fighterPoints + traderPoints + this.engineerPoints;
     }
 
+    public void setCurRegion(Region r) { curRegion = r; }
+
     public void setName(String n) { name = n; }
 
     public void setDifficulty (String d) {difficulty = d; }
@@ -58,6 +62,10 @@ public class Player {
     public void setMoney (int m) { money = m; }
 
     public void setShip (String s) { ship = s; }
+
+    public void setInventory(Inventory i) {
+        this.inventory = i;
+    }
 
     public String getDifficulty () { return difficulty; }
 
@@ -84,5 +92,11 @@ public class Player {
     }
 
     public int getTotalPoints(){ return totalPoints; }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public Region getCurRegion() { return curRegion; }
 
 }
