@@ -19,15 +19,11 @@ public enum Good {
         this.name = name;
         this.price = price;
     }
-    /** A method that gets the name on the Drink
-     * @return A string of the name of the drink
-     */
+
     public String getName() {
         return this.name;
     }
-    /** A method that gets the price of the drink
-     * @return A double of the price of the drink
-     */
+
     public double getPrice() {
         return price;
     }
