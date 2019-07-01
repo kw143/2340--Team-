@@ -13,7 +13,7 @@ public class Region {
     private RadicalPriceEvent curEvent;
 
 
-    private Inventory goodsInRegion;
+    private Inventory goodsInRegion = new Inventory(10000);
     Random rand = new Random();
 
 

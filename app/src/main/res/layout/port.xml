@@ -7,11 +7,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="77dp"
-        android:layout_height="350dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="78dp"
+        android:layout_height="379dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="9dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9">
@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Water"
             android:textSize="18dp" />
 
         <TextView
@@ -30,6 +31,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Furs"
             android:textSize="18dp" />
 
         <TextView
@@ -38,6 +40,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Food"
             android:textSize="18dp" />
 
         <TextView
@@ -46,6 +49,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Ore"
             android:textSize="18dp" />
 
         <TextView
@@ -54,6 +58,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Game"
             android:textSize="18dp" />
 
         <TextView
@@ -62,6 +67,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Firearm"
             android:textSize="18dp" />
 
         <TextView
@@ -70,6 +76,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Medicine"
             android:textSize="18dp" />
 
         <TextView
@@ -78,6 +85,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Machine"
             android:textSize="18dp" />
 
         <TextView
@@ -86,6 +94,16 @@
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
+            android:text="Narcotic"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/GoodX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="Robot"
             android:textSize="18dp" />
 
 
@@ -93,9 +111,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutII"
-        android:layout_width="77dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="76dp"
+        android:layout_height="378dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/textView10">
@@ -172,18 +190,27 @@
             android:paddingBottom="7dp"
             android:textSize="18dp" />
 
+        <TextView
+            android:id="@+id/priceX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="18dp" />
+
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayoutIII"
-        android:layout_width="77dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="75dp"
+        android:layout_height="378dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/linearLayoutII"
         app:layout_constraintTop_toBottomOf="@+id/textView11">
 
@@ -259,6 +286,14 @@
             android:paddingBottom="7dp"
             android:textSize="18dp" />
 
+        <TextView
+            android:id="@+id/quantityX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="18dp" />
+
 
     </LinearLayout>
 
@@ -316,9 +351,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="110dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="104dp"
+        android:layout_height="377dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:orientation="vertical"
@@ -379,6 +414,12 @@
             android:layout_height="37.9dp"
             android:text="Trade" />
 
+        <Button
+            android:id="@+id/tradeButton10"
+            android:layout_width="match_parent"
+            android:layout_height="37.9dp"
+            android:text="Trade" />
+
 
     </LinearLayout>
 
@@ -404,20 +445,17 @@
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
         android:layout_marginTop="18dp"
-        android:layout_marginBottom="482dp"
         android:text="Price"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/port_refuel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/port_refuel" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginRight="176dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginRight="168dp"
         android:text="Quantity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/port_refuel" />
@@ -456,7 +494,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/curRadicalEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
