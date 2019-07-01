@@ -6,19 +6,44 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 
 public class Inventory {
     HashMap<Good, Integer> inventoryMap;
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getCurCapacity() {
+        return curCapacity;
+    }
+
+    public void setCurCapacity(int curCapacity) {
+        this.curCapacity = curCapacity;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     private int capacity;
+    private int curCapacity;
     private int size;
+
     public Inventory(int capacity) {
         this.capacity = capacity;
+        curCapacity = 0;
         size = 0;
         inventoryMap = new HashMap<>();
     }
 
     public Inventory() {
-        //PlayerInteractor interactor = new PlayerInteractor();
-        //TODO idk how the contructor works lol
-        //this(interactor.getPlayer().getShip().getCargoCap());
-        //TODO this depends on ship being implemented
+        this(100);
     }
 
     public int getCount(Good good) {
@@ -28,6 +53,7 @@ public class Inventory {
             return 0;
         }
     }
+
     public boolean hasCount(Good good, int count) {
         if (inventoryMap.get(good) >= count) {
             return true;
@@ -36,25 +62,37 @@ public class Inventory {
         }
 
     }
-    public void add(Good good, int count) {
-        if (count + size < capacity) {
+
+    public boolean hasGood(Good good) {
+        return (inventoryMap.get(good) != null);
+    }
+
+    public int add(Good good, int count) {
+        if (count + curCapacity < capacity) {
             if (inventoryMap.get(good) != null) {
                 inventoryMap.put(good, inventoryMap.get(good) + count);
-            } else if (count < capacity){
-                inventoryMap.put(good, count);
+                return count;
             } else {
-                //TODO something idk what
+                inventoryMap.put(good, count);
+                size++;
+                return count;
             }
-
         }
+        return 0; // add failed
+
     }
+
     public int subtract(Good good, int count) {
-        if (count <= inventoryMap.get(good)) {
+        if (count < inventoryMap.get(good)) {
             inventoryMap.put(good, inventoryMap.get(good) - count);
             return count;
-        } else if (count >= inventoryMap.get(good)){
+        } else if (count == inventoryMap.get(good)) {
+            inventoryMap.remove(good);
+            size--;
+            return count;
+        } else if (count >= inventoryMap.get(good)) {
             return 0;
         }
-        return 0;
+        return 0; // subtract failed
     }
 }

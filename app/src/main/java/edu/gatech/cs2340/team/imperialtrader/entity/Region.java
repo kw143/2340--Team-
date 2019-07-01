@@ -10,6 +10,11 @@ public class Region {
     private int ycoord;
     private TechLevel techLevel;
     private Resource resource;
+    private RadicalPriceEvent curEvent;
+
+
+    private Inventory goodsInRegion;
+    Random rand = new Random();
 
 
     public Region(String name, String home, int xcoord, int ycoord, TechLevel techLevel, Resource resource) {
@@ -19,11 +24,14 @@ public class Region {
         this.ycoord = ycoord;
         this.techLevel = techLevel;
         this.resource = resource;
+        rollEvent();
+        restockInventory();
     }
 
-    /** constructor chain */
+    /**
+     * constructor chain
+     */
     public Region(String name, String home) {
-        Random rand = new Random();
 
         int x = rand.nextInt(150);
         int y = rand.nextInt(100);
@@ -36,31 +44,87 @@ public class Region {
         this.ycoord = y;
         this.techLevel = TechLevel.values()[t];
         this.resource = Resource.values()[r];
+        rollEvent();
+        restockInventory();
     }
 
-    public void setName(String n) { name = n; }
+    public void rollEvent() {
+        curEvent = RadicalPriceEvent.getRandomEvent();
+    }
 
-    public void setHome(String h) { home = h; }
+    public void restockInventory() {
+        for (int x = 0; x < 4; x++) {
+            goodsInRegion.add(Good.values()[rand.nextInt(10)]
+                    , rand.nextInt((goodsInRegion.getCapacity()
+                            - goodsInRegion.getCurCapacity())));
+        }
+    }
 
-    public void setXcoord(int x) { xcoord = x; }
+    public Inventory getGoodsInRegion() {
+        return goodsInRegion;
+    }
 
-    public void setYcoord(int y) { ycoord = y; }
+    public void setGoodsInRegion(Inventory goodsInRegion) {
+        this.goodsInRegion = goodsInRegion;
+    }
 
-    public void setTechLevel(TechLevel t) { techLevel = t; }
+    public void setName(String n) {
+        name = n;
+    }
 
-    public void setResource(Resource r) { resource = r; }
+    public void setHome(String h) {
+        home = h;
+    }
 
-    public String getName() { return name; }
+    public void setXcoord(int x) {
+        xcoord = x;
+    }
 
-    public String getHome() { return home; }
+    public void setYcoord(int y) {
+        ycoord = y;
+    }
 
-    public int getXcoord() { return xcoord; }
+    public void setTechLevel(TechLevel t) {
+        techLevel = t;
+    }
 
-    public int getYcoord() { return ycoord; }
+    public void setResource(Resource r) {
+        resource = r;
+    }
 
-    public TechLevel getTechLevel() { return techLevel; }
+    public void setCurEvent(RadicalPriceEvent curEvent) {
+        this.curEvent = curEvent;
+    }
 
-    public Resource getResource() { return resource; }
+    public String getName() {
+        return name;
+    }
+
+    public String getHome() {
+        return home;
+    }
+
+    public int getXcoord() {
+        return xcoord;
+    }
+
+    public int getYcoord() {
+        return ycoord;
+    }
+
+    public TechLevel getTechLevel() {
+        return techLevel;
+    }
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public RadicalPriceEvent getCurEvent() {
+        return curEvent;
+    }
+
+
 }
 
 
