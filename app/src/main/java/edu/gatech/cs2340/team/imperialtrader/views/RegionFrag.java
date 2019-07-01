@@ -43,6 +43,7 @@ public class RegionFrag extends Fragment {
     private TextView techLevel;
     private TextView resourceLevel;
     private Button buttonMap;
+    private Button buttonPort;
 
     private Player player;
     private Region region;
@@ -66,6 +67,7 @@ public class RegionFrag extends Fragment {
         techLevel = view.findViewById(R.id.techLevel);
         resourceLevel = view.findViewById(R.id.resourceLevel);
         buttonMap = view.findViewById(R.id.back);
+        buttonPort = view.findViewById(R.id.tradePort);
 
         regionName.setText(region.getName());
         regionHomePort.setText(region.getHome());
@@ -78,6 +80,13 @@ public class RegionFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 regionClickListener.mapClicked();
+            }
+        });
+
+        buttonPort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                regionClickListener.tradeClicked();
             }
         });
 

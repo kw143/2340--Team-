@@ -69,4 +69,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void mapClicked() { loadFragment(new MapFrag()); }
+
+    @Override
+    public void tradeClicked() { loadFragment(new PortFrag()); }
 }
