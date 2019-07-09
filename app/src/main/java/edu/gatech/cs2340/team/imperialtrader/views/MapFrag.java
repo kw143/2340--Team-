@@ -204,16 +204,16 @@ public class MapFrag extends Fragment {
             }
         });
 
-        textView1.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(0))));
-        textView2.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(1))));
-        textView3.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(2))));
-        textView4.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(3))));
-        textView5.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(4))));
-        textView6.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(5))));
-        textView7.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(6))));
-        textView8.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(7))));
-        textView9.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(8))));
-        textView10.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(9))));
+        textView1.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(0))));
+        textView2.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(1))));
+        textView3.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(2))));
+        textView4.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(3))));
+        textView5.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(4))));
+        textView6.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(5))));
+        textView7.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(6))));
+        textView8.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(7))));
+        textView9.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(8))));
+        textView10.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(9))));
         return view;
     }
     private double distanceCalc(Region region1, Region region2) {
