@@ -7,10 +7,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="334dp"
-        android:layout_height="548dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="287dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,7 +24,7 @@
             android:textSize="26dp" />
 
         <TextView
-            android:id="@+id/currentMoney"
+            android:id="@+id/tradePrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
@@ -31,12 +32,24 @@
             android:textSize="26dp" />
 
         <TextView
-            android:id="@+id/tradePrice"
+            android:id="@+id/currentMoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
-            android:textSize="24dp" />
+            android:textSize="22dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutII"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:id="@+id/portQuantity"
@@ -46,6 +59,34 @@
             android:paddingBottom="7dp"
             android:textSize="18dp" />
 
+        <EditText
+            android:id="@+id/buyQuantField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Buy Quantity" />
+
+        <Button
+            android:id="@+id/buyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buy" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutIII"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
         <TextView
             android:id="@+id/playerQuantity"
             android:layout_width="match_parent"
@@ -54,11 +95,13 @@
             android:paddingBottom="7dp"
             android:textSize="18dp" />
 
-        <Button
-            android:id="@+id/buyButton"
+        <EditText
+            android:id="@+id/sellQuantField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buy" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Sell Quantity" />
 
         <Button
             android:id="@+id/sellButton"
@@ -66,6 +109,26 @@
             android:layout_height="wrap_content"
             android:text="Sell" />
 
-
     </LinearLayout>
+
+    <!--this isn't used, but it is invisible for now-->
+    <TextView
+        android:id="@+id/successfulIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginRight="157dp"
+        android:layout_marginBottom="25dp"
+        android:text="The trade was successful!"
+        android:textColor="#090"
+        android:visibility="invisible"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII"
+        app:layout_constraintVertical_bias="0.460" />
 </android.support.constraint.ConstraintLayout>

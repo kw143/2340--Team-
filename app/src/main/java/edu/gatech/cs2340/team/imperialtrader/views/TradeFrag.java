@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,31 +14,81 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
-//import edu.gatech.cs2340.team.imperialtrader.entity.Good;
+import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 import edu.gatech.cs2340.team.imperialtrader.entity.Inventory;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.RadicalPriceEvent;
+import edu.gatech.cs2340.team.imperialtrader.entity.Region;
+import edu.gatech.cs2340.team.imperialtrader.entity.Resource;
+import edu.gatech.cs2340.team.imperialtrader.entity.TechLevel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class TradeFrag extends Fragment {
+
+    private PortClickListener portClickListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            portClickListener = (PortClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
     private PlayerViewModel playerViewModel;
     private Player player;
     private Inventory availableGoods;
     private Inventory currentInv;
     private int tradePrice;
+    private Good curGood;
 
-    private TextView currentGood;
+    private TextView currentGoodText;
     private TextView currentMoney;
     private TextView portQuantity;
     private TextView playerQuantity;
-    // private TextView buyPrice;
-    // private TextView sellPrice;
     private TextView tradePriceText;
     private EditText buyQuantField;
     private EditText sellQuantField;
 
     private Button sellButton;
     private Button buyButton;
+
+    /** calculate price for the good */
+    private int priceCalc(Region Re, double quantity, Good type) {
+        int base = type.getBasePrice();
+        double price = base;
+        TechLevel tech = Re.getTechLevel();
+        RadicalPriceEvent event = Re.getCurEvent();
+        Resource res = Re.getResource();
+        price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal()); //price change based on tech level
+        if (event.ordinal() == type.getIE().ordinal()) {
+            price *= 2;
+        }
+        if(type.getCR() != null && res.ordinal() == type.getCR().ordinal()) {
+            price *= 0.7;
+        }
+        if(type.getER() != null &&res.ordinal() == type.getER().ordinal()) {
+            price *= 1.3;
+        }
+        if (quantity / 1000 > 1) {
+            price /= quantity/1000/50 + 1;
+        } else {
+            price *= (1000-quantity)/100 + 1;
+        }
+        if (price > price * (1 + 0.01 * type.getVar())) {
+            price = price * (1 + 0.01 * type.getVar());
+        }
+        if (price < price * (1 - 0.01 * type.getVar())) {
+            price = price * (1 - 0.01 * type.getVar());
+        }
+        return (int) price;
+    }
+
 
     @Nullable
     @Override
@@ -49,25 +100,26 @@ public class TradeFrag extends Fragment {
         player = playerViewModel.getPlayer();
         availableGoods = player.getCurRegion().getGoodsInRegion();
         currentInv = player.getInventory();
+        curGood = player.getGood();
 
 
-        currentGood = view.findViewById(R.id.currentGood);
+        currentGoodText = view.findViewById(R.id.currentGood);
         currentMoney = view.findViewById(R.id.currentMoney);
         portQuantity = view.findViewById(R.id.portQuantity);
         playerQuantity = view.findViewById(R.id.playerQuantity);
-        //buyPrice = view.findViewById(R.id.buyPrice);
-        //sellPrice = view.findViewById(R.id.sellPrice);
         tradePriceText = view.findViewById(R.id.tradePrice);
+        buyQuantField = view.findViewById(R.id.buyQuantField);
+        sellQuantField = view.findViewById(R.id.sellQuantField);
         buyButton = view.findViewById(R.id.buyButton);
         sellButton = view.findViewById(R.id.sellButton);
 
 
-        currentGood.setText(String.valueOf(player.getGood()));
-        currentMoney.setText(String.valueOf(player.getMoney()));
-        portQuantity.setText(String.valueOf(availableGoods.getCount(player.getGood())));
-        playerQuantity.setText(String.valueOf(currentInv.getCount(player.getGood())));
-        tradePrice = 30;
-        tradePriceText.setText(String.valueOf(tradePrice));
+        currentGoodText.setText("Trading for: " + String.valueOf(curGood));
+        currentMoney.setText("Money: $" + String.valueOf(player.getMoney()));
+        portQuantity.setText("Available to buy: " + String.valueOf(availableGoods.getCount(curGood)));
+        playerQuantity.setText("Available to sell: " + String.valueOf(currentInv.getCount(curGood)));
+        tradePrice = priceCalc(player.getCurRegion(), availableGoods.getCount(curGood), curGood);
+        tradePriceText.setText("Trade price: $" + String.valueOf(tradePrice));
 
 
         buyButton.setOnClickListener(new View.OnClickListener() {
@@ -79,34 +131,72 @@ public class TradeFrag extends Fragment {
                 }
                 int buyQuant = Integer.parseInt(buyQuantField.getText().toString());
                 if (buyQuant <= 0) {
+                    // if input is a negative number
                     int d;
                     //errorEmptyBuyText
+                } else if (buyQuant >= availableGoods.getCount(curGood)) {
+                    // if the player wants to buy more goods than there are
+                    // set the number of goods equal to the max available amount
+                    buyQuant = availableGoods.getCount(curGood);
                 }
                 int cost = buyQuant * tradePrice;
                 if (cost > player.getMoney()) {
                     //errorNotEnoughMoney;
                     int deleteme2;
-                } else if (player.getInventory().add(player.getGood(), buyQuant) == 0) {
+                } else if (currentInv.add(curGood, buyQuant) == 0) {
                     //errorNotEnoughSpace;
                     int d3;
                 } else {
+                    // set inventory to the new inventory
+                    player.setInventory(currentInv);
                     player.setMoney(player.getMoney() - cost);
+                    // subtract goods from the inventory at the region
+                    availableGoods.subtract(curGood, buyQuant);
+                    // DO WE NEED AN UPDATE REGION??
+                    player.getCurRegion().setGoodsInRegion(availableGoods);
+                    playerViewModel.updatePlayer(player);
                 }
                 // validate - check if have enough money
                 // then subtract money and add goods
-
-                //playerViewModel.updatePlayer(player);
-
+                portClickListener.toTradeClicked();
             }
         });
 
         sellButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int profit;
                 // validate - check if num is less than good #
 
-                //tradeClickListener.toTradeClicked();
+                if (sellQuantField.getText().toString().equals("")) {
+                    int deleteme;
+                    //errorEmptySellText.setVisibility(View.VISIBLE);
+                }
+                int sellQuant = Integer.parseInt(sellQuantField.getText().toString());
+                if (sellQuant <= 0) {
+                    // if input is a negative number
+                    int d;
+                    //errorEmptyBuyText
+                } else if (sellQuant >= currentInv.getCount(curGood)) {
+                    // if the player wants to sell more goods than there are
+                    // set the number of goods equal to the max available amount
+                    sellQuant = currentInv.getCount(curGood);
+                }
+                int profit = sellQuant * tradePrice;
+                if (currentInv.subtract(curGood, sellQuant) == 0) {
+                    //shouldn't have this error because we already checked for it
+                    int d3;
+                } else {
+                    // set inventory to the new inventory
+                    player.setInventory(currentInv);
+                    player.setMoney(player.getMoney() + profit);
+                    // subtract goods from the inventory at the region
+                    availableGoods.add(curGood, sellQuant);
+                    // DO WE NEED AN UPDATE REGION??
+                    player.getCurRegion().setGoodsInRegion(availableGoods);
+                    playerViewModel.updatePlayer(player);
+                }
+
+                portClickListener.toTradeClicked();
             }
         });
 
