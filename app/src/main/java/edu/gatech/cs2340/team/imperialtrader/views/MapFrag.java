@@ -51,6 +51,17 @@ public class MapFrag extends Fragment {
     private Button button8;
     private Button button9;
     private Button button10;
+    private TextView textView1;
+    private TextView textView2;
+    private TextView textView3;
+    private TextView textView4;
+    private TextView textView5;
+    private TextView textView6;
+    private TextView textView7;
+    private TextView textView8;
+    private TextView textView9;
+    private TextView textView10;
+
 
 
     private ArrayList<Region> regionList;
@@ -83,6 +94,16 @@ public class MapFrag extends Fragment {
         button9 = view.findViewById(R.id.buttonIX);
         button10 = view.findViewById(R.id.buttonX);
 
+        textView1 = view.findViewById(R.id.textViewI);
+        textView2 = view.findViewById(R.id.textViewII);
+        textView3 = view.findViewById(R.id.textViewIII);
+        textView4 = view.findViewById(R.id.textViewIV);
+        textView5 = view.findViewById(R.id.textViewV);
+        textView6 = view.findViewById(R.id.textViewVI);
+        textView7 = view.findViewById(R.id.textViewVII);
+        textView8 = view.findViewById(R.id.textViewVIII);
+        textView9 = view.findViewById(R.id.textViewIX);
+        textView10 = view.findViewById(R.id.textViewX);
         button10.setText(regionList.get(9).getName());
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +204,21 @@ public class MapFrag extends Fragment {
             }
         });
 
+        textView1.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(0))));
+        textView2.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(1))));
+        textView3.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(2))));
+        textView4.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(3))));
+        textView5.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(4))));
+        textView6.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(5))));
+        textView7.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(6))));
+        textView8.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(7))));
+        textView9.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(8))));
+        textView10.setText(String.format("Distance: %.2f", distanceCalc(regionList.get(0), regionList.get(9))));
         return view;
+    }
+    private double distanceCalc(Region region1, Region region2) {
+        return (Math.pow(
+                Math.pow(region1.getXcoord() - region2.getXcoord(), 2) +
+                Math.pow(region1.getYcoord() - region2.getYcoord(), 2), .5));
     }
 }
