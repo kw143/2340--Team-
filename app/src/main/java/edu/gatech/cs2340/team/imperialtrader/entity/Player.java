@@ -16,6 +16,7 @@ public class Player {
     private int totalPoints;
     private Inventory inventory;
     private Region curRegion;
+    private Good curGood;
 
     public Player(String name) { this(name, 0, 0, 0, 0, "Easy", 1000, new PlayerShip("Gnat",0, 30, 75, 10, 14, 14, 2, 15)); }
 
@@ -29,6 +30,7 @@ public class Player {
         this.totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
         this.money = money;
         this.ship = ship;
+        inventory = new Inventory();
     }
 
 
@@ -67,6 +69,8 @@ public class Player {
         this.inventory = i;
     }
 
+    public void setGood(Good g) { curGood = g; }
+
     public String getDifficulty () { return difficulty; }
 
     public String getName() { return name; }
@@ -98,5 +102,7 @@ public class Player {
     }
 
     public Region getCurRegion() { return curRegion; }
+
+    public Good getGood() { return curGood; }
 
 }

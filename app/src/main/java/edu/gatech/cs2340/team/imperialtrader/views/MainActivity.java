@@ -75,4 +75,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void toTradeClicked() { loadFragment(new TradeFrag()); }
+
+//    @Override
+//    public void toInvClicked() { loadFragment(new InvFrag()); }
 }

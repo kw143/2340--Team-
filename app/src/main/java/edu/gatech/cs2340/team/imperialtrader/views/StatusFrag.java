@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
@@ -16,6 +18,19 @@ import edu.gatech.cs2340.team.imperialtrader.entity.PlayerShip;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class StatusFrag extends Fragment {
+
+//    private StatusClickListener statusClickListener;
+//
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//
+//        try {
+//            statusClickListener = (StatusClickListener) context;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+//        }
+//    }
 
     private PlayerViewModel viewModel;
 
@@ -30,6 +45,8 @@ public class StatusFrag extends Fragment {
     private TextView currentFuel;
 
     private Player player;
+
+    private Button invButton;
 
     @Nullable
     @Override
@@ -52,6 +69,8 @@ public class StatusFrag extends Fragment {
         money = view.findViewById(R.id.mon);
         currentFuel = view.findViewById(R.id.currentFuel);
 
+        //invButton = view.findViewById(R.id.invButton);
+
         nameField.setText(player.getName());
         pilotField.setText(String.valueOf(player.getPilotPoints()));
         fighterField.setText(String.valueOf(player.getFighterPoints()));
@@ -62,6 +81,13 @@ public class StatusFrag extends Fragment {
         money.setText(String.valueOf(player.getMoney()));
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
+
+//        invButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                statusClickListener.toInvClicked();
+//            }
+//        });
 
         return view;
     }
