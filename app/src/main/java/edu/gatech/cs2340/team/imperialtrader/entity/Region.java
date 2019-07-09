@@ -55,9 +55,13 @@ public class Region {
     public void restockInventory() {
         for (int x = 0; x < 4; x++) {
             Good newGood = Good.values()[rand.nextInt(10)];
-            goodsInRegion.add(newGood, (newGood.getTTP().equals(curEvent))?rand.nextInt((goodsInRegion.getCapacity()
-                            - goodsInRegion.getCurCapacity())):rand.nextInt((goodsInRegion.getCapacity()
-                    - goodsInRegion.getCurCapacity()))/2);
+            if (newGood.getMLTP().ordinal() > techLevel.ordinal()) {
+                x--;
+            } else {
+                goodsInRegion.add(newGood, (newGood.getTTP().ordinal() == curEvent.ordinal()) ? rand.nextInt((goodsInRegion.getCapacity()
+                        - goodsInRegion.getCurCapacity())) : rand.nextInt((goodsInRegion.getCapacity()
+                        - goodsInRegion.getCurCapacity())) / 2);
+            }
         }
     }
 

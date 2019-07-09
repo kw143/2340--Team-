@@ -18,6 +18,8 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 import edu.gatech.cs2340.team.imperialtrader.entity.Inventory;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.entity.RadicalPriceEvent;
+import edu.gatech.cs2340.team.imperialtrader.entity.Region;
+import edu.gatech.cs2340.team.imperialtrader.entity.Resource;
 import edu.gatech.cs2340.team.imperialtrader.entity.TechLevel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
@@ -38,9 +40,35 @@ public class PortFrag extends Fragment {
         }
     }
 
-    /*private int priceCalc(RadicalPriceEvent event, TechLevel tech, int quantity, Good type) {
-
-    }*/
+    private int priceCalc(Region Re, double quantity, Good type) {
+        int base = type.getBasePrice();
+        double price = base;
+        TechLevel tech = Re.getTechLevel();
+        RadicalPriceEvent event = Re.getCurEvent();
+        Resource res = Re.getResource();
+        price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal()); //price change based on tech level
+        if (event.ordinal() == type.getIE().ordinal()) {
+            price *= 2;
+        }
+        if(type.getCR() != null && res.ordinal() == type.getCR().ordinal()) {
+            price *= 0.7;
+        }
+        if(type.getER() != null &&res.ordinal() == type.getER().ordinal()) {
+            price *= 1.3;
+        }
+        if (quantity / 1000 > 1) {
+            price /= quantity/1000/50 + 1;
+        } else {
+            price *= (1000-quantity)/100 + 1;
+        }
+        if (price > price * (1 + 0.01 * type.getVar())) {
+            price = price * (1 + 0.01 * type.getVar());
+        }
+        if (price < price * (1 - 0.01 * type.getVar())) {
+            price = price * (1 - 0.01 * type.getVar());
+        }
+        return (int) price;
+    }
 
     private TextView curregion;
     private TextView curEvent;
@@ -120,6 +148,17 @@ public class PortFrag extends Fragment {
         narcoticPrice = view.findViewById(R.id.priceIX);
         robotPrice = view.findViewById(R.id.priceX);
 
+        waterPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.WATER), Good.WATER)));
+        furPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.FURS), Good.FURS)));
+        foodPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.FOOD), Good.FOOD)));
+        orePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.ORE), Good.ORE)));
+        gamePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.GAMES), Good.GAMES)));
+        firearmPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.FIREARMS), Good.FIREARMS)));
+        medicinePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.MEDICINE), Good.MEDICINE)));
+        machinePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.MACHINES), Good.MACHINES)));
+        narcoticPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.NARCOTICS), Good.NARCOTICS)));
+        robotPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.ROBOTS), Good.ROBOTS)));
+
         waterQuantity = view.findViewById(R.id.quantityI);
         furQuantity = view.findViewById(R.id.quantityII);
         foodQuantity = view.findViewById(R.id.quantityIII);
@@ -137,7 +176,7 @@ public class PortFrag extends Fragment {
         oreQuantity.setText(String.valueOf(availableGoods.getCount(Good.ORE)));
         gameQuantity.setText(String.valueOf(availableGoods.getCount(Good.GAMES)));
         firearmQuantity.setText(String.valueOf(availableGoods.getCount(Good.FIREARMS)));
-        medicineQuantity.setText(String.valueOf(availableGoods.getCount(Good.MEDICINCE)));
+        medicineQuantity.setText(String.valueOf(availableGoods.getCount(Good.MEDICINE)));
         machineQuantity.setText(String.valueOf(availableGoods.getCount(Good.MACHINES)));
         narcoticQuantity.setText(String.valueOf(availableGoods.getCount(Good.NARCOTICS)));
         robotQuantity.setText(String.valueOf(availableGoods.getCount(Good.ROBOTS)));
