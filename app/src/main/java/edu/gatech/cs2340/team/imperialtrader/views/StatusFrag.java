@@ -19,18 +19,18 @@ import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class StatusFrag extends Fragment {
 
-//    private StatusClickListener statusClickListener;
-//
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//
-//        try {
-//            statusClickListener = (StatusClickListener) context;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
-//        }
-//    }
+    private StatusClickListener statusClickListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            statusClickListener = (StatusClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
     private PlayerViewModel viewModel;
 
@@ -69,7 +69,7 @@ public class StatusFrag extends Fragment {
         money = view.findViewById(R.id.mon);
         currentFuel = view.findViewById(R.id.currentFuel);
 
-        //invButton = view.findViewById(R.id.invButton);
+        invButton = view.findViewById(R.id.invbutton);
 
         nameField.setText(player.getName());
         pilotField.setText(String.valueOf(player.getPilotPoints()));
@@ -82,12 +82,12 @@ public class StatusFrag extends Fragment {
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
 
-//        invButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                statusClickListener.toInvClicked();
-//            }
-//        });
+        invButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statusClickListener.toInvClicked();
+            }
+        });
 
         return view;
     }

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 //import android.widget.Button;
+import android.widget.Button;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
@@ -21,18 +22,18 @@ import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class InvFrag extends Fragment {
 
-    //private InvClickListener invClickListener;
+    private InvClickListener invClickListener;
 
-    // @Override
-    // public void onAttach(Context context) {
-    //     super.onAttach(context);
+     @Override
+     public void onAttach(Context context) {
+        super.onAttach(context);
 
-    //     try {
-    //         invClickListener = (InvClickListener) context;
-    //     } catch (ClassCastException e) {
-    //         throw new ClassCastException(context.toString() + " must implement OnHeadLineSelectedListener");
-    //     }
-    // }
+         try {
+             invClickListener = (InvClickListener) context;
+         } catch (ClassCastException e) {
+             throw new ClassCastException(context.toString() + " must implement OnHeadLineSelectedListener");
+         }
+    }
 
     private PlayerViewModel playerViewModel;
     private Player player;
@@ -50,16 +51,19 @@ public class InvFrag extends Fragment {
     private TextView narcoticQuantity;
     private TextView robotQuantity;
 
+    private Button tradeButton;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.port,
+        View view = inflater.inflate(R.layout.inventory,
                 container, false);
 
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         player = playerViewModel.getPlayer();
         currentInv = player.getInventory();
 
+        tradeButton = view.findViewById(R.id.backToTrade);
         currentMoney = view.findViewById(R.id.currentMoney);
         waterQuantity = view.findViewById(R.id.quantityI);
         furQuantity = view.findViewById(R.id.quantityII);
@@ -83,6 +87,13 @@ public class InvFrag extends Fragment {
         machineQuantity.setText(String.valueOf(currentInv.getCount(Good.MACHINES)));
         narcoticQuantity.setText(String.valueOf(currentInv.getCount(Good.NARCOTICS)));
         robotQuantity.setText(String.valueOf(currentInv.getCount(Good.ROBOTS)));
+
+        tradeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                invClickListener.onTradeClicked();
+            }
+        });
 
         return view;
     }

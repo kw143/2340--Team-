@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import edu.gatech.cs2340.team.imperialtrader.R;
 
 public class MainActivity extends AppCompatActivity
-        implements BottomNavigationView.OnNavigationItemSelectedListener, HomeClickListener, CreatePlayerClickListener, MapClickListener, RegionClickListener, PortClickListener {
+        implements BottomNavigationView.OnNavigationItemSelectedListener, HomeClickListener, CreatePlayerClickListener, MapClickListener, RegionClickListener, PortClickListener, StatusClickListener, InvClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void toTradeClicked() { loadFragment(new TradeFrag()); }
 
-//    @Override
-//    public void toInvClicked() { loadFragment(new InvFrag()); }
+    @Override
+    public void toInvClicked() { loadFragment(new InvFrag()); }
+
+    @Override
+    public void onTradeClicked() { loadFragment(new TradeFrag()); }
 }
