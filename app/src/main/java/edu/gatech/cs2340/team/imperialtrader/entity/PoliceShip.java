@@ -2,6 +2,7 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 
 public class PoliceShip extends Ship {
 
+    private String name = "Police";
     private int cost = 0;
     private int speed = 50;
     private int health = 100;
@@ -11,8 +12,8 @@ public class PoliceShip extends Ship {
     public int weapons = 2;
     public int cargoCapacity = 10;
 
-    public PoliceShip(int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
-        super(0, 50, 100, 25, 15, 15, 2, 10);
+    public PoliceShip(String name, int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
+        super("Police", 0, 50, 100, 25, 15, 15, 2, 10);
     }
 
     public void fly() {

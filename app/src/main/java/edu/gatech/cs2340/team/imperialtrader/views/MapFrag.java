@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,7 @@ public class MapFrag extends Fragment {
 
     private RegionViewModel regionViewModel;
     private PlayerViewModel playerViewModel;
+    private TextView currentFuel;
 
     private Button button1;
     private Button button2;
@@ -63,6 +65,9 @@ public class MapFrag extends Fragment {
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         regionList = regionViewModel.getRegionList();
         player = playerViewModel.getPlayer();
+
+        currentFuel = view.findViewById(R.id.currentFuel);
+        currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
         /*
          * Grab the dialog widgets so we can get info for later

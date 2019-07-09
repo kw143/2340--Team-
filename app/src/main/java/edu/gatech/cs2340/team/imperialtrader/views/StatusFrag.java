@@ -14,22 +14,23 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.PlayerShip;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class StatusFrag extends Fragment {
 
-//    private StatusClickListener statusClickListener;
-//
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//
-//        try {
-//            statusClickListener = (StatusClickListener) context;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
-//        }
-//    }
+    private StatusClickListener statusClickListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            statusClickListener = (StatusClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
     private PlayerViewModel viewModel;
 
@@ -41,6 +42,7 @@ public class StatusFrag extends Fragment {
     private TextView difficulty;
     private TextView ship;
     private TextView money;
+    private TextView currentFuel;
 
     private Player player;
 
@@ -65,8 +67,9 @@ public class StatusFrag extends Fragment {
         difficulty = view.findViewById(R.id.dif);
         ship = view.findViewById(R.id.ship);
         money = view.findViewById(R.id.mon);
+        currentFuel = view.findViewById(R.id.currentFuel);
 
-        //invButton = view.findViewById(R.id.invButton);
+        invButton = view.findViewById(R.id.invbutton);
 
         nameField.setText(player.getName());
         pilotField.setText(String.valueOf(player.getPilotPoints()));
@@ -74,15 +77,17 @@ public class StatusFrag extends Fragment {
         traderField.setText(String.valueOf(player.getTraderPoints()));
         engineerField.setText(String.valueOf(player.getEngineerPoints()));
         difficulty.setText(player.getDifficulty());
-        ship.setText(player.getShip());
+        ship.setText(String.valueOf(player.getShip().getName()));
         money.setText(String.valueOf(player.getMoney()));
+        currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
-//        invButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                statusClickListener.toInvClicked();
-//            }
-//        });
+
+        invButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statusClickListener.toInvClicked();
+            }
+        });
 
         return view;
     }
