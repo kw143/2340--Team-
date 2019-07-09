@@ -13,11 +13,61 @@ public enum Good {
     ROBOTS("Robots",  TechLevel.POSTINDUSTRIAL,  TechLevel.EARLYINDUSTRIAL,  TechLevel.HITECH,5000,-150,100,RadicalPriceEvent.LACKOFWORKERS, null,null,3500,5000);
     private String name;
     private int price;
+    private TechLevel MLTP;
+    private TechLevel MLTU;
+
+
+    public TechLevel getMLTP() {
+        return MLTP;
+    }
+
+
+    public TechLevel getMLTU() {
+        return MLTU;
+    }
+
+
+    public TechLevel getTTP() {
+        return TTP;
+    }
+
+
+    public int getBasePrice() {
+        return basePrice;
+    }
+
+
+    public double getIPL() {
+        return IPL;
+    }
+
+
+    public double getVar() {
+        return var;
+    }
+
+    public RadicalPriceEvent getIE() {
+        return IE;
+    }
+
+
+    private TechLevel TTP;
+    private int basePrice;
+    private double IPL;
+    private double var;
+    private RadicalPriceEvent IE;
     Good(String name, TechLevel MLTP, TechLevel MLTU, TechLevel TTP, int basePrice,
          double IPL, double var, RadicalPriceEvent IE,
          Resource CR, Resource ER, double MTL, double MTH) {
         this.name = name;
         this.price = price;
+        this.MLTP = MLTP;
+        this.MLTU = MLTU;
+        this.TTP = TTP;
+        this.basePrice = basePrice;
+        this.IPL = IPL;
+        this.var = var;
+        this.IE = IE;
     }
 
     public String getName() {

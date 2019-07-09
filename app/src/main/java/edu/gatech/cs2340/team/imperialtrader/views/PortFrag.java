@@ -17,6 +17,8 @@ import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 import edu.gatech.cs2340.team.imperialtrader.entity.Inventory;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.RadicalPriceEvent;
+import edu.gatech.cs2340.team.imperialtrader.entity.TechLevel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class PortFrag extends Fragment {
@@ -35,6 +37,10 @@ public class PortFrag extends Fragment {
             throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
         }
     }
+
+    /*private int priceCalc(RadicalPriceEvent event, TechLevel tech, int quantity, Good type) {
+
+    }*/
 
     private TextView curregion;
     private TextView curEvent;

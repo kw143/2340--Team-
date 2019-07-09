@@ -54,9 +54,10 @@ public class Region {
 
     public void restockInventory() {
         for (int x = 0; x < 4; x++) {
-            goodsInRegion.add(Good.values()[rand.nextInt(10)]
-                    , rand.nextInt((goodsInRegion.getCapacity()
-                            - goodsInRegion.getCurCapacity())));
+            Good newGood = Good.values()[rand.nextInt(10)];
+            goodsInRegion.add(newGood, (newGood.getTTP().equals(curEvent))?rand.nextInt((goodsInRegion.getCapacity()
+                            - goodsInRegion.getCurCapacity())):rand.nextInt((goodsInRegion.getCapacity()
+                    - goodsInRegion.getCurCapacity()))/2);
         }
     }
 
