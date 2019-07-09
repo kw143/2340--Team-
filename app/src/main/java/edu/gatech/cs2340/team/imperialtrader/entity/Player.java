@@ -12,15 +12,15 @@ public class Player {
     private int engineerPoints;
     private int money;
     private String difficulty;
-    private String ship;
+    private PlayerShip ship;
     private int totalPoints;
     private Inventory inventory;
     private Region curRegion;
     private Good curGood;
 
-    public Player(String name) { this(name, 0, 0, 0, 0, "easy", 1000, "Gnat Spaceship"); }
+    public Player(String name) { this(name, 0, 0, 0, 0, "Easy", 1000, new PlayerShip("Gnat",0, 30, 75, 10, 14, 14, 2, 15)); }
 
-    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, String dif, int mon, String sh) {
+    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints, int engineerPoints, String dif, int money, PlayerShip ship) {
         this.name = name;
         this.pilotPoints = pilotPoints;
         this.fighterPoints = fighterPoints;
@@ -28,8 +28,8 @@ public class Player {
         this.engineerPoints = engineerPoints;
         this.difficulty = dif;
         this.totalPoints = pilotPoints + fighterPoints + traderPoints + engineerPoints;
-        money = mon;
-        ship = sh;
+        this.money = money;
+        this.ship = ship;
         inventory = new Inventory();
     }
 
@@ -63,7 +63,7 @@ public class Player {
 
     public void setMoney (int m) { money = m; }
 
-    public void setShip (String s) { ship = s; }
+    public void setShip (PlayerShip s) { ship = s; }
 
     public void setInventory(Inventory i) {
         this.inventory = i;
@@ -75,7 +75,7 @@ public class Player {
 
     public String getName() { return name; }
 
-    public String getShip() { return ship;}
+    public PlayerShip getShip() { return ship;}
 
     public int getMoney() { return money;}
 

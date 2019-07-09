@@ -2,6 +2,7 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 
 public abstract class Ship {
 
+    private String name;
     private int cost;
     private int speed;
     private int health;
@@ -12,10 +13,11 @@ public abstract class Ship {
     public int cargoCapacity;
 
     public Ship() {
-        this(0, 25, 50, 5, 20, 20, 1, 5 );
+        this("", 0, 25, 50, 5, 20, 20, 1, 5 );
     }
 
-    public Ship(int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
+    public Ship(String name, int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
+        this.name = name;
         this.cost = cost;
         this.speed = speed;
         this.health = health;
