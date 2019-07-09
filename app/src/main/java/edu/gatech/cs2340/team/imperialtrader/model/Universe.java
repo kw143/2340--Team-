@@ -101,10 +101,6 @@ public class Universe {
     public Player getPlayer() { return player; }
 
     public void updatePlayer(Player p) {
-        player.setPilotPoints(p.getPilotPoints());
-        player.setName(p.getName());
-        player.setFighterPoints(p.getFighterPoints());
-        player.setTraderPoints(p.getTraderPoints());
-        player.setEngineerPoints(p.getEngineerPoints());
+        player = p;
     }
 }
