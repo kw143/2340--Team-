@@ -187,6 +187,8 @@ public class PortFrag extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.WATER);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -195,6 +197,8 @@ public class PortFrag extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.FURS);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -203,6 +207,8 @@ public class PortFrag extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.FOOD);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -211,6 +217,8 @@ public class PortFrag extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.ORE);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -219,6 +227,8 @@ public class PortFrag extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.GAMES);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -227,6 +237,8 @@ public class PortFrag extends Fragment {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.FIREARMS);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -235,6 +247,8 @@ public class PortFrag extends Fragment {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.MEDICINE);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -243,6 +257,8 @@ public class PortFrag extends Fragment {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.MACHINES);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -251,6 +267,8 @@ public class PortFrag extends Fragment {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.NARCOTICS);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
@@ -259,6 +277,8 @@ public class PortFrag extends Fragment {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.setGood(Good.ROBOTS);
+                playerViewModel.updatePlayer(player);
                 portClickListener.toTradeClicked();
             }
         });
