@@ -25,7 +25,7 @@ import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class TradeFrag extends Fragment {
 
-    private PortClickListener portClickListener;
+    private TradeClickListener tradeClickListener;
 
     @Override
     public void onAttach(Context context) {
@@ -34,7 +34,7 @@ public class TradeFrag extends Fragment {
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            portClickListener = (PortClickListener) context;
+            tradeClickListener = (TradeClickListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
         }
@@ -57,6 +57,7 @@ public class TradeFrag extends Fragment {
 
     private Button sellButton;
     private Button buyButton;
+    private Button invButton;
 
     /** calculate price for the good */
     private int priceCalc(Region Re, double quantity, Good type) {
@@ -112,6 +113,7 @@ public class TradeFrag extends Fragment {
         sellQuantField = view.findViewById(R.id.sellQuantField);
         buyButton = view.findViewById(R.id.buyButton);
         sellButton = view.findViewById(R.id.sellButton);
+        invButton = view.findViewById(R.id.toInventory);
 
 
         currentGoodText.setText("Trading for: " + String.valueOf(curGood));
@@ -158,7 +160,7 @@ public class TradeFrag extends Fragment {
                 }
                 // validate - check if have enough money
                 // then subtract money and add goods
-                portClickListener.toTradeClicked();
+                tradeClickListener.toBuyClicked();
             }
         });
 
@@ -196,8 +198,17 @@ public class TradeFrag extends Fragment {
                     playerViewModel.updatePlayer(player);
                 }
 
-                portClickListener.toTradeClicked();
+                tradeClickListener.toSellClicked();
             }
+
+        });
+
+        invButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tradeClickListener.onInventoryClicked();
+            }
+
         });
 
 
