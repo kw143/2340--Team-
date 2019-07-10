@@ -128,7 +128,7 @@ public class CreatePlayerFrag extends Fragment {
                     player.setTraderPoints(Integer.parseInt(traderField.getText().toString()));
                     player.setEngineerPoints(Integer.parseInt(engineerField.getText().toString()));
                     player.setDifficulty((String) difficultySpinner.getSelectedItem());
-                    player.setCurRegion(regionViewModel.getHomeRegion());
+                    player.setCurRegion(regionViewModel.getHomeRegion(), -1);
 
                     if (player.getTotalPoints() != 16) {
                         errorText.setVisibility(View.VISIBLE);
