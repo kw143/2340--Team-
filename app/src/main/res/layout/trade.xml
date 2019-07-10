@@ -134,7 +134,7 @@
         app:layout_constraintVertical_bias="0.460" />
 
     <TextView
-        android:id="@+id/errorText"
+        android:id="@+id/errorAvailable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -142,17 +142,56 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="25dp"
-        android:text="There was an error with the trade."
+        android:layout_marginBottom="8dp"
+        android:text="There is either no good to buy or no good to sell"
         android:textColor="#900"
-        android:visibility="invisible"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII"
-        app:layout_constraintVertical_bias="0.460" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII" />
+
+    <TextView
+        android:id="@+id/errorNumberFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginRight="157dp"
+        android:layout_marginBottom="8dp"
+        android:text="Input not a number!"
+        android:textColor="#900"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII" />
+
+    <TextView
+        android:id="@+id/errorNegative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginRight="157dp"
+        android:layout_marginBottom="8dp"
+        android:text="Quantity cannot be negative!"
+        android:textColor="#900"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII" />
 
     <TextView
         android:id="@+id/errorEmptyText"
@@ -163,17 +202,16 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="8dp"
         android:text="The quantity field is empty."
         android:textColor="#900"
-        android:visibility="invisible"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII"
-        app:layout_constraintVertical_bias="0.460" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII" />
 
     <TextView
         android:id="@+id/errorNotEnoughMoney"
@@ -184,19 +222,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="8dp"
         android:text="You don't have enough money!"
         android:textColor="#900"
-        android:visibility="invisible"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII"
-        app:layout_constraintVertical_bias="0.460" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII" />
 
-        <TextView
+    <TextView
         android:id="@+id/errorNotEnoughSpace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -205,19 +242,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="8dp"
         android:text="You don't have enough space in your inventory!"
         android:textColor="#900"
-        android:visibility="invisible"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII"
-        app:layout_constraintVertical_bias="0.460" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII" />
 
-        <TextView
+    <TextView
         android:id="@+id/errorNotEnoughGoods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -226,17 +262,16 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="157dp"
         android:layout_marginRight="157dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="8dp"
         android:text="You don't have that many goods to sell!"
         android:textColor="#900"
-        android:visibility="invisible"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII"
-        app:layout_constraintVertical_bias="0.460" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutII" />
 
     <Button
         android:id="@+id/toInventory"

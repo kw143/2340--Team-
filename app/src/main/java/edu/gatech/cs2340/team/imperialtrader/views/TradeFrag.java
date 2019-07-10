@@ -55,11 +55,13 @@ public class TradeFrag extends Fragment {
     private TextView tradePriceText;
     private EditText buyQuantField;
     private EditText sellQuantField;
-    private TextView errorText;
+    private TextView errorAvailable;
     private TextView errorEmptyText;
     private TextView errorNotEnoughMoney;
     private TextView errorNotEnoughSpace;
     private TextView errorNotEnoughGoods;
+    private TextView errorNumberFormat;
+    private TextView errorNegative;
 
     private Button sellButton;
     private Button buyButton;
@@ -119,11 +121,13 @@ public class TradeFrag extends Fragment {
         sellQuantField = view.findViewById(R.id.sellQuantField);
         buyButton = view.findViewById(R.id.buyButton);
         sellButton = view.findViewById(R.id.sellButton);
-        errorText = view.findViewById(R.id.errorText);
+        errorAvailable = view.findViewById(R.id.errorAvailable);
         errorEmptyText = view.findViewById(R.id.errorEmptyText);
         errorNotEnoughMoney = view.findViewById(R.id.errorNotEnoughMoney);
         errorNotEnoughSpace = view.findViewById(R.id.errorNotEnoughSpace);
         errorNotEnoughGoods = view.findViewById(R.id.errorNotEnoughGoods);
+        errorNumberFormat = view.findViewById(R.id.errorNumberFormat);
+        errorNegative = view.findViewById(R.id.errorNegative);
         invButton = view.findViewById(R.id.toInventory);
 
         currentGoodText.setText("Trading for: " + String.valueOf(curGood));
@@ -141,13 +145,54 @@ public class TradeFrag extends Fragment {
                     // no input
                     Log.d("Error", "No input provided.");
                     errorEmptyText.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorEmptyText.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                     return;
                 }
-                int buyQuant = Integer.parseInt(buyQuantField.getText().toString());
+                int buyQuant = 0;
+                try {
+                    buyQuant = Integer.parseInt(buyQuantField.getText().toString());
+                } catch (NumberFormatException e) {
+                    Log.d("Error", "Input not a number");
+                    errorNumberFormat.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorNumberFormat.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
+                    return;
+                }
+                if (availableGoods.getCount(curGood) == 0) {
+                    // if there is no good to be bought
+                    Log.d("Error", "No good available");
+                    errorAvailable.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorAvailable.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
+                    return;
+                }
                 if (buyQuant <= 0) {
                     // if input is a negative number
                     Log.d("Error", "Quantity cannot be negative.");
-                    errorText.setVisibility(View.VISIBLE);
+                    errorNegative.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorNegative.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                     return;
                 } else if (buyQuant >= availableGoods.getCount(curGood)) {
                     // if the player wants to buy more goods than there are
@@ -158,9 +203,23 @@ public class TradeFrag extends Fragment {
                 if (cost > player.getMoney()) {
                     Log.d("Error", "Player does not have enough money.");
                     errorNotEnoughMoney.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorNotEnoughMoney.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 } else if (currentInv.add(curGood, buyQuant) == 0) {
                     Log.d("Error", "Player does not have enough space in inventory.");
                     errorNotEnoughSpace.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorNotEnoughSpace.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 } else {
                     // set inventory to the new inventory
                     player.setInventory(currentInv);
@@ -184,13 +243,54 @@ public class TradeFrag extends Fragment {
 
                 if (sellQuantField.getText().toString().equals("")) {
                     Log.d("Error", "No input provided.");
-                    errorText.setVisibility(View.VISIBLE);
+                    errorEmptyText.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorEmptyText.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                     return;
                 }
-                int sellQuant = Integer.parseInt(sellQuantField.getText().toString());
+                int sellQuant = 0;
+                try {
+                    sellQuant = Integer.parseInt(sellQuantField.getText().toString());
+                } catch (NumberFormatException e) {
+                    Log.d("Error", "Input not a number");
+                    errorNumberFormat.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorNumberFormat.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
+                    return;
+                }
+                if (currentInv.getCount(curGood) == 0) {
+                    // if there is no good to be bought
+                    Log.d("Error", "No good available");
+                    errorAvailable.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorAvailable.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
+                    return;
+                }
                 if (sellQuant <= 0) {
                     Log.d("Error", "Quantity cannot be negative.");
-                    errorText.setVisibility(View.VISIBLE);
+                    errorNegative.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorNegative.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                     return;
                 } else if (sellQuant >= currentInv.getCount(curGood)) {
                     // if the player wants to sell more goods than there are
@@ -201,6 +301,13 @@ public class TradeFrag extends Fragment {
                 if (currentInv.subtract(curGood, sellQuant) == 0) {
                     Log.d("Error", "Cannot sell more than the player has.");
                     errorNotEnoughGoods.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorNotEnoughGoods.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 } else {
                     // set inventory to the new inventory
                     player.setInventory(currentInv);
