@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,7 @@ public class MapFrag extends Fragment {
     private TextView textView9;
     private TextView textView10;
 
+    private TextView errorFuel;
 
 
     private ArrayList<Region> regionList;
@@ -77,6 +79,7 @@ public class MapFrag extends Fragment {
         regionList = regionViewModel.getRegionList();
         player = playerViewModel.getPlayer();
 
+        errorFuel = view.findViewById(R.id.errorFuel);
         currentFuel = view.findViewById(R.id.currentFuel);
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
@@ -112,6 +115,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(), regionList.get(9)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -124,6 +137,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(0), distanceCalc(player.getCurRegion(), regionList.get(0)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -136,6 +159,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(1), distanceCalc(player.getCurRegion(), regionList.get(1)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -148,6 +181,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(2), distanceCalc(player.getCurRegion(), regionList.get(2)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -160,6 +203,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(3), distanceCalc(player.getCurRegion(), regionList.get(3)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -172,6 +225,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(4), distanceCalc(player.getCurRegion(), regionList.get(4)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -184,6 +247,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(5), distanceCalc(player.getCurRegion(), regionList.get(5)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -196,6 +269,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(6), distanceCalc(player.getCurRegion(), regionList.get(6)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -208,6 +291,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(7), distanceCalc(player.getCurRegion(), regionList.get(8)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
@@ -220,6 +313,16 @@ public class MapFrag extends Fragment {
                     player.setCurRegion(regionList.get(8), distanceCalc(player.getCurRegion(), regionList.get(8)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
+                } else {
+                    Log.d("Error", "Not enough fuel left to travel there!");
+                    errorFuel.setVisibility(View.VISIBLE);
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    errorFuel.setVisibility(View.INVISIBLE);
+                                }
+                            },
+                            2000);
                 }
             }
         });
