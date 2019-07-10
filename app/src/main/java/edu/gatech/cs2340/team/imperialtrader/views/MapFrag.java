@@ -111,7 +111,7 @@ public class MapFrag extends Fragment {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(9))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(9))) {
                     player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(), regionList.get(9)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -133,7 +133,7 @@ public class MapFrag extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(0))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(0))) {
                     player.setCurRegion(regionList.get(0), distanceCalc(player.getCurRegion(), regionList.get(0)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -155,7 +155,7 @@ public class MapFrag extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(1))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(1))) {
                     player.setCurRegion(regionList.get(1), distanceCalc(player.getCurRegion(), regionList.get(1)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -177,7 +177,7 @@ public class MapFrag extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(2))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(2))) {
                     player.setCurRegion(regionList.get(2), distanceCalc(player.getCurRegion(), regionList.get(2)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -199,7 +199,7 @@ public class MapFrag extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(3))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(3))) {
                     player.setCurRegion(regionList.get(3), distanceCalc(player.getCurRegion(), regionList.get(3)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -221,7 +221,7 @@ public class MapFrag extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(4))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(4))) {
                     player.setCurRegion(regionList.get(4), distanceCalc(player.getCurRegion(), regionList.get(4)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -243,7 +243,7 @@ public class MapFrag extends Fragment {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(5))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(5))) {
                     player.setCurRegion(regionList.get(5), distanceCalc(player.getCurRegion(), regionList.get(5)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -265,7 +265,7 @@ public class MapFrag extends Fragment {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(6))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(6))) {
                     player.setCurRegion(regionList.get(6), distanceCalc(player.getCurRegion(), regionList.get(6)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -287,7 +287,7 @@ public class MapFrag extends Fragment {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(7))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(7))) {
                     player.setCurRegion(regionList.get(7), distanceCalc(player.getCurRegion(), regionList.get(8)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
@@ -309,7 +309,7 @@ public class MapFrag extends Fragment {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 > distanceCalc(player.getCurRegion(), regionList.get(8))) {
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(8))) {
                     player.setCurRegion(regionList.get(8), distanceCalc(player.getCurRegion(), regionList.get(8)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
