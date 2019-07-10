@@ -66,7 +66,7 @@ public class Universe {
             regionList.add(startingRegions.get(index));
             startingRegions.remove(index);
         }
-        player.setCurRegion(homeRegion);
+        player.setCurRegion(homeRegion, -1);
     }
 
     public void setHomeRegion(Region homeRegion) {

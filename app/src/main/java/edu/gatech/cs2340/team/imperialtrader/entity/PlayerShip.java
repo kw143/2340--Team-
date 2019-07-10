@@ -20,6 +20,10 @@ public class PlayerShip extends Ship {
         return currentFuel;
     }
 
+    public void setCurrentFuel(int currentFuel) {
+        this.currentFuel = currentFuel;
+    }
+
     public String getName() {
         return name;
     }
