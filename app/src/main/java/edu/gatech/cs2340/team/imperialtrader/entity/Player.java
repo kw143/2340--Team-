@@ -55,7 +55,12 @@ public class Player {
         totalPoints = pilotPoints + fighterPoints + traderPoints + this.engineerPoints;
     }
 
-    public void setCurRegion(Region r) { curRegion = r; }
+    public void setCurRegion(Region r, double distance) {
+        if (distance > 0) {
+            this.getShip().setCurrentFuel((int) ((this.getShip().getCurrentFuel() * 50) - distance) / 50);
+        }
+        curRegion = r;
+    }
 
     public void setName(String n) { name = n; }
 

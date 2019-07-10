@@ -73,6 +73,9 @@ public class PortFrag extends Fragment {
     private TextView curregion;
     private TextView curEvent;
 
+    private Button repairButton;
+    private Button refuelButton;
+
     private Button button1;
     private Button button2;
     private Button button3;
@@ -137,6 +140,9 @@ public class PortFrag extends Fragment {
         button9 = view.findViewById(R.id.tradeButton9);
         button10 = view.findViewById(R.id.tradeButton10);
 
+        repairButton = view.findViewById(R.id.repair_button);
+        refuelButton = view.findViewById(R.id.refuel_button);
+
         waterPrice = view.findViewById(R.id.priceI);
         furPrice = view.findViewById(R.id.priceII);
         foodPrice = view.findViewById(R.id.priceIII);
@@ -182,6 +188,25 @@ public class PortFrag extends Fragment {
         robotQuantity.setText(String.valueOf(availableGoods.getCount(Good.ROBOTS)));
 
 
+        refuelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                player.setMoney(player.getMoney()-100);
+                player.getShip().setCurrentFuel(player.getShip().getCurrentFuel()+10);
+                playerViewModel.updatePlayer(player);
+                portClickListener.onRefuelClicked();
+            }
+        });
+
+        repairButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                player.setMoney(player.getMoney()-200);
+                player.getShip().setHealth(player.getShip().getHealth()+50);
+                playerViewModel.updatePlayer(player);
+                portClickListener.onRepairClicked();
+            }
+        });
 
         button1.setText("Trade");
         button1.setOnClickListener(new View.OnClickListener() {
