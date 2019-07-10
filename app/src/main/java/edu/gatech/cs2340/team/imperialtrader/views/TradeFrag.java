@@ -56,6 +56,10 @@ public class TradeFrag extends Fragment {
     private EditText buyQuantField;
     private EditText sellQuantField;
     private TextView errorText;
+    private TextView errorEmptyText;
+    private TextView errorNotEnoughMoney;
+    private TextView errorNotEnoughSpace;
+    private TextView errorNotEnoughGoods;
 
     private Button sellButton;
     private Button buyButton;
@@ -116,6 +120,10 @@ public class TradeFrag extends Fragment {
         buyButton = view.findViewById(R.id.buyButton);
         sellButton = view.findViewById(R.id.sellButton);
         errorText = view.findViewById(R.id.errorText);
+        errorEmptyText = view.findViewById(R.id.errorEmptyText);
+        errorNotEnoughMoney = view.findViewById(R.id.errorNotEnoughMoney);
+        errorNotEnoughSpace = view.findViewById(R.id.errorNotEnoughSpace);
+        errorNotEnoughGoods = view.findViewById(R.id.errorNotEnoughGoods);
         invButton = view.findViewById(R.id.toInventory);
 
         currentGoodText.setText("Trading for: " + String.valueOf(curGood));
@@ -132,7 +140,7 @@ public class TradeFrag extends Fragment {
                 if (buyQuantField.getText().toString().equals("")) {
                     // no input
                     Log.d("Error", "No input provided.");
-                    errorText.setVisibility(View.VISIBLE);
+                    errorEmptyText.setVisibility(View.VISIBLE);
                     return;
                 }
                 int buyQuant = Integer.parseInt(buyQuantField.getText().toString());
@@ -149,10 +157,10 @@ public class TradeFrag extends Fragment {
                 int cost = buyQuant * tradePrice;
                 if (cost > player.getMoney()) {
                     Log.d("Error", "Player does not have enough money.");
-                    errorText.setVisibility(View.VISIBLE);
+                    errorNotEnoughMoney.setVisibility(View.VISIBLE);
                 } else if (currentInv.add(curGood, buyQuant) == 0) {
                     Log.d("Error", "Player does not have enough space in inventory.");
-                    errorText.setVisibility(View.VISIBLE);
+                    errorNotEnoughSpace.setVisibility(View.VISIBLE);
                 } else {
                     // set inventory to the new inventory
                     player.setInventory(currentInv);
@@ -192,7 +200,7 @@ public class TradeFrag extends Fragment {
                 int profit = sellQuant * tradePrice;
                 if (currentInv.subtract(curGood, sellQuant) == 0) {
                     Log.d("Error", "Cannot sell more than the player has.");
-                    errorText.setVisibility(View.VISIBLE);
+                    errorNotEnoughGoods.setVisibility(View.VISIBLE);
                 } else {
                     // set inventory to the new inventory
                     player.setInventory(currentInv);
