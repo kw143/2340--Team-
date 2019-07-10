@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,6 +55,11 @@ public class TradeFrag extends Fragment {
     private TextView tradePriceText;
     private EditText buyQuantField;
     private EditText sellQuantField;
+    private TextView errorText;
+    private TextView errorEmptyText;
+    private TextView errorNotEnoughMoney;
+    private TextView errorNotEnoughSpace;
+    private TextView errorNotEnoughGoods;
 
     private Button sellButton;
     private Button buyButton;
@@ -113,8 +119,12 @@ public class TradeFrag extends Fragment {
         sellQuantField = view.findViewById(R.id.sellQuantField);
         buyButton = view.findViewById(R.id.buyButton);
         sellButton = view.findViewById(R.id.sellButton);
+        errorText = view.findViewById(R.id.errorText);
+        errorEmptyText = view.findViewById(R.id.errorEmptyText);
+        errorNotEnoughMoney = view.findViewById(R.id.errorNotEnoughMoney);
+        errorNotEnoughSpace = view.findViewById(R.id.errorNotEnoughSpace);
+        errorNotEnoughGoods = view.findViewById(R.id.errorNotEnoughGoods);
         invButton = view.findViewById(R.id.toInventory);
-
 
         currentGoodText.setText("Trading for: " + String.valueOf(curGood));
         currentMoney.setText("Money: $" + String.valueOf(player.getMoney()));
@@ -128,14 +138,17 @@ public class TradeFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 if (buyQuantField.getText().toString().equals("")) {
-                    int deleteme;
-                    //errorEmptyBuyText.setVisibility(View.VISIBLE);
+                    // no input
+                    Log.d("Error", "No input provided.");
+                    errorEmptyText.setVisibility(View.VISIBLE);
+                    return;
                 }
                 int buyQuant = Integer.parseInt(buyQuantField.getText().toString());
                 if (buyQuant <= 0) {
                     // if input is a negative number
-                    int d;
-                    //errorEmptyBuyText
+                    Log.d("Error", "Quantity cannot be negative.");
+                    errorText.setVisibility(View.VISIBLE);
+                    return;
                 } else if (buyQuant >= availableGoods.getCount(curGood)) {
                     // if the player wants to buy more goods than there are
                     // set the number of goods equal to the max available amount
@@ -143,11 +156,11 @@ public class TradeFrag extends Fragment {
                 }
                 int cost = buyQuant * tradePrice;
                 if (cost > player.getMoney()) {
-                    //errorNotEnoughMoney;
-                    int deleteme2;
+                    Log.d("Error", "Player does not have enough money.");
+                    errorNotEnoughMoney.setVisibility(View.VISIBLE);
                 } else if (currentInv.add(curGood, buyQuant) == 0) {
-                    //errorNotEnoughSpace;
-                    int d3;
+                    Log.d("Error", "Player does not have enough space in inventory.");
+                    errorNotEnoughSpace.setVisibility(View.VISIBLE);
                 } else {
                     // set inventory to the new inventory
                     player.setInventory(currentInv);
@@ -157,10 +170,10 @@ public class TradeFrag extends Fragment {
                     // DO WE NEED AN UPDATE REGION??
                     player.getCurRegion().setGoodsInRegion(availableGoods);
                     playerViewModel.updatePlayer(player);
+                    tradeClickListener.toBuyClicked();
                 }
                 // validate - check if have enough money
                 // then subtract money and add goods
-                tradeClickListener.toBuyClicked();
             }
         });
 
@@ -170,14 +183,15 @@ public class TradeFrag extends Fragment {
                 // validate - check if num is less than good #
 
                 if (sellQuantField.getText().toString().equals("")) {
-                    int deleteme;
-                    //errorEmptySellText.setVisibility(View.VISIBLE);
+                    Log.d("Error", "No input provided.");
+                    errorText.setVisibility(View.VISIBLE);
+                    return;
                 }
                 int sellQuant = Integer.parseInt(sellQuantField.getText().toString());
                 if (sellQuant <= 0) {
-                    // if input is a negative number
-                    int d;
-                    //errorEmptyBuyText
+                    Log.d("Error", "Quantity cannot be negative.");
+                    errorText.setVisibility(View.VISIBLE);
+                    return;
                 } else if (sellQuant >= currentInv.getCount(curGood)) {
                     // if the player wants to sell more goods than there are
                     // set the number of goods equal to the max available amount
@@ -185,8 +199,8 @@ public class TradeFrag extends Fragment {
                 }
                 int profit = sellQuant * tradePrice;
                 if (currentInv.subtract(curGood, sellQuant) == 0) {
-                    //shouldn't have this error because we already checked for it
-                    int d3;
+                    Log.d("Error", "Cannot sell more than the player has.");
+                    errorNotEnoughGoods.setVisibility(View.VISIBLE);
                 } else {
                     // set inventory to the new inventory
                     player.setInventory(currentInv);
@@ -196,9 +210,8 @@ public class TradeFrag extends Fragment {
                     // DO WE NEED AN UPDATE REGION??
                     player.getCurRegion().setGoodsInRegion(availableGoods);
                     playerViewModel.updatePlayer(player);
+                    tradeClickListener.toSellClicked();
                 }
-
-                tradeClickListener.toSellClicked();
             }
 
         });
