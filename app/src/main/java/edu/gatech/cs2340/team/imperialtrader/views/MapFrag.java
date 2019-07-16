@@ -107,37 +107,18 @@ public class MapFrag extends Fragment {
         textView8 = view.findViewById(R.id.textViewVIII);
         textView9 = view.findViewById(R.id.textViewIX);
         textView10 = view.findViewById(R.id.textViewX);
-        button10.setText(regionList.get(9).getName());
-        button10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(9))) {
-                    player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(), regionList.get(9)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
-            }
-        });
+
 
         button1.setText(regionList.get(0).getName());
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(0))) {
+                /*if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(0))) {
                     player.setCurRegion(regionList.get(0), distanceCalc(player.getCurRegion(), regionList.get(0)));
-                    playerViewModel.updatePlayer(player);
+                    playerViewModel.updatePlayer(player);*/
+                    regionList.set(10, regionList.get(0));
                     mapClickListener.onButtonClicked();
-                } else {
+                /*} else {
                     Log.d("Error", "Not enough fuel left to travel there!");
                     errorFuel.setVisibility(View.VISIBLE);
                     new android.os.Handler().postDelayed(
@@ -147,7 +128,7 @@ public class MapFrag extends Fragment {
                                 }
                             },
                             2000);
-                }
+                }*/
             }
         });
 
@@ -155,21 +136,8 @@ public class MapFrag extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(1))) {
-                    player.setCurRegion(regionList.get(1), distanceCalc(player.getCurRegion(), regionList.get(1)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(1));
+                mapClickListener.onButtonClicked();
             }
         });
 
@@ -177,21 +145,8 @@ public class MapFrag extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(2))) {
-                    player.setCurRegion(regionList.get(2), distanceCalc(player.getCurRegion(), regionList.get(2)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(2));
+                mapClickListener.onButtonClicked();
             }
         });
 
@@ -199,21 +154,8 @@ public class MapFrag extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(3))) {
-                    player.setCurRegion(regionList.get(3), distanceCalc(player.getCurRegion(), regionList.get(3)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(3));
+                mapClickListener.onButtonClicked();
             }
         });
 
@@ -221,21 +163,8 @@ public class MapFrag extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(4))) {
-                    player.setCurRegion(regionList.get(4), distanceCalc(player.getCurRegion(), regionList.get(4)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(4));
+                mapClickListener.onButtonClicked();
             }
         });
 
@@ -243,21 +172,8 @@ public class MapFrag extends Fragment {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(5))) {
-                    player.setCurRegion(regionList.get(5), distanceCalc(player.getCurRegion(), regionList.get(5)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(5));
+                mapClickListener.onButtonClicked();
             }
         });
 
@@ -265,21 +181,8 @@ public class MapFrag extends Fragment {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(6))) {
-                    player.setCurRegion(regionList.get(6), distanceCalc(player.getCurRegion(), regionList.get(6)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(6));
+                mapClickListener.onButtonClicked();
             }
         });
 
@@ -287,21 +190,8 @@ public class MapFrag extends Fragment {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(7))) {
-                    player.setCurRegion(regionList.get(7), distanceCalc(player.getCurRegion(), regionList.get(8)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(7));
+                mapClickListener.onButtonClicked();
             }
         });
 
@@ -309,21 +199,17 @@ public class MapFrag extends Fragment {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(8))) {
-                    player.setCurRegion(regionList.get(8), distanceCalc(player.getCurRegion(), regionList.get(8)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
+                regionList.set(10, regionList.get(8));
+                mapClickListener.onButtonClicked();
+            }
+        });
+
+        button10.setText(regionList.get(9).getName());
+        button10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                regionList.set(10, regionList.get(9));
+                mapClickListener.onButtonClicked();
             }
         });
 
