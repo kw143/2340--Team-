@@ -53,8 +53,8 @@ public class TradeFrag extends Fragment {
     private TextView portQuantity;
     private TextView playerQuantity;
     private TextView tradePriceText;
-    private EditText buyQuantField;
-    private EditText sellQuantField;
+    private EditText buyQuantityField;
+    private EditText sellQuantityField;
     private TextView errorAvailable;
     private TextView errorEmptyText;
     private TextView errorNotEnoughMoney;
@@ -69,8 +69,7 @@ public class TradeFrag extends Fragment {
 
     /** calculate price for the good */
     private int priceCalc(Region Re, double quantity, Good type) {
-        int base = type.getBasePrice();
-        double price = base;
+        double price = type.getBasePrice();
         TechLevel tech = Re.getTechLevel();
         RadicalPriceEvent event = Re.getCurEvent();
         Resource res = Re.getResource();
@@ -78,22 +77,22 @@ public class TradeFrag extends Fragment {
         if (event.ordinal() == type.getIE().ordinal()) {
             price *= 2;
         }
-        if(type.getCR() != null && res.ordinal() == type.getCR().ordinal()) {
+        if((type.getCR() != null) && (res.ordinal() == type.getCR().ordinal())) {
             price *= 0.7;
         }
-        if(type.getER() != null &&res.ordinal() == type.getER().ordinal()) {
+        if((type.getER() != null) && (res.ordinal() == type.getER().ordinal())) {
             price *= 1.3;
         }
-        if (quantity / 1000 > 1) {
-            price /= quantity/1000/50 + 1;
+        if ((quantity / 1000) > 1) {
+            price /= (quantity / 1000 / 50) + 1;
         } else {
-            price *= (1000-quantity)/100 + 1;
+            price *= ((1000 - quantity) / 100) + 1;
         }
-        if (price > price * (1 + 0.01 * type.getVar())) {
-            price = price * (1 + 0.01 * type.getVar());
+        if (price > (price * (1 + (0.01 * type.getVar())))) {
+            price = price * (1 + (0.01 * type.getVar()));
         }
-        if (price < price * (1 - 0.01 * type.getVar())) {
-            price = price * (1 - 0.01 * type.getVar());
+        if (price < (price * (1 - (0.01 * type.getVar())))) {
+            price = price * (1 - (0.01 * type.getVar()));
         }
         return (int) price;
     }
@@ -117,8 +116,8 @@ public class TradeFrag extends Fragment {
         portQuantity = view.findViewById(R.id.portQuantity);
         playerQuantity = view.findViewById(R.id.playerQuantity);
         tradePriceText = view.findViewById(R.id.tradePrice);
-        buyQuantField = view.findViewById(R.id.buyQuantField);
-        sellQuantField = view.findViewById(R.id.sellQuantField);
+        buyQuantityField = view.findViewById(R.id.buyQuantField);
+        sellQuantityField = view.findViewById(R.id.sellQuantField);
         buyButton = view.findViewById(R.id.buyButton);
         sellButton = view.findViewById(R.id.sellButton);
         errorAvailable = view.findViewById(R.id.errorAvailable);
@@ -130,202 +129,148 @@ public class TradeFrag extends Fragment {
         errorNegative = view.findViewById(R.id.errorNegative);
         invButton = view.findViewById(R.id.toInventory);
 
-        currentGoodText.setText("Trading for: " + String.valueOf(curGood));
-        currentMoney.setText("Money: $" + String.valueOf(player.getMoney()));
-        portQuantity.setText("Available to buy: " + String.valueOf(availableGoods.getCount(curGood)));
-        playerQuantity.setText("Available to sell: " + String.valueOf(currentInv.getCount(curGood)));
+        currentGoodText.setText("Trading for: " + curGood);
+        currentMoney.setText("Money: $" + player.getMoney());
+        portQuantity.setText("Available to buy: " + availableGoods.getCount(curGood));
+        playerQuantity.setText("Available to sell: " + currentInv.getCount(curGood));
         tradePrice = priceCalc(player.getCurRegion(), availableGoods.getCount(curGood), curGood);
-        tradePriceText.setText("Trade price: $" + String.valueOf(tradePrice));
+        tradePriceText.setText("Trade price: $" + tradePrice);
 
 
-        buyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (buyQuantField.getText().toString().equals("")) {
-                    // no input
-                    Log.d("Error", "No input provided.");
-                    errorEmptyText.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorEmptyText.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                }
-                int buyQuant = 0;
-                try {
-                    buyQuant = Integer.parseInt(buyQuantField.getText().toString());
-                } catch (NumberFormatException e) {
-                    Log.d("Error", "Input not a number");
-                    errorNumberFormat.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorNumberFormat.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                }
-                if (availableGoods.getCount(curGood) == 0) {
-                    // if there is no good to be bought
-                    Log.d("Error", "No good available");
-                    errorAvailable.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorAvailable.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                }
-                if (buyQuant <= 0) {
-                    // if input is a negative number
-                    Log.d("Error", "Quantity cannot be negative.");
-                    errorNegative.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorNegative.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                } else if (buyQuant >= availableGoods.getCount(curGood)) {
-                    // if the player wants to buy more goods than there are
-                    // set the number of goods equal to the max available amount
-                    buyQuant = availableGoods.getCount(curGood);
-                }
-                int cost = buyQuant * tradePrice;
-                if (cost > player.getMoney()) {
-                    Log.d("Error", "Player does not have enough money.");
-                    errorNotEnoughMoney.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorNotEnoughMoney.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                } else if (currentInv.add(curGood, buyQuant) == 0) {
-                    Log.d("Error", "Player does not have enough space in inventory.");
-                    errorNotEnoughSpace.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorNotEnoughSpace.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                } else {
-                    // set inventory to the new inventory
-                    player.setInventory(currentInv);
-                    player.setMoney(player.getMoney() - cost);
-                    // subtract goods from the inventory at the region
-                    availableGoods.subtract(curGood, buyQuant);
-                    // DO WE NEED AN UPDATE REGION??
-                    player.getCurRegion().setGoodsInRegion(availableGoods);
-                    playerViewModel.updatePlayer(player);
-                    tradeClickListener.toBuyClicked();
-                }
-                // validate - check if have enough money
-                // then subtract money and add goods
+        buyButton.setOnClickListener(v -> {
+            if ("".equals(buyQuantityField.getText().toString())) {
+                // no input
+                Log.d("Error", "No input provided.");
+                errorEmptyText.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorEmptyText.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            }
+            int buyQuantity = 0;
+            try {
+                buyQuantity = Integer.parseInt(buyQuantityField.getText().toString());
+            } catch (NumberFormatException e) {
+                Log.d("Error", "Input not a number");
+                errorNumberFormat.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorNumberFormat.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            }
+            if (availableGoods.getCount(curGood) == 0) {
+                // if there is no good to be bought
+                Log.d("Error", "No good available");
+                errorAvailable.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorAvailable.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            }
+            if (buyQuantity <= 0) {
+                // if input is a negative number
+                Log.d("Error", "Quantity cannot be negative.");
+                errorNegative.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorNegative.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            } else if (buyQuantity >= availableGoods.getCount(curGood)) {
+                // if the player wants to buy more goods than there are
+                // set the number of goods equal to the max available amount
+                buyQuantity = availableGoods.getCount(curGood);
+            }
+            int cost = buyQuantity * tradePrice;
+            if (cost > player.getMoney()) {
+                Log.d("Error", "Player does not have enough money.");
+                errorNotEnoughMoney.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorNotEnoughMoney.setVisibility(View.INVISIBLE),
+                        2000);
+            } else if (currentInv.add(curGood, buyQuantity) == 0) {
+                Log.d("Error", "Player does not have enough space in inventory.");
+                errorNotEnoughSpace.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorNotEnoughSpace.setVisibility(View.INVISIBLE),
+                        2000);
+            } else {
+                // set inventory to the new inventory
+                player.setInventory(currentInv);
+                player.setMoney(player.getMoney() - cost);
+                // subtract goods from the inventory at the region
+                availableGoods.subtract(curGood, buyQuantity);
+                // DO WE NEED AN UPDATE REGION??
+                player.getCurRegion().setGoodsInRegion(availableGoods);
+                playerViewModel.updatePlayer(player);
+                tradeClickListener.toBuyClicked();
+            }
+            // validate - check if have enough money
+            // then subtract money and add goods
+        });
+
+        sellButton.setOnClickListener(v -> {
+            // validate - check if num is less than good #
+            if ("".equals(sellQuantityField.getText().toString())) {
+                Log.d("Error", "No input provided.");
+                errorEmptyText.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorEmptyText.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            }
+            int sellQuantity = 0;
+            try {
+                sellQuantity = Integer.parseInt(sellQuantityField.getText().toString());
+            } catch (NumberFormatException e) {
+                Log.d("Error", "Input not a number");
+                errorNumberFormat.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorNumberFormat.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            }
+            if (currentInv.getCount(curGood) == 0) {
+                // if there is no good to be bought
+                Log.d("Error", "No good available");
+                errorAvailable.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorAvailable.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            }
+            if (sellQuantity <= 0) {
+                Log.d("Error", "Quantity cannot be negative.");
+                errorNegative.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorNegative.setVisibility(View.INVISIBLE),
+                        2000);
+                return;
+            } else if (sellQuantity >= currentInv.getCount(curGood)) {
+                // if the player wants to sell more goods than there are
+                // set the number of goods equal to the max available amount
+                sellQuantity = currentInv.getCount(curGood);
+            }
+            int profit = sellQuantity * tradePrice;
+            if (currentInv.subtract(curGood, sellQuantity) == 0) {
+                Log.d("Error", "Cannot sell more than the player has.");
+                errorNotEnoughGoods.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        () -> errorNotEnoughGoods.setVisibility(View.INVISIBLE),
+                        2000);
+            } else {
+                // set inventory to the new inventory
+                player.setInventory(currentInv);
+                player.setMoney(player.getMoney() + profit);
+                // subtract goods from the inventory at the region
+                availableGoods.add(curGood, sellQuantity);
+                // DO WE NEED AN UPDATE REGION??
+                player.getCurRegion().setGoodsInRegion(availableGoods);
+                playerViewModel.updatePlayer(player);
+                tradeClickListener.toSellClicked();
             }
         });
 
-        sellButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // validate - check if num is less than good #
-
-                if (sellQuantField.getText().toString().equals("")) {
-                    Log.d("Error", "No input provided.");
-                    errorEmptyText.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorEmptyText.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                }
-                int sellQuant = 0;
-                try {
-                    sellQuant = Integer.parseInt(sellQuantField.getText().toString());
-                } catch (NumberFormatException e) {
-                    Log.d("Error", "Input not a number");
-                    errorNumberFormat.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorNumberFormat.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                }
-                if (currentInv.getCount(curGood) == 0) {
-                    // if there is no good to be bought
-                    Log.d("Error", "No good available");
-                    errorAvailable.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorAvailable.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                }
-                if (sellQuant <= 0) {
-                    Log.d("Error", "Quantity cannot be negative.");
-                    errorNegative.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorNegative.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                    return;
-                }
-                int profit = sellQuant * tradePrice;
-                if (currentInv.subtract(curGood, sellQuant) == 0) {
-                    Log.d("Error", "Cannot sell more than the player has.");
-                    errorNotEnoughGoods.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorNotEnoughGoods.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                } else {
-                    // set inventory to the new inventory
-                    player.setInventory(currentInv);
-                    player.setMoney(player.getMoney() + profit);
-                    // subtract goods from the inventory at the region
-                    availableGoods.add(curGood, sellQuant);
-                    // DO WE NEED AN UPDATE REGION??
-                    player.getCurRegion().setGoodsInRegion(availableGoods);
-                    playerViewModel.updatePlayer(player);
-                    tradeClickListener.toSellClicked();
-                }
-            }
-
-        });
-
-        invButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tradeClickListener.onInventoryClicked();
-            }
-
-        });
+        invButton.setOnClickListener(v -> tradeClickListener.onInventoryClicked());
 
 
         return view;

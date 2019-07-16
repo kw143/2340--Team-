@@ -59,8 +59,8 @@ public class Region {
                 x--;
             } else {
                 goodsInRegion.add(newGood, (newGood.getTTP().ordinal() == curEvent.ordinal()) ? rand.nextInt((goodsInRegion.getCapacity()
-                        - goodsInRegion.getCurCapacity())) : rand.nextInt((goodsInRegion.getCapacity()
-                        - goodsInRegion.getCurCapacity())) / 2);
+                        - goodsInRegion.getCurCapacity())) : (rand.nextInt((goodsInRegion.getCapacity()
+                        - goodsInRegion.getCurCapacity())) / 2));
             }
         }
     }

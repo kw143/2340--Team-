@@ -6,11 +6,11 @@ public abstract class Ship {
     private int cost;
     private int speed;
     private int health;
-    public int armor;
-    public int currentFuel;
-    public int maxFuel;
-    public int weapons;
-    public int cargoCapacity;
+    private int armor;
+    private int currentFuel;
+    private int maxFuel;
+    private int weapons;
+    private int cargoCapacity;
 
     public Ship() {
         this("", 0, 25, 50, 5, 20, 20, 1, 5 );
