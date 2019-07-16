@@ -34,7 +34,8 @@ public class MapFrag extends Fragment {
         try {
             mapClickListener = (MapClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
 
@@ -71,7 +72,8 @@ public class MapFrag extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map,
                 container, false);
         regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
@@ -111,8 +113,10 @@ public class MapFrag extends Fragment {
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(9))) {
-                    player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(), regionList.get(9)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(9))) {
+                    player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(),
+                            regionList.get(9)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -133,8 +137,10 @@ public class MapFrag extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(0))) {
-                    player.setCurRegion(regionList.get(0), distanceCalc(player.getCurRegion(), regionList.get(0)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(0))) {
+                    player.setCurRegion(regionList.get(0), distanceCalc(player.getCurRegion(),
+                            regionList.get(0)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -155,8 +161,10 @@ public class MapFrag extends Fragment {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(1))) {
-                    player.setCurRegion(regionList.get(1), distanceCalc(player.getCurRegion(), regionList.get(1)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(1))) {
+                    player.setCurRegion(regionList.get(1), distanceCalc(player.getCurRegion(),
+                            regionList.get(1)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -177,8 +185,10 @@ public class MapFrag extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(2))) {
-                    player.setCurRegion(regionList.get(2), distanceCalc(player.getCurRegion(), regionList.get(2)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(2))) {
+                    player.setCurRegion(regionList.get(2), distanceCalc(player.getCurRegion(),
+                            regionList.get(2)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -199,8 +209,10 @@ public class MapFrag extends Fragment {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(3))) {
-                    player.setCurRegion(regionList.get(3), distanceCalc(player.getCurRegion(), regionList.get(3)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(3))) {
+                    player.setCurRegion(regionList.get(3), distanceCalc(player.getCurRegion(),
+                            regionList.get(3)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -221,8 +233,10 @@ public class MapFrag extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(4))) {
-                    player.setCurRegion(regionList.get(4), distanceCalc(player.getCurRegion(), regionList.get(4)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(4))) {
+                    player.setCurRegion(regionList.get(4), distanceCalc(player.getCurRegion(),
+                            regionList.get(4)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -243,8 +257,10 @@ public class MapFrag extends Fragment {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(5))) {
-                    player.setCurRegion(regionList.get(5), distanceCalc(player.getCurRegion(), regionList.get(5)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(5))) {
+                    player.setCurRegion(regionList.get(5), distanceCalc(player.getCurRegion(),
+                            regionList.get(5)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -265,8 +281,10 @@ public class MapFrag extends Fragment {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(6))) {
-                    player.setCurRegion(regionList.get(6), distanceCalc(player.getCurRegion(), regionList.get(6)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(6))) {
+                    player.setCurRegion(regionList.get(6), distanceCalc(player.getCurRegion(),
+                            regionList.get(6)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -287,8 +305,10 @@ public class MapFrag extends Fragment {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(7))) {
-                    player.setCurRegion(regionList.get(7), distanceCalc(player.getCurRegion(), regionList.get(8)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(7))) {
+                    player.setCurRegion(regionList.get(7), distanceCalc(player.getCurRegion(),
+                            regionList.get(7)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -309,8 +329,10 @@ public class MapFrag extends Fragment {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(8))) {
-                    player.setCurRegion(regionList.get(8), distanceCalc(player.getCurRegion(), regionList.get(8)));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(8))) {
+                    player.setCurRegion(regionList.get(8), distanceCalc(player.getCurRegion(),
+                            regionList.get(8)));
                     playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
                 } else {
@@ -327,16 +349,26 @@ public class MapFrag extends Fragment {
             }
         });
 
-        textView1.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(0))));
-        textView2.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(1))));
-        textView3.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(2))));
-        textView4.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(3))));
-        textView5.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(4))));
-        textView6.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(5))));
-        textView7.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(6))));
-        textView8.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(7))));
-        textView9.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(8))));
-        textView10.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(9))));
+        textView1.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(0))));
+        textView2.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(1))));
+        textView3.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(2))));
+        textView4.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(3))));
+        textView5.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(4))));
+        textView6.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(5))));
+        textView7.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(6))));
+        textView8.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(7))));
+        textView9.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(8))));
+        textView10.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(9))));
         return view;
     }
     private double distanceCalc(Region region1, Region region2) {

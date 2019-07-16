@@ -12,7 +12,8 @@ public class PlayerShip extends Ship {
     public int weapons = 2;
     public int cargoCapacity = 15;
 
-    public PlayerShip(String name, int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
+    public PlayerShip(String name, int cost, int speed, int health, int armor, int currentFuel,
+                      int maxFuel, int weapons, int cargoCapacity) {
         super("Gnat",0, 30, 75, 10, 14, 14, 2, 15);
     }
 
