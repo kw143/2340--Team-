@@ -292,10 +292,6 @@ public class TradeFrag extends Fragment {
                             },
                             2000);
                     return;
-                } else if (sellQuant >= currentInv.getCount(curGood)) {
-                    // if the player wants to sell more goods than there are
-                    // set the number of goods equal to the max available amount
-                    sellQuant = currentInv.getCount(curGood);
                 }
                 int profit = sellQuant * tradePrice;
                 if (currentInv.subtract(curGood, sellQuant) == 0) {
