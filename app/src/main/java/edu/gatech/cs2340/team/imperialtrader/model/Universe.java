@@ -88,6 +88,7 @@ public class Universe {
             regionList.add(startingRegions.get(index));
             startingRegions.remove(index);
         }
+        regionList.add(new Region("temp", "orary"));
         player.setCurRegion(homeRegion, -1);
     }
 
@@ -125,4 +126,5 @@ public class Universe {
     public void updatePlayer(Player p) {
         player = p;
     }
+
 }

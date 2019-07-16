@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android=
     "http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/errorFuel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="61dp"
+        android:text="Not enough fuel to travel that far!"
+        android:textColor="#900"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/message"
@@ -176,7 +191,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="252dp"
         android:layout_marginLeft="252dp"
-        android:text="TradeAtPort"
+        android:text="Travel to"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
