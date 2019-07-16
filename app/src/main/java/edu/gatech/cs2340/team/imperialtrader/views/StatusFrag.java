@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
-import edu.gatech.cs2340.team.imperialtrader.entity.PlayerShip;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class StatusFrag extends Fragment {
@@ -82,12 +81,7 @@ public class StatusFrag extends Fragment {
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
 
-        invButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                statusClickListener.toInvClicked();
-            }
-        });
+        invButton.setOnClickListener(v -> statusClickListener.toInvClicked());
 
         return view;
     }

@@ -30,7 +30,7 @@ public enum Good {
          double IPL, double var, RadicalPriceEvent IE,
          Resource CR, Resource ER, double MTL, double MTH) {
         this.name = name;
-        this.price = price;
+        //this.price = price;
         this.MLTP = MLTP;
         this.MLTU = MLTU;
         this.TTP = TTP;

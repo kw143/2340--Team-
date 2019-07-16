@@ -76,19 +76,9 @@ public class RegionFrag extends Fragment {
         techLevel.setText(region.getTechLevel().toString());
         resourceLevel.setText(region.getResource().toString());
 
-        buttonMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionClickListener.mapClicked();
-            }
-        });
+        buttonMap.setOnClickListener(v -> regionClickListener.mapClicked());
 
-        buttonPort.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionClickListener.tradeClicked();
-            }
-        });
+        buttonPort.setOnClickListener(v -> regionClickListener.tradeClicked());
 
         return view;
     }

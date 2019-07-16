@@ -37,7 +37,7 @@ public class Model {
         registerInteractors();
     }
 
-    /** end Singleton Pattern */
+    // end Singleton Pattern
 
     /**
      * Create a set of interactors to be used by the application
