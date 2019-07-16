@@ -73,7 +73,11 @@ public class MainActivity extends AppCompatActivity
     public void mapClicked() { loadFragment(new MapFrag()); }
 
     @Override
-    public void travelClicked() { loadFragment(new PortFrag()); }
+    public void travelClicked() {
+        loadFragment(new PortFrag());
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setSelectedItemId(R.id.port);
+    }
 
     @Override
     public void toTradeClicked() { loadFragment(new TradeFrag()); }
