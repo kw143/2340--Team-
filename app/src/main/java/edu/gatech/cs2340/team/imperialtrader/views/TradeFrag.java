@@ -210,7 +210,6 @@ public class TradeFrag extends Fragment {
 
         sellButton.setOnClickListener(v -> {
             // validate - check if num is less than good #
-
             if ("".equals(sellQuantityField.getText().toString())) {
                 Log.d("Error", "No input provided.");
                 errorEmptyText.setVisibility(View.VISIBLE);
