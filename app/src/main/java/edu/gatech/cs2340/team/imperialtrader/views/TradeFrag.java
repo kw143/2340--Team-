@@ -68,7 +68,17 @@ public class TradeFrag extends Fragment {
     private Button buyButton;
     private Button invButton;
 
-    /** calculate price for the good */
+    private int priceVarianceEnforce(double newPrice, double variance, int base) {
+        double actualPrice = newPrice;
+        if (newPrice > base * (1 + 0.01 * variance)) {
+            actualPrice =  (base * (1 + 0.01 * variance));
+        }
+        if (newPrice < base * (1 - 0.009 * variance)) {
+            actualPrice =  (base * (1 - 0.009 * variance));
+        }
+        return (int)actualPrice;
+    }
+
     private int priceCalc(Region Re, double quantity, Good type) {
         int base = type.getBasePrice();
         double price = base;
@@ -91,13 +101,8 @@ public class TradeFrag extends Fragment {
         } else {
             price *= (1000-quantity)/100 + 1;
         }
-        if (price > price * (1 + 0.01 * type.getVar())) {
-            price = price * (1 + 0.01 * type.getVar());
-        }
-        if (price < price * (1 - 0.01 * type.getVar())) {
-            price = price * (1 - 0.01 * type.getVar());
-        }
-        return (int) price;
+
+        return priceVarianceEnforce(price, type.getVar(), type.getBasePrice());
     }
 
 

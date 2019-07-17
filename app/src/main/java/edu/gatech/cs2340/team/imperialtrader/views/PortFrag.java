@@ -41,7 +41,18 @@ public class PortFrag extends Fragment {
         }
     }
 
-    private int priceCalc(Region Re, double quantity, Good type) {
+    public static int priceVarianceEnforce(double newPrice, double variance, int base) {
+        double actualPrice = newPrice;
+        if (newPrice > base * (1 + 0.01 * variance)) {
+            actualPrice =  (base * (1 + 0.01 * variance));
+        }
+        if (newPrice < base * (1 - 0.009 * variance)) {
+            actualPrice =  (base * (1 - 0.009 * variance));
+        }
+        return (int)actualPrice;
+    }
+
+    public static int priceCalc(Region Re, double quantity, Good type) {
         int base = type.getBasePrice();
         double price = base;
         TechLevel tech = Re.getTechLevel();
@@ -63,13 +74,8 @@ public class PortFrag extends Fragment {
         } else {
             price *= (1000-quantity)/100 + 1;
         }
-        if (price > price * (1 + 0.01 * type.getVar())) {
-            price = price * (1 + 0.01 * type.getVar());
-        }
-        if (price < price * (1 - 0.01 * type.getVar())) {
-            price = price * (1 - 0.01 * type.getVar());
-        }
-        return (int) price;
+
+        return priceVarianceEnforce(price, type.getVar(), type.getBasePrice());
     }
 
     private TextView curregion;
