@@ -49,18 +49,13 @@ public class Inventory {
     public int getCount(Good good) {
         try {
             return inventoryMap.get(good);
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             return 0;
         }
     }
 
     public boolean hasCount(Good good, int count) {
-        if (inventoryMap.get(good) >= count) {
-            return true;
-        } else {
-            return false;
-        }
-
+        return (inventoryMap.get(good) >= count);
     }
 
     public boolean hasGood(Good good) {

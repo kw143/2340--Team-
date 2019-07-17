@@ -3,12 +3,12 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 public class PlayerShip extends Ship {
 
     private String name = "Gnat";
-    private int cost = 0;
+    private int cost;
     private int speed = 30;
     private int health = 75;
     private int armor = 10;
     private int currentFuel = 14;
-    public final int maxFuel = 14;
+    private final int maxFuel = 14;
     private int weapons = 2;
     private int cargoCapacity = 15;
 
@@ -66,16 +66,20 @@ public class PlayerShip extends Ship {
         return name;
     }
 
+    @Override
     public void fly() {
     }
 
+    @Override
     public void shoot() {
     }
 
+    @Override
     public void repair() {
         this.health = 100;
     }
 
+    @Override
     public void upgrade() {
         armor += 5;
         weapons += 1;

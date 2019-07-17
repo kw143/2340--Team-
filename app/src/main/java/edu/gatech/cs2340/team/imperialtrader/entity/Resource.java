@@ -7,7 +7,7 @@ public enum Resource {
     LOTSOFHERBS(10), ARTISTIC(11), WARLIKE(12);
     private int resourseKey;
 
-    private Resource(int resourseKey) {
+    Resource(int resourseKey) {
         this.resourseKey = resourseKey;
     }
 }

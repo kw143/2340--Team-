@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.team.imperialtrader.model.Unused;
 
-import edu.gatech.cs2340.team.imperialtrader.entity.Good;
-
 public class TradingSystem {
 /*
     private PlayerInteractor interactor = new PlayerInteractor();

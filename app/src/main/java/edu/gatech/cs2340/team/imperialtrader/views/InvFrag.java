@@ -2,7 +2,6 @@ package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -90,12 +89,7 @@ public class InvFrag extends Fragment {
         narcoticQuantity.setText(String.valueOf(currentInv.getCount(Good.NARCOTICS)));
         robotQuantity.setText(String.valueOf(currentInv.getCount(Good.ROBOTS)));
 
-        tradeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                invClickListener.onTradeClicked();
-            }
-        });
+        tradeButton.setOnClickListener(v -> invClickListener.onTradeClicked());
 
         return view;
     }

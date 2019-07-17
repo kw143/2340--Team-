@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
-import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.ConfigurationViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
@@ -126,32 +125,14 @@ public class CreatePlayerFrag extends Fragment {
                         engineerField.getText().toString().equals("")) {
                     errorNumText.setVisibility(View.VISIBLE);
                     successfulText.setVisibility(View.INVISIBLE);
-                    errorText.setVisibility(View.INVISIBLE);
                 } else {
-                    errorNumText.setVisibility(View.INVISIBLE);
-                    player.setPilotPoints(Integer.parseInt(pilotField.getText().toString()));
-                    player.setFighterPoints(Integer.parseInt(fighterField.getText().toString()));
-                    player.setTraderPoints(Integer.parseInt(traderField.getText().toString()));
-                    player.setEngineerPoints(Integer.parseInt(engineerField.getText().toString()));
-                    player.setDifficulty((String) difficultySpinner.getSelectedItem());
-                    player.setCurRegion(regionViewModel.getHomeRegion(), -1);
-
-                    if (player.getTotalPoints() != 16) {
-                        errorText.setVisibility(View.VISIBLE);
-                        successfulText.setVisibility(View.INVISIBLE);
-                    } else {
-                        Log.d("Edit", "Got new player data: " + player);
-                        errorText.setVisibility(View.INVISIBLE);
-                        successfulText.setVisibility(View.VISIBLE);
-                        ConfigViewModel.createPlayer(player);
-                        new android.os.Handler().postDelayed(
-                                new Runnable() {
-                                    public void run() {
-                                        cpClickListener.onCreateClick();
-                                    }
-                                },
-                                2000);
-                    }
+                    Log.d("Edit", "Got new player data: " + player);
+                    errorText.setVisibility(View.INVISIBLE);
+                    successfulText.setVisibility(View.VISIBLE);
+                    ConfigViewModel.createPlayer(player);
+                    new android.os.Handler().postDelayed(
+                            () -> cpClickListener.onCreateClick(),
+                            2000);
                 }
             }
         });

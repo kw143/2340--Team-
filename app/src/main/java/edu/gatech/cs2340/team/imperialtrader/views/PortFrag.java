@@ -2,7 +2,6 @@ package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -63,16 +62,16 @@ public class PortFrag extends Fragment {
         if (event.ordinal() == type.getIE().ordinal()) {
             price *= 2;
         }
-        if(type.getCR() != null && res.ordinal() == type.getCR().ordinal()) {
+        if((type.getCR() != null) && (res.ordinal() == type.getCR().ordinal())) {
             price *= 0.7;
         }
-        if(type.getER() != null &&res.ordinal() == type.getER().ordinal()) {
+        if((type.getER() != null) && (res.ordinal() == type.getER().ordinal())) {
             price *= 1.3;
         }
-        if (quantity / 1000 > 1) {
-            price /= quantity/1000/50 + 1;
+        if ((quantity / 1000) > 1) {
+            price /= (quantity / 1000 / 50) + 1;
         } else {
-            price *= (1000-quantity)/100 + 1;
+            price *= ((1000 - quantity) / 100) + 1;
         }
 
         return priceVarianceEnforce(price, type.getVar(), type.getBasePrice());
@@ -207,124 +206,88 @@ public class PortFrag extends Fragment {
         robotQuantity.setText(String.valueOf(availableGoods.getCount(Good.ROBOTS)));
 
 
-        refuelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setMoney(player.getMoney()-100);
-                player.getShip().setCurrentFuel(player.getShip().getCurrentFuel()+10);
-                playerViewModel.updatePlayer(player);
-                portClickListener.onRefuelClicked();
-            }
+        refuelButton.setOnClickListener(v -> {
+            player.setMoney(player.getMoney()-100);
+            player.getShip().setCurrentFuel(player.getShip().getCurrentFuel()+10);
+            playerViewModel.updatePlayer(player);
+            portClickListener.onRefuelClicked();
         });
 
-        repairButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setMoney(player.getMoney()-200);
-                player.getShip().setHealth(player.getShip().getHealth()+50);
-                playerViewModel.updatePlayer(player);
-                portClickListener.onRepairClicked();
-            }
+        repairButton.setOnClickListener(v -> {
+            player.setMoney(player.getMoney()-200);
+            player.getShip().setHealth(player.getShip().getHealth()+50);
+            playerViewModel.updatePlayer(player);
+            portClickListener.onRepairClicked();
         });
 
         button1.setText("Trade");
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.WATER);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button1.setOnClickListener(v -> {
+            player.setGood(Good.WATER);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button2.setText("Trade");
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.FURS);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button2.setOnClickListener(v -> {
+            player.setGood(Good.FURS);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button3.setText("Trade");
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.FOOD);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button3.setOnClickListener(v -> {
+            player.setGood(Good.FOOD);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button4.setText("Trade");
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.ORE);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button4.setOnClickListener(v -> {
+            player.setGood(Good.ORE);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button5.setText("Trade");
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.GAMES);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button5.setOnClickListener(v -> {
+            player.setGood(Good.GAMES);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button6.setText("Trade");
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.FIREARMS);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button6.setOnClickListener(v -> {
+            player.setGood(Good.FIREARMS);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button7.setText("Trade");
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.MEDICINE);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button7.setOnClickListener(v -> {
+            player.setGood(Good.MEDICINE);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button8.setText("Trade");
-        button8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.MACHINES);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button8.setOnClickListener(v -> {
+            player.setGood(Good.MACHINES);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button9.setText("Trade");
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.NARCOTICS);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button9.setOnClickListener(v -> {
+            player.setGood(Good.NARCOTICS);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         button10.setText("Trade");
-        button10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                player.setGood(Good.ROBOTS);
-                playerViewModel.updatePlayer(player);
-                portClickListener.toTradeClicked();
-            }
+        button10.setOnClickListener(v -> {
+            player.setGood(Good.ROBOTS);
+            playerViewModel.updatePlayer(player);
+            portClickListener.toTradeClicked();
         });
 
         return view;

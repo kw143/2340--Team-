@@ -13,7 +13,7 @@ public class Universe {
     private Random rand = new Random();
     private Region homeRegion;
     private ArrayList<Region> regionList = new ArrayList<>();
-    ArrayList<Region> startingRegions = new ArrayList<Region>(
+    ArrayList<Region> startingRegions = new ArrayList<>(
             Arrays.asList(new Region("Georgia", "Savannah"),
                     new Region("Portugal", "Lisbon"),
                     new Region("Spain", "Barcelona"),
