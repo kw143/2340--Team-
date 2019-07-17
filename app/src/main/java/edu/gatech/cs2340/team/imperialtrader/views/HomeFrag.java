@@ -37,7 +37,7 @@ public class HomeFrag extends Fragment {
         View view = inflater.inflate(R.layout.home,
                 container, false);
         Button btn1 = view.findViewById(R.id.ex);
-        Button btnnp = view.findViewById(R.id.np);
+        Button btnNewPlayer = view.findViewById(R.id.np);
         btn1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -45,7 +45,7 @@ public class HomeFrag extends Fragment {
                 System.exit(0);
             }
         });
-        btnnp.setOnClickListener(new View.OnClickListener() {
+        btnNewPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 homeClickListener.onNpClick();

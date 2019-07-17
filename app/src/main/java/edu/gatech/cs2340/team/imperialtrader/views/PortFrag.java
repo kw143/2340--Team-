@@ -72,7 +72,7 @@ public class PortFrag extends Fragment {
         return (int) price;
     }
 
-    private TextView curregion;
+    private TextView curRegion;
     private TextView curEvent;
 
     private Button repairButton;
@@ -126,10 +126,10 @@ public class PortFrag extends Fragment {
         player = playerViewModel.getPlayer();
         availableGoods = player.getCurRegion().getGoodsInRegion();
 
-        curregion = view.findViewById(R.id.currentRegionTrade);
+        curRegion = view.findViewById(R.id.currentRegionTrade);
         curEvent = view.findViewById(R.id.curRadicalEvent);
 
-        curregion.setText(player.getCurRegion().getName());
+        curRegion.setText(player.getCurRegion().getName());
         curEvent.setText(player.getCurRegion().getCurEvent().toString());
 
         button1 = view.findViewById(R.id.tradeButton1);

@@ -6,8 +6,8 @@ public class Region {
 
     private String name;
     private String home;
-    private int xcoord;
-    private int ycoord;
+    private int xCoord;
+    private int yCoord;
     private TechLevel techLevel;
     private Resource resource;
     private RadicalPriceEvent curEvent;
@@ -18,12 +18,12 @@ public class Region {
     Random rand = new Random();
 
 
-    public Region(String name, String home, int xcoord, int ycoord,
+    public Region(String name, String home, int xCoord, int yCoord,
                   TechLevel techLevel, Resource resource) {
         this.name = name;
         this.home = home;
-        this.xcoord = xcoord;
-        this.ycoord = ycoord;
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
         this.techLevel = techLevel;
         this.resource = resource;
         rollEvent();
@@ -42,8 +42,8 @@ public class Region {
 
         this.name = name;
         this.home = home;
-        this.xcoord = x;
-        this.ycoord = y;
+        this.xCoord = x;
+        this.yCoord = y;
         this.techLevel = TechLevel.values()[t];
         this.resource = Resource.values()[r];
         rollEvent();
@@ -86,11 +86,11 @@ public class Region {
     }
 
     public void setXcoord(int x) {
-        xcoord = x;
+        xCoord = x;
     }
 
     public void setYcoord(int y) {
-        ycoord = y;
+        yCoord = y;
     }
 
     public void setTechLevel(TechLevel t) {
@@ -114,11 +114,11 @@ public class Region {
     }
 
     public int getXcoord() {
-        return xcoord;
+        return xCoord;
     }
 
     public int getYcoord() {
-        return ycoord;
+        return yCoord;
     }
 
     public TechLevel getTechLevel() {
