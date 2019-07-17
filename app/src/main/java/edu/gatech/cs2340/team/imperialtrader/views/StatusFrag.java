@@ -83,7 +83,6 @@ public class StatusFrag extends Fragment {
         money.setText(String.valueOf(player.getMoney()));
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
-
         invButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

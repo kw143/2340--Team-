@@ -50,6 +50,7 @@
         android:gravity="center"
         android:textSize="30sp"
         android:typeface="serif"
+        app:fontFamily="@font/abril_fatface"
         app:layout_constraintBottom_toTopOf="@+id/invbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
