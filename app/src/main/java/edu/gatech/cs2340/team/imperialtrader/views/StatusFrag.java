@@ -78,7 +78,7 @@ public class StatusFrag extends Fragment {
         fighterField.setText(String.valueOf(player.getFighterPoints()));
         traderField.setText(String.valueOf(player.getTraderPoints()));
         engineerField.setText(String.valueOf(player.getEngineerPoints()));
-        difficulty.setText(player.getDifficulty());
+        difficulty.setText(String.format("Difficulty: %s", player.getDifficulty()));
         ship.setText(String.valueOf(player.getShip().getName()));
         money.setText(String.valueOf(player.getMoney()));
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
