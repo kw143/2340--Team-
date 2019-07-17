@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.team.imperialtrader.views;
+package edu.gatech.cs2340.team.imperialtrader.views.unused;
 
 import android.os.Bundle;
 import android.arch.lifecycle.ViewModelProviders;

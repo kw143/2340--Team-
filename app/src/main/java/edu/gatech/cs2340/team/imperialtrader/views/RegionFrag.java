@@ -34,7 +34,8 @@ public class RegionFrag extends Fragment {
         try {
             regionClickListener = (RegionClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
 
@@ -57,7 +58,8 @@ public class RegionFrag extends Fragment {
     private ArrayList<Region> regionList;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.region,
                 container, false);
         viewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);

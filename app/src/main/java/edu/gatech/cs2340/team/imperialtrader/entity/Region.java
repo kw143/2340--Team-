@@ -18,7 +18,8 @@ public class Region {
     Random rand = new Random();
 
 
-    public Region(String name, String home, int xcoord, int ycoord, TechLevel techLevel, Resource resource) {
+    public Region(String name, String home, int xcoord, int ycoord,
+                  TechLevel techLevel, Resource resource) {
         this.name = name;
         this.home = home;
         this.xcoord = xcoord;
@@ -59,8 +60,10 @@ public class Region {
             if (newGood.getMLTP().ordinal() > techLevel.ordinal()) {
                 x--;
             } else {
-                goodsInRegion.add(newGood, (newGood.getTTP().ordinal() == curEvent.ordinal()) ? rand.nextInt((goodsInRegion.getCapacity()
-                        - goodsInRegion.getCurCapacity())) : rand.nextInt((goodsInRegion.getCapacity()
+                goodsInRegion.add(newGood, (newGood.getTTP().ordinal() == curEvent.ordinal())
+                        ? rand.nextInt((goodsInRegion.getCapacity()
+                        - goodsInRegion.getCurCapacity())) :
+                        rand.nextInt((goodsInRegion.getCapacity()
                         - goodsInRegion.getCurCapacity())) / 2);
             }
         }

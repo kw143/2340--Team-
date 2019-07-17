@@ -36,7 +36,8 @@ public class PortFrag extends Fragment {
         try {
             portClickListener = (PortClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
 
@@ -46,7 +47,8 @@ public class PortFrag extends Fragment {
         TechLevel tech = Re.getTechLevel();
         RadicalPriceEvent event = Re.getCurEvent();
         Resource res = Re.getResource();
-        price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal()); //price change based on tech level
+        //price change based on tech level
+        price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal());
         if (event.ordinal() == type.getIE().ordinal()) {
             price *= 2;
         }
@@ -115,7 +117,8 @@ public class PortFrag extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.port,
                 container, false);
 
@@ -154,16 +157,26 @@ public class PortFrag extends Fragment {
         narcoticPrice = view.findViewById(R.id.priceIX);
         robotPrice = view.findViewById(R.id.priceX);
 
-        waterPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.WATER), Good.WATER)));
-        furPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.FURS), Good.FURS)));
-        foodPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.FOOD), Good.FOOD)));
-        orePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.ORE), Good.ORE)));
-        gamePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.GAMES), Good.GAMES)));
-        firearmPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.FIREARMS), Good.FIREARMS)));
-        medicinePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.MEDICINE), Good.MEDICINE)));
-        machinePrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.MACHINES), Good.MACHINES)));
-        narcoticPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.NARCOTICS), Good.NARCOTICS)));
-        robotPrice.setText(String.valueOf(priceCalc(player.getCurRegion(), availableGoods.getCount(Good.ROBOTS), Good.ROBOTS)));
+        waterPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.WATER), Good.WATER)));
+        furPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.FURS), Good.FURS)));
+        foodPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.FOOD), Good.FOOD)));
+        orePrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.ORE), Good.ORE)));
+        gamePrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.GAMES), Good.GAMES)));
+        firearmPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.FIREARMS), Good.FIREARMS)));
+        medicinePrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.MEDICINE), Good.MEDICINE)));
+        machinePrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.MACHINES), Good.MACHINES)));
+        narcoticPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.NARCOTICS), Good.NARCOTICS)));
+        robotPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
+                availableGoods.getCount(Good.ROBOTS), Good.ROBOTS)));
 
         waterQuantity = view.findViewById(R.id.quantityI);
         furQuantity = view.findViewById(R.id.quantityII);
