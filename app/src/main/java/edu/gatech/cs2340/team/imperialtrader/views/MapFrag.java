@@ -247,7 +247,7 @@ public class MapFrag extends Fragment {
                 regionList.get(9))));
         return view;
     }
-    private double distanceCalc(Region region1, Region region2) {
+    public static double distanceCalc(Region region1, Region region2) {
         return (Math.pow(
                 Math.pow(region1.getXcoord() - region2.getXcoord(), 2) +
                 Math.pow(region1.getYcoord() - region2.getYcoord(), 2), .5));
