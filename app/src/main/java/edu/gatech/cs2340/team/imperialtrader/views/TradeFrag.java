@@ -37,7 +37,8 @@ public class TradeFrag extends Fragment {
         try {
             tradeClickListener = (TradeClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
 
@@ -67,13 +68,24 @@ public class TradeFrag extends Fragment {
     private Button buyButton;
     private Button invButton;
 
-    /** calculate price for the good */
+    private int priceVarianceEnforce(double newPrice, double variance, int base) {
+        double actualPrice = newPrice;
+        if (newPrice > base * (1 + 0.01 * variance)) {
+            actualPrice =  (base * (1 + 0.01 * variance));
+        }
+        if (newPrice < base * (1 - 0.009 * variance)) {
+            actualPrice =  (base * (1 - 0.009 * variance));
+        }
+        return (int)actualPrice;
+    }
+
     private int priceCalc(Region Re, double quantity, Good type) {
         double price = type.getBasePrice();
         TechLevel tech = Re.getTechLevel();
         RadicalPriceEvent event = Re.getCurEvent();
         Resource res = Re.getResource();
-        price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal()); //price change based on tech level
+        //price change based on tech level
+        price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal());
         if (event.ordinal() == type.getIE().ordinal()) {
             price *= 2;
         }
@@ -88,19 +100,15 @@ public class TradeFrag extends Fragment {
         } else {
             price *= ((1000 - quantity) / 100) + 1;
         }
-        if (price > (price * (1 + (0.01 * type.getVar())))) {
-            price = price * (1 + (0.01 * type.getVar()));
-        }
-        if (price < (price * (1 - (0.01 * type.getVar())))) {
-            price = price * (1 - (0.01 * type.getVar()));
-        }
-        return (int) price;
+
+        return priceVarianceEnforce(price, type.getVar(), type.getBasePrice());
     }
 
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.trade,
                 container, false);
 
@@ -128,11 +136,12 @@ public class TradeFrag extends Fragment {
         errorNumberFormat = view.findViewById(R.id.errorNumberFormat);
         errorNegative = view.findViewById(R.id.errorNegative);
         invButton = view.findViewById(R.id.toInventory);
-
-        currentGoodText.setText("Trading for: " + curGood);
-        currentMoney.setText("Money: $" + player.getMoney());
-        portQuantity.setText("Available to buy: " + availableGoods.getCount(curGood));
-        playerQuantity.setText("Available to sell: " + currentInv.getCount(curGood));
+        currentGoodText.setText("Trading for: " + String.valueOf(curGood));
+        currentMoney.setText("Money: $" + String.valueOf(player.getMoney()));
+        portQuantity.setText("Available to buy: " +
+                String.valueOf(availableGoods.getCount(curGood)));
+        playerQuantity.setText("Available to sell: " +
+                String.valueOf(currentInv.getCount(curGood)));
         tradePrice = priceCalc(player.getCurRegion(), availableGoods.getCount(curGood), curGood);
         tradePriceText.setText("Trade price: $" + tradePrice);
 

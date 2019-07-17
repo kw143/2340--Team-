@@ -63,12 +63,14 @@ public class Inventory {
     }
 
     public int add(Good good, int count) {
-        if ((count + curCapacity) < capacity) {
+        if (count + curCapacity <= capacity) {
             if (inventoryMap.get(good) != null) {
                 inventoryMap.put(good, inventoryMap.get(good) + count);
+                curCapacity += count;
                 return count;
             } else {
                 inventoryMap.put(good, count);
+                curCapacity += count;
                 size++;
                 return count;
             }

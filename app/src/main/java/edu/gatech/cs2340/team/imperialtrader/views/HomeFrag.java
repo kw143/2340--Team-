@@ -25,18 +25,31 @@ public class HomeFrag extends Fragment {
         try {
             homeClickListener = (HomeClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home,
                 container, false);
         Button btn1 = view.findViewById(R.id.ex);
-        Button btnnp = view.findViewById(R.id.np);
-        btn1.setOnClickListener(v -> System.exit(0));
-        btnnp.setOnClickListener(v -> homeClickListener.onNpClick());
+        Button btnNewPlayer = view.findViewById(R.id.np);
+        btn1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                System.exit(0);
+            }
+        });
+        btnNewPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeClickListener.onNpClick();
+            }
+        });
         return view;
     }
 }

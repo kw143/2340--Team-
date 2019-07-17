@@ -30,7 +30,8 @@ public class InvFrag extends Fragment {
          try {
              invClickListener = (InvClickListener) context;
          } catch (ClassCastException e) {
-             throw new ClassCastException(context.toString() + " must implement OnHeadLineSelectedListener");
+             throw new ClassCastException(context.toString() +
+                     " must implement OnHeadLineSelectedListener");
          }
     }
 
@@ -54,7 +55,8 @@ public class InvFrag extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.inventory,
                 container, false);
 

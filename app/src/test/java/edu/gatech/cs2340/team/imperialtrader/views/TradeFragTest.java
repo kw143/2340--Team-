@@ -7,12 +7,10 @@ import org.junit.Test;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
-import static org.junit.Assert.*;
-
 public class TradeFragTest {
 
     @Test
-    public void onCreateView() {
+    public void testBuy() {
 
         TradeFrag underTest = new TradeFrag();
 
