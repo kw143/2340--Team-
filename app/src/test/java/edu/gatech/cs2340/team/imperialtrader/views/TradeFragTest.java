@@ -24,7 +24,5 @@ public class TradeFragTest {
         Inventory inv = new Inventory();
         inv.add(WATER, 100);
         testRe.setGoodsInRegion(inv);
-
-
     }
 }

@@ -156,7 +156,7 @@ public class TradeFrag extends Fragment {
                         2000);
                 return;
             }
-            int buyQuantity = 0;
+            int buyQuantity;
             try {
                 buyQuantity = Integer.parseInt(buyQuantityField.getText().toString());
             } catch (NumberFormatException e) {
@@ -219,7 +219,7 @@ public class TradeFrag extends Fragment {
                         2000);
                 return;
             }
-            int sellQuantity = 0;
+            int sellQuantity;
             try {
                 sellQuantity = Integer.parseInt(sellQuantityField.getText().toString());
             } catch (NumberFormatException e) {
