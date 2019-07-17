@@ -34,7 +34,11 @@ public class PlayerShip extends Ship {
     }
 
     public void setCost(int cost) {
-        this.cost = cost;
+        if(cost >= 0) {
+            this.cost = cost;
+        } else {
+            throw new IllegalArgumentException("Cost is less than zero.");
+        }
     }
 
     public int getSpeed() {
@@ -42,7 +46,12 @@ public class PlayerShip extends Ship {
     }
 
     public void setSpeed(int speed) {
-        this.speed = speed;
+        if(speed > 0) {
+            this.speed = speed;
+        } else {
+            throw new IllegalArgumentException("Speed is less than or equal to zero.");
+        }
+
     }
 
     public int getHealth() {

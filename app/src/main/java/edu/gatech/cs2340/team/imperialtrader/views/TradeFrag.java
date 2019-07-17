@@ -54,8 +54,8 @@ public class TradeFrag extends Fragment {
     private TextView portQuantity;
     private TextView playerQuantity;
     private TextView tradePriceText;
-    private EditText buyQuantField;
-    private EditText sellQuantField;
+    private EditText buyQuantityField;
+    private EditText sellQuantityField;
     private TextView errorAvailable;
     private TextView errorEmptyText;
     private TextView errorNotEnoughMoney;
@@ -125,8 +125,8 @@ public class TradeFrag extends Fragment {
         portQuantity = view.findViewById(R.id.portQuantity);
         playerQuantity = view.findViewById(R.id.playerQuantity);
         tradePriceText = view.findViewById(R.id.tradePrice);
-        buyQuantField = view.findViewById(R.id.buyQuantField);
-        sellQuantField = view.findViewById(R.id.sellQuantField);
+        buyQuantityField = view.findViewById(R.id.buyQuantField);
+        sellQuantityField = view.findViewById(R.id.sellQuantField);
         buyButton = view.findViewById(R.id.buyButton);
         sellButton = view.findViewById(R.id.sellButton);
         errorAvailable = view.findViewById(R.id.errorAvailable);
@@ -151,7 +151,7 @@ public class TradeFrag extends Fragment {
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (buyQuantField.getText().toString().equals("")) {
+                if (buyQuantityField.getText().toString().equals("")) {
                     // no input
                     Log.d("Error", "No input provided.");
                     errorEmptyText.setVisibility(View.VISIBLE);
@@ -166,7 +166,7 @@ public class TradeFrag extends Fragment {
                 }
                 int buyQuant = 0;
                 try {
-                    buyQuant = Integer.parseInt(buyQuantField.getText().toString());
+                    buyQuant = Integer.parseInt(buyQuantityField.getText().toString());
                 } catch (NumberFormatException e) {
                     Log.d("Error", "Input not a number");
                     errorNumberFormat.setVisibility(View.VISIBLE);
@@ -251,7 +251,7 @@ public class TradeFrag extends Fragment {
             public void onClick(View v) {
                 // validate - check if num is less than good #
 
-                if (sellQuantField.getText().toString().equals("")) {
+                if (sellQuantityField.getText().toString().equals("")) {
                     Log.d("Error", "No input provided.");
                     errorEmptyText.setVisibility(View.VISIBLE);
                     new android.os.Handler().postDelayed(
@@ -265,7 +265,7 @@ public class TradeFrag extends Fragment {
                 }
                 int sellQuant = 0;
                 try {
-                    sellQuant = Integer.parseInt(sellQuantField.getText().toString());
+                    sellQuant = Integer.parseInt(sellQuantityField.getText().toString());
                 } catch (NumberFormatException e) {
                     Log.d("Error", "Input not a number");
                     errorNumberFormat.setVisibility(View.VISIBLE);
