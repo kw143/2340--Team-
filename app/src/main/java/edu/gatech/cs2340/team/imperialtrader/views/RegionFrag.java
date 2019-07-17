@@ -81,12 +81,12 @@ public class RegionFrag extends Fragment {
         buttonMap = view.findViewById(R.id.back);
         buttonPort = view.findViewById(R.id.tradePort);
 
-        regionName.setText(region.getName());
-        regionHomePort.setText(region.getHome());
-        xCoord.setText(String.valueOf(region.getXcoord()));
-        yCoord.setText(String.valueOf(region.getYcoord()));
-        techLevel.setText(region.getTechLevel().toString());
-        resourceLevel.setText(region.getResource().toString());
+        regionName.setText(regionList.get(10).getName());
+        regionHomePort.setText(regionList.get(10).getHome());
+        xCoord.setText(String.valueOf(regionList.get(10).getXcoord()));
+        yCoord.setText(String.valueOf(regionList.get(10).getYcoord()));
+        techLevel.setText(regionList.get(10).getTechLevel().toString());
+        resourceLevel.setText(regionList.get(10).getResource().toString());
 
         buttonMap.setOnClickListener(new View.OnClickListener() {
             @Override
