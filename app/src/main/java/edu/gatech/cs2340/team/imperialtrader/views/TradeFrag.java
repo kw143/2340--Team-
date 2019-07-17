@@ -136,12 +136,10 @@ public class TradeFrag extends Fragment {
         errorNumberFormat = view.findViewById(R.id.errorNumberFormat);
         errorNegative = view.findViewById(R.id.errorNegative);
         invButton = view.findViewById(R.id.toInventory);
-        currentGoodText.setText("Trading for: " + String.valueOf(curGood));
-        currentMoney.setText("Money: $" + String.valueOf(player.getMoney()));
-        portQuantity.setText("Available to buy: " +
-                String.valueOf(availableGoods.getCount(curGood)));
-        playerQuantity.setText("Available to sell: " +
-                String.valueOf(currentInv.getCount(curGood)));
+        currentGoodText.setText("Trading for: " + curGood);
+        currentMoney.setText("Money: $" + player.getMoney());
+        portQuantity.setText("Available to buy: " + availableGoods.getCount(curGood));
+        playerQuantity.setText("Available to sell: " + currentInv.getCount(curGood));
         tradePrice = priceCalc(player.getCurRegion(), availableGoods.getCount(curGood), curGood);
         tradePriceText.setText("Trade price: $" + tradePrice);
 
@@ -287,7 +285,7 @@ public class TradeFrag extends Fragment {
         // set inventory to the new inventory
         player.setInventory(currentInv);
         player.setMoney(player.getMoney() + profit);
-        // subtract goods from the inventory at the region
+        // add goods to the inventory at the region
         availableGoods.add(player.getGood(), sellQuantity);
         // DO WE NEED AN UPDATE REGION??
         player.getCurRegion().setGoodsInRegion(availableGoods);
