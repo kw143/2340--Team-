@@ -194,18 +194,10 @@ public class TradeFrag extends Fragment {
                         () -> errorNotEnoughSpace.setVisibility(View.INVISIBLE),
                         2000);
             } else {
-                // set inventory to the new inventory
-                player.setInventory(currentInv);
-                player.setMoney(player.getMoney() - cost);
-                // subtract goods from the inventory at the region
-                availableGoods.subtract(curGood, buyQuantity);
-                // DO WE NEED AN UPDATE REGION??
-                player.getCurRegion().setGoodsInRegion(availableGoods);
-                playerViewModel.updatePlayer(player);
+                // call the static buy method
+                buy(buyQuantity, cost, player, currentInv, availableGoods);
                 tradeClickListener.toBuyClicked();
             }
-            // validate - check if have enough money
-            // then subtract money and add goods
         });
 
         sellButton.setOnClickListener(v -> {
@@ -274,5 +266,17 @@ public class TradeFrag extends Fragment {
 
 
         return view;
+    }
+
+    public static void buy(int buyQuantity, int cost, Player player, Inventory currentInv,
+                           Inventory availableGoods) {
+        // set inventory to new inventory
+        player.setInventory(currentInv);
+        player.setMoney(player.getMoney() - cost);
+        // subtract goods from the inventory at the region
+        availableGoods.subtract(curGood, buyQuantity);
+        // DO WE NEED AN UPDATE REGION??
+        player.getCurRegion().setGoodsInRegion(availableGoods);
+        playerViewModel.updatePlayer(player);
     }
 }
