@@ -189,11 +189,10 @@ public class MapFrag extends Fragment {
         });
 
         button5.setText(regionList.get(4).getName());
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                regionList.set(10, regionList.get(4));
+        button5.setOnClickListener(v -> {
+            if ((player.getShip().getCurrentFuel() * 50) >= distanceCalc(player.getCurRegion(), regionList.get(4))) {
+                player.setCurRegion(regionList.get(4), distanceCalc(player.getCurRegion(), regionList.get(4)));
+                playerViewModel.updatePlayer(player);
                 mapClickListener.onButtonClicked();
             } else {
                 Log.d("Error", "Not enough fuel left to travel there!");
