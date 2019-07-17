@@ -34,7 +34,8 @@ public class RegionFrag extends Fragment {
         try {
             regionClickListener = (RegionClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
 
@@ -57,7 +58,8 @@ public class RegionFrag extends Fragment {
     private ArrayList<Region> regionList;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.region,
                 container, false);
         viewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
@@ -79,12 +81,12 @@ public class RegionFrag extends Fragment {
         buttonMap = view.findViewById(R.id.back);
         buttonPort = view.findViewById(R.id.tradePort);
 
-        regionName.setText(region.getName());
-        regionHomePort.setText(region.getHome());
-        xCoord.setText(String.valueOf(region.getXcoord()));
-        yCoord.setText(String.valueOf(region.getYcoord()));
-        techLevel.setText(region.getTechLevel().toString());
-        resourceLevel.setText(region.getResource().toString());
+        regionName.setText(regionList.get(10).getName());
+        regionHomePort.setText(regionList.get(10).getHome());
+        xCoord.setText(String.valueOf(regionList.get(10).getXcoord()));
+        yCoord.setText(String.valueOf(regionList.get(10).getYcoord()));
+        techLevel.setText(regionList.get(10).getTechLevel().toString());
+        resourceLevel.setText(regionList.get(10).getResource().toString());
 
         buttonMap.setOnClickListener(v -> regionClickListener.mapClicked());
 
@@ -112,9 +114,10 @@ public class RegionFrag extends Fragment {
 
         return view;
     }
-    private double distanceCalc(Region region1, Region region2) {
+    private static double distanceCalc(Region region1, Region region2) {
         return (Math.pow(
                 Math.pow(region1.getXcoord() - region2.getXcoord(), 2) +
                         Math.pow(region1.getYcoord() - region2.getYcoord(), 2), .5));
     }
+
 }

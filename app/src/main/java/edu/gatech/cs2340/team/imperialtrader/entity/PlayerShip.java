@@ -12,7 +12,8 @@ public class PlayerShip extends Ship {
     private int weapons = 2;
     private int cargoCapacity = 15;
 
-    public PlayerShip(String name, int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
+    public PlayerShip(String name, int cost, int speed, int health, int armor, int currentFuel,
+                      int maxFuel, int weapons, int cargoCapacity) {
         super("Gnat",0, 30, 75, 10, 14, 14, 2, 15);
     }
 
@@ -33,7 +34,11 @@ public class PlayerShip extends Ship {
     }
 
     public void setCost(int cost) {
-        this.cost = cost;
+        if(cost >= 0) {
+            this.cost = cost;
+        } else {
+            throw new IllegalArgumentException("Cost is less than zero.");
+        }
     }
 
     public int getSpeed() {
@@ -41,7 +46,12 @@ public class PlayerShip extends Ship {
     }
 
     public void setSpeed(int speed) {
-        this.speed = speed;
+        if(speed > 0) {
+            this.speed = speed;
+        } else {
+            throw new IllegalArgumentException("Speed is less than or equal to zero.");
+        }
+
     }
 
     public int getHealth() {
