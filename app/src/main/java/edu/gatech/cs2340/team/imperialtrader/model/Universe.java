@@ -45,7 +45,7 @@ public class Universe {
                     new Region("Liberia", "Monrovia"),
                     new Region("Ghana", "Accra"),
                     new Region("India", "Mumbai"),
-                    new Region("United Arab Emirates", "Dubai"),
+                    new Region("UAE", "Dubai"),
                     new Region("Oman", "Muscat"),
                     new Region("Kuwait", "Kuwait City"),
                     new Region("Israel", "Tel Aviv"),
