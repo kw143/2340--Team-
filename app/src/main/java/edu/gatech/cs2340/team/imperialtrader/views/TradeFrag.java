@@ -147,7 +147,7 @@ public class TradeFrag extends Fragment {
                         2000);
                 return;
             }
-            int buyQuantity = 0;
+            int buyQuantity;
             try {
                 buyQuantity = Integer.parseInt(buyQuantityField.getText().toString());
             } catch (NumberFormatException e) {
@@ -195,13 +195,7 @@ public class TradeFrag extends Fragment {
                         2000);
             } else {
                 // set inventory to the new inventory
-                player.setInventory(currentInv);
-                player.setMoney(player.getMoney() - cost);
-                // subtract goods from the inventory at the region
-                availableGoods.subtract(curGood, buyQuantity);
-                // DO WE NEED AN UPDATE REGION??
-                player.getCurRegion().setGoodsInRegion(availableGoods);
-                playerViewModel.updatePlayer(player);
+                buy(buyQuantity, cost, player, currentInv);
                 tradeClickListener.toBuyClicked();
             }
             // validate - check if have enough money
@@ -218,7 +212,7 @@ public class TradeFrag extends Fragment {
                         2000);
                 return;
             }
-            int sellQuantity = 0;
+            int sellQuantity;
             try {
                 sellQuantity = Integer.parseInt(sellQuantityField.getText().toString());
             } catch (NumberFormatException e) {
@@ -274,5 +268,17 @@ public class TradeFrag extends Fragment {
 
 
         return view;
+    }
+
+    public Inventory buy(int buyQuantity, int cost, Player player, Inventory currentInv,
+                    Inventory availableGoods) {
+        player.setInventory(currentInv);
+        player.setMoney(player.getMoney() - cost);
+        // subtract goods from the inventory at the region
+        availableGoods.subtract(curGood, buyQuantity);
+        // DO WE NEED TO UPDATE REGION??
+        player.getCurRegion().setGoodsInRegion(availableGoods);
+        playerViewModel.updatePlayer(player);
+        return availableGoods;
     }
 }
