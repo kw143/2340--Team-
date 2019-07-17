@@ -16,7 +16,8 @@ public abstract class Ship {
         this("", 0, 25, 50, 5, 20, 20, 1, 5 );
     }
 
-    public Ship(String name, int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
+    public Ship(String name, int cost, int speed, int health, int armor, int currentFuel,
+                int maxFuel, int weapons, int cargoCapacity) {
         this.name = name;
         this.cost = cost;
         this.speed = speed;

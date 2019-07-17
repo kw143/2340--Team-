@@ -39,7 +39,8 @@ public class CreatePlayerFrag extends Fragment {
         try {
             cpClickListener = (CreatePlayerClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
 
@@ -76,7 +77,8 @@ public class CreatePlayerFrag extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
         View view = inflater.inflate(R.layout.create_player,
@@ -104,7 +106,8 @@ public class CreatePlayerFrag extends Fragment {
         /*
           Set up the adapter to display the allowable difficulty in the spinner
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, dif);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(view.getContext(),
+                android.R.layout.simple_spinner_item, dif);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
 
@@ -117,7 +120,10 @@ public class CreatePlayerFrag extends Fragment {
             public void onClick(View v) {
                 Log.d("Create", "Create Player Pressed");
                 player.setName(nameField.getText().toString());
-                if (pilotField.getText().toString().equals("") || fighterField.getText().toString().equals("") || traderField.getText().toString().equals("") || engineerField.getText().toString().equals("")) {
+                if (pilotField.getText().toString().equals("") ||
+                        fighterField.getText().toString().equals("") ||
+                        traderField.getText().toString().equals("") ||
+                        engineerField.getText().toString().equals("")) {
                     errorNumText.setVisibility(View.VISIBLE);
                     successfulText.setVisibility(View.INVISIBLE);
                     errorText.setVisibility(View.INVISIBLE);

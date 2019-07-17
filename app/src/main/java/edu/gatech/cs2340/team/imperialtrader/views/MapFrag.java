@@ -34,7 +34,8 @@ public class MapFrag extends Fragment {
         try {
             mapClickListener = (MapClickListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(context.toString() +
+                    " must implement OnHeadlineSelectedListener");
         }
     }
 
@@ -71,7 +72,8 @@ public class MapFrag extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map,
                 container, false);
         regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
@@ -108,17 +110,17 @@ public class MapFrag extends Fragment {
         textView9 = view.findViewById(R.id.textViewIX);
         textView10 = view.findViewById(R.id.textViewX);
 
-
-        button1.setText(regionList.get(0).getName());
-        button1.setOnClickListener(new View.OnClickListener() {
+        button10.setText(regionList.get(9).getName());
+        button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(0))) {
-                    player.setCurRegion(regionList.get(0), distanceCalc(player.getCurRegion(), regionList.get(0)));
-                    playerViewModel.updatePlayer(player);*/
-                    regionList.set(10, regionList.get(0));
+                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                        regionList.get(9))) {
+                    player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(),
+                            regionList.get(9)));
+                    playerViewModel.updatePlayer(player);
                     mapClickListener.onButtonClicked();
-                /*} else {
+                } else {
                     Log.d("Error", "Not enough fuel left to travel there!");
                     errorFuel.setVisibility(View.VISIBLE);
                     new android.os.Handler().postDelayed(
@@ -128,7 +130,16 @@ public class MapFrag extends Fragment {
                                 }
                             },
                             2000);
-                }*/
+                }
+            }
+        });
+
+        button1.setText(regionList.get(0).getName());
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    regionList.set(10, regionList.get(0));
+                    mapClickListener.onButtonClicked();
             }
         });
 
@@ -163,6 +174,7 @@ public class MapFrag extends Fragment {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 regionList.set(10, regionList.get(4));
                 mapClickListener.onButtonClicked();
             }
@@ -213,16 +225,26 @@ public class MapFrag extends Fragment {
             }
         });
 
-        textView1.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(0))));
-        textView2.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(1))));
-        textView3.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(2))));
-        textView4.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(3))));
-        textView5.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(4))));
-        textView6.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(5))));
-        textView7.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(6))));
-        textView8.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(7))));
-        textView9.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(8))));
-        textView10.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(), regionList.get(9))));
+        textView1.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(0))));
+        textView2.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(1))));
+        textView3.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(2))));
+        textView4.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(3))));
+        textView5.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(4))));
+        textView6.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(5))));
+        textView7.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(6))));
+        textView8.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(7))));
+        textView9.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(8))));
+        textView10.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),
+                regionList.get(9))));
         return view;
     }
     public static double distanceCalc(Region region1, Region region2) {

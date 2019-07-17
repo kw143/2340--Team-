@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.team.imperialtrader.model;
+package edu.gatech.cs2340.team.imperialtrader.model.Unused;
 
 import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 
@@ -14,7 +14,6 @@ public class TradingSystem {
                     + (int) (good.getPrice() * mult));
             player.getInventory().subtract(good, num);
         } else if (!player.getInventory().hasCount(good, num)) {
-            //TODO some behavior, no trade
         }
     }
     public void sellAll(Good good, double mult) {
