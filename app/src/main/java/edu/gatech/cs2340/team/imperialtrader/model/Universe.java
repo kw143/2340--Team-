@@ -63,6 +63,28 @@ public class Universe {
         regionList.add(homeRegion);
         for(int x = 0; x < 9; x++) {
             int index = rand.nextInt(startingRegions.size());
+            for(int y = 0; y < regionList.size(); y++){
+                if(regionList.get(y).getXcoord() == startingRegions.get(index).getXcoord()){
+                    if(regionList.get(y).getYcoord() == startingRegions.get(index).getYcoord()){
+                        boolean checker = false;
+                        while(!checker){
+                            startingRegions.set(index,
+                                    new Region(startingRegions.get(index).getName(),
+                                    startingRegions.get(index).getHome()));
+                            checker = true;
+                            if(regionList.get(y).getXcoord() ==
+                                    startingRegions.get(index).getXcoord()) {
+                                if (regionList.get(y).getYcoord() ==
+                                        startingRegions.get(index).getYcoord()) {
+                                    checker = false;
+                                    y = 0;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
             regionList.add(startingRegions.get(index));
             startingRegions.remove(index);
         }

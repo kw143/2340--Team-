@@ -12,7 +12,8 @@ public class PoliceShip extends Ship {
     private int weapons = 2;
     private int cargoCapacity = 10;
 
-    public PoliceShip(String name, int cost, int speed, int health, int armor, int currentFuel, int maxFuel, int weapons, int cargoCapacity) {
+    public PoliceShip(String name, int cost, int speed, int health, int armor, int currentFuel,
+                      int maxFuel, int weapons, int cargoCapacity) {
         super("Police", 0, 50, 100, 25, 15, 15, 2, 10);
     }
 
