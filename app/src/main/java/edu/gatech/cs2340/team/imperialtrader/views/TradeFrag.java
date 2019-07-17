@@ -205,6 +205,7 @@ public class TradeFrag extends Fragment {
             } else {
                 // call the static buy method
                 buy(buyQuantity, cost, player, currentInv, availableGoods);
+                playerViewModel.updatePlayer(player);
                 tradeClickListener.toBuyClicked();
             }
         });
@@ -259,21 +260,14 @@ public class TradeFrag extends Fragment {
                         () -> errorNotEnoughGoods.setVisibility(View.INVISIBLE),
                         2000);
             } else {
-                // set inventory to the new inventory
-                player.setInventory(currentInv);
-                player.setMoney(player.getMoney() + profit);
-                // subtract goods from the inventory at the region
-                availableGoods.add(curGood, sellQuantity);
-                // DO WE NEED AN UPDATE REGION??
-                player.getCurRegion().setGoodsInRegion(availableGoods);
+                // call static sell method
+                sell(sellQuantity, profit, player, currentInv, availableGoods);
                 playerViewModel.updatePlayer(player);
                 tradeClickListener.toSellClicked();
             }
         });
 
         invButton.setOnClickListener(v -> tradeClickListener.onInventoryClicked());
-
-
         return view;
     }
 
@@ -283,9 +277,19 @@ public class TradeFrag extends Fragment {
         player.setInventory(currentInv);
         player.setMoney(player.getMoney() - cost);
         // subtract goods from the inventory at the region
-        availableGoods.subtract(curGood, buyQuantity);
+        availableGoods.subtract(player.getGood(), buyQuantity);
         // DO WE NEED AN UPDATE REGION??
         player.getCurRegion().setGoodsInRegion(availableGoods);
-        playerViewModel.updatePlayer(player);
+    }
+
+    public static void sell(int sellQuantity, int profit, Player player, Inventory currentInv,
+                           Inventory availableGoods) {
+        // set inventory to the new inventory
+        player.setInventory(currentInv);
+        player.setMoney(player.getMoney() + profit);
+        // subtract goods from the inventory at the region
+        availableGoods.add(player.getGood(), sellQuantity);
+        // DO WE NEED AN UPDATE REGION??
+        player.getCurRegion().setGoodsInRegion(availableGoods);
     }
 }

@@ -18,11 +18,27 @@ public class TradeFragTest {
 
         TradeFrag underTest = new TradeFrag();
 
-        Player player = new Player();
+        Player player = new Player("test player");
+        player.setGood(WATER);
         Region testRe = new Region("test", "test", 0, 0,
                 TechLevel.RENAISSANCE, Resource.DESERT);
         Inventory inv = new Inventory();
         inv.add(WATER, 100);
         testRe.setGoodsInRegion(inv);
+        player.setCurRegion(testRe, 0);
+
+        Inventory currentInv = player.getInventory();
+        currentInv.add(WATER, 10);
+
+        TradeFrag.buy(10, 200, player, currentInv, testRe.getGoodsInRegion());
+        // check player money
+        assertEquals(800, player.getMoney());
+        // check player inventory
+        assertEquals(10, player.getInventory().getCount(WATER));
+        // check region inventory
+        assertEquals(90, testRe.getGoodsInRegion().getCount(WATER));
     }
+
+    @Test
+
 }
