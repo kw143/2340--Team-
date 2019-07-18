@@ -11,13 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.entity.Region;
+import edu.gatech.cs2340.team.imperialtrader.entity.Resource;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
@@ -48,9 +51,10 @@ public class RegionFrag extends Fragment {
     private TextView yCoord;
     private TextView techLevel;
     private TextView resourceLevel;
-    private TextView errorFuel;
+    //private TextView errorFuel;
     private Button buttonMap;
     private Button buttonPort;
+    private ImageView img;
 
 
     private Player player;
@@ -67,7 +71,7 @@ public class RegionFrag extends Fragment {
         player = viewModel.getPlayer();
         region = player.getCurRegion();
         regionList = regionViewModel.getRegionList();
-        errorFuel = view.findViewById(R.id.errorFuel);
+        //errorFuel = view.findViewById(R.id.errorFuel);
 
         /*
          * Grab the dialog widgets so we can get info for later
@@ -80,13 +84,22 @@ public class RegionFrag extends Fragment {
         resourceLevel = view.findViewById(R.id.resourceLevel);
         buttonMap = view.findViewById(R.id.back);
         buttonPort = view.findViewById(R.id.tradePort);
+        img = view.findViewById(R.id.regionLine);
 
         regionName.setText(regionList.get(10).getName());
         regionHomePort.setText(regionList.get(10).getHome());
-        xCoord.setText(String.valueOf(regionList.get(10).getXcoord()));
-        yCoord.setText(String.valueOf(regionList.get(10).getYcoord()));
-        techLevel.setText(regionList.get(10).getTechLevel().toString());
-        resourceLevel.setText(regionList.get(10).getResource().toString());
+        xCoord.setText((String.format("Region x-coordinate: \n %d",
+                regionList.get(10).getXcoord())));
+        yCoord.setText((String.format("Region y-coordinate: \n %d",
+                regionList.get(10).getYcoord())));
+        techLevel.setText(String.format("Region Tech Level:\n%s",
+                regionList.get(10).getTechLevel().toString()));
+        if (regionList.get(10).getResource() != Resource.NOSPECIALRESOURCES) {
+            resourceLevel.setText(String.format("Special Resource:\n%s",
+                    regionList.get(10).getResource().toString()));
+        }
+        img.setMinimumWidth(regionList.get(10).getName().length() * 20);
+        img.setMaxWidth(regionList.get(10).getName().length() * 20);
 
         buttonMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,14 +117,19 @@ public class RegionFrag extends Fragment {
                     regionClickListener.travelClicked();
                 } else {
                     Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
+                    Context context = getActivity().getApplicationContext();
+                    Toast noFuel = Toast.makeText(context, "Not enough fuel to travel that far!",
+                    Toast.LENGTH_LONG);
+                    noFuel.show();
+                    /*errorFuel.setVisibility(View.VISIBLE);
                     new android.os.Handler().postDelayed(
                             new Runnable() {
                                 public void run() {
                                     errorFuel.setVisibility(View.INVISIBLE);
                                 }
                             },
-                            2000);
+                            2000);*/
+
                 }
 
             }

@@ -84,7 +84,7 @@ public class MapFrag extends Fragment {
         regionList = regionViewModel.getRegionList();
         player = playerViewModel.getPlayer();
 
-        errorFuel = view.findViewById(R.id.errorFuel);
+        //errorFuel = view.findViewById(R.id.errorFuel);
         currentFuel = view.findViewById(R.id.currentFuel);
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
