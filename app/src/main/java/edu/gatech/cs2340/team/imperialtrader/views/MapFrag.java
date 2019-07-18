@@ -39,30 +39,7 @@ public class MapFrag extends Fragment {
         }
     }
 
-    private RegionViewModel regionViewModel;
     private PlayerViewModel playerViewModel;
-    private TextView currentFuel;
-
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
-    private Button button5;
-    private Button button6;
-    private Button button7;
-    private Button button8;
-    private Button button9;
-    private Button button10;
-    private TextView textView1;
-    private TextView textView2;
-    private TextView textView3;
-    private TextView textView4;
-    private TextView textView5;
-    private TextView textView6;
-    private TextView textView7;
-    private TextView textView8;
-    private TextView textView9;
-    private TextView textView10;
 
     private TextView errorFuel;
 
@@ -76,45 +53,45 @@ public class MapFrag extends Fragment {
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map,
                 container, false);
-        regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
+        RegionViewModel regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         regionList = regionViewModel.getRegionList();
         player = playerViewModel.getPlayer();
 
         errorFuel = view.findViewById(R.id.errorFuel);
-        currentFuel = view.findViewById(R.id.currentFuel);
+        TextView currentFuel = view.findViewById(R.id.currentFuel);
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
         /*
          * Grab the dialog widgets so we can get info for later
          */
-        button1 = view.findViewById(R.id.buttonI);
-        button2 = view.findViewById(R.id.buttonII);
-        button3 = view.findViewById(R.id.buttonIII);
-        button4 = view.findViewById(R.id.buttonIV);
-        button5 = view.findViewById(R.id.buttonV);
-        button6 = view.findViewById(R.id.buttonVI);
-        button7 = view.findViewById(R.id.buttonVII);
-        button8 = view.findViewById(R.id.buttonVIII);
-        button9 = view.findViewById(R.id.buttonIX);
-        button10 = view.findViewById(R.id.buttonX);
+        Button button1 = view.findViewById(R.id.buttonI);
+        Button button2 = view.findViewById(R.id.buttonII);
+        Button button3 = view.findViewById(R.id.buttonIII);
+        Button button4 = view.findViewById(R.id.buttonIV);
+        Button button5 = view.findViewById(R.id.buttonV);
+        Button button6 = view.findViewById(R.id.buttonVI);
+        Button button7 = view.findViewById(R.id.buttonVII);
+        Button button8 = view.findViewById(R.id.buttonVIII);
+        Button button9 = view.findViewById(R.id.buttonIX);
+        Button button10 = view.findViewById(R.id.buttonX);
 
-        textView1 = view.findViewById(R.id.textViewI);
-        textView2 = view.findViewById(R.id.textViewII);
-        textView3 = view.findViewById(R.id.textViewIII);
-        textView4 = view.findViewById(R.id.textViewIV);
-        textView5 = view.findViewById(R.id.textViewV);
-        textView6 = view.findViewById(R.id.textViewVI);
-        textView7 = view.findViewById(R.id.textViewVII);
-        textView8 = view.findViewById(R.id.textViewVIII);
-        textView9 = view.findViewById(R.id.textViewIX);
-        textView10 = view.findViewById(R.id.textViewX);
+        TextView textView1 = view.findViewById(R.id.textViewI);
+        TextView textView2 = view.findViewById(R.id.textViewII);
+        TextView textView3 = view.findViewById(R.id.textViewIII);
+        TextView textView4 = view.findViewById(R.id.textViewIV);
+        TextView textView5 = view.findViewById(R.id.textViewV);
+        TextView textView6 = view.findViewById(R.id.textViewVI);
+        TextView textView7 = view.findViewById(R.id.textViewVII);
+        TextView textView8 = view.findViewById(R.id.textViewVIII);
+        TextView textView9 = view.findViewById(R.id.textViewIX);
+        TextView textView10 = view.findViewById(R.id.textViewX);
 
         button10.setText(regionList.get(9).getName());
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
+                if ((player.getShip().getCurrentFuel() * 50) >= distanceCalc(player.getCurRegion(),
                         regionList.get(9))) {
                     player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(),
                             regionList.get(9)));

@@ -35,24 +35,6 @@ public class InvFrag extends Fragment {
          }
     }
 
-    private PlayerViewModel playerViewModel;
-    private Player player;
-    private Inventory currentInv;
-    private TextView currentMoney;
-
-    private TextView waterQuantity;
-    private TextView furQuantity;
-    private TextView foodQuantity;
-    private TextView oreQuantity;
-    private TextView gameQuantity;
-    private TextView firearmQuantity;
-    private TextView medicineQuantity;
-    private TextView machineQuantity;
-    private TextView narcoticQuantity;
-    private TextView robotQuantity;
-
-    private Button tradeButton;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,22 +42,22 @@ public class InvFrag extends Fragment {
         View view = inflater.inflate(R.layout.inventory,
                 container, false);
 
-        playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
-        player = playerViewModel.getPlayer();
-        currentInv = player.getInventory();
+        PlayerViewModel playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+        Player player = playerViewModel.getPlayer();
+        Inventory currentInv = player.getInventory();
 
-        tradeButton = view.findViewById(R.id.backToTrade);
-        currentMoney = view.findViewById(R.id.currentMoney);
-        waterQuantity = view.findViewById(R.id.quantityI);
-        furQuantity = view.findViewById(R.id.quantityII);
-        foodQuantity = view.findViewById(R.id.quantityIII);
-        oreQuantity = view.findViewById(R.id.quantityIV);
-        gameQuantity = view.findViewById(R.id.quantityV);
-        firearmQuantity = view.findViewById(R.id.quantityVI);
-        medicineQuantity = view.findViewById(R.id.quantityVII);
-        machineQuantity = view.findViewById(R.id.quantityVIII);
-        narcoticQuantity = view.findViewById(R.id.quantityIX);
-        robotQuantity = view.findViewById(R.id.quantityX);
+        Button tradeButton = view.findViewById(R.id.backToTrade);
+        TextView currentMoney = view.findViewById(R.id.currentMoney);
+        TextView waterQuantity = view.findViewById(R.id.quantityI);
+        TextView furQuantity = view.findViewById(R.id.quantityII);
+        TextView foodQuantity = view.findViewById(R.id.quantityIII);
+        TextView oreQuantity = view.findViewById(R.id.quantityIV);
+        TextView gameQuantity = view.findViewById(R.id.quantityV);
+        TextView firearmQuantity = view.findViewById(R.id.quantityVI);
+        TextView medicineQuantity = view.findViewById(R.id.quantityVII);
+        TextView machineQuantity = view.findViewById(R.id.quantityVIII);
+        TextView narcoticQuantity = view.findViewById(R.id.quantityIX);
+        TextView robotQuantity = view.findViewById(R.id.quantityX);
 
         currentMoney.setText(String.valueOf(player.getMoney()));
         waterQuantity.setText(String.valueOf(currentInv.getCount(Good.WATER)));

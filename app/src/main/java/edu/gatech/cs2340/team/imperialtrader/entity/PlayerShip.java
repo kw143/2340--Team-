@@ -2,15 +2,15 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 
 public class PlayerShip extends Ship {
 
-    private String name = "Gnat";
+    private String name;
     private int cost;
-    private int speed = 30;
-    private int health = 75;
-    private int armor = 10;
-    private int currentFuel = 14;
+    private int speed;
+    private int health;
+    private int armor;
+    private int currentFuel;
     private final int maxFuel = 14;
-    private int weapons = 2;
-    private int cargoCapacity = 15;
+    private int weapons;
+    private int cargoCapacity;
 
     public PlayerShip(String name, int cost, int speed, int health, int armor, int currentFuel,
                       int maxFuel, int weapons, int cargoCapacity) {

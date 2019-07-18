@@ -49,11 +49,6 @@ public class TradeFrag extends Fragment {
     private int tradePrice;
     private Good curGood;
 
-    private TextView currentGoodText;
-    private TextView currentMoney;
-    private TextView portQuantity;
-    private TextView playerQuantity;
-    private TextView tradePriceText;
     private EditText buyQuantityField;
     private EditText sellQuantityField;
     private TextView errorAvailable;
@@ -64,17 +59,13 @@ public class TradeFrag extends Fragment {
     private TextView errorNumberFormat;
     private TextView errorNegative;
 
-    private Button sellButton;
-    private Button buyButton;
-    private Button invButton;
-
     private int priceVarianceEnforce(double newPrice, double variance, int base) {
         double actualPrice = newPrice;
-        if (newPrice > base * (1 + 0.01 * variance)) {
-            actualPrice =  (base * (1 + 0.01 * variance));
+        if (newPrice > (base * (1 + (0.01 * variance)))) {
+            actualPrice = (base * (1 + (0.01 * variance)));
         }
-        if (newPrice < base * (1 - 0.009 * variance)) {
-            actualPrice =  (base * (1 - 0.009 * variance));
+        if (newPrice < (base * (1 - (0.009 * variance)))) {
+            actualPrice = (base * (1 - (0.009 * variance)));
         }
         return (int)actualPrice;
     }
@@ -119,15 +110,15 @@ public class TradeFrag extends Fragment {
         curGood = player.getGood();
 
 
-        currentGoodText = view.findViewById(R.id.currentGood);
-        currentMoney = view.findViewById(R.id.currentMoney);
-        portQuantity = view.findViewById(R.id.portQuantity);
-        playerQuantity = view.findViewById(R.id.playerQuantity);
-        tradePriceText = view.findViewById(R.id.tradePrice);
+        TextView currentGoodText = view.findViewById(R.id.currentGood);
+        TextView currentMoney = view.findViewById(R.id.currentMoney);
+        TextView portQuantity = view.findViewById(R.id.portQuantity);
+        TextView playerQuantity = view.findViewById(R.id.playerQuantity);
+        TextView tradePriceText = view.findViewById(R.id.tradePrice);
         buyQuantityField = view.findViewById(R.id.buyQuantField);
         sellQuantityField = view.findViewById(R.id.sellQuantField);
-        buyButton = view.findViewById(R.id.buyButton);
-        sellButton = view.findViewById(R.id.sellButton);
+        Button buyButton = view.findViewById(R.id.buyButton);
+        Button sellButton = view.findViewById(R.id.sellButton);
         errorAvailable = view.findViewById(R.id.errorAvailable);
         errorEmptyText = view.findViewById(R.id.errorEmptyText);
         errorNotEnoughMoney = view.findViewById(R.id.errorNotEnoughMoney);
@@ -135,7 +126,7 @@ public class TradeFrag extends Fragment {
         errorNotEnoughGoods = view.findViewById(R.id.errorNotEnoughGoods);
         errorNumberFormat = view.findViewById(R.id.errorNumberFormat);
         errorNegative = view.findViewById(R.id.errorNegative);
-        invButton = view.findViewById(R.id.toInventory);
+        Button invButton = view.findViewById(R.id.toInventory);
         currentGoodText.setText("Trading for: " + curGood);
         currentMoney.setText("Money: $" + player.getMoney());
         portQuantity.setText("Available to buy: " + availableGoods.getCount(curGood));

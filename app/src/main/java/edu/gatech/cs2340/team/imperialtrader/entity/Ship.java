@@ -13,7 +13,7 @@ public abstract class Ship {
     private int cargoCapacity;
 
     public Ship() {
-        this("", 0, 25, 50, 5, 20, 20, 1, 5 );
+        this("", 0, 25, 50, 5, 20, 20, 1,5 );
     }
 
     public Ship(String name, int cost, int speed, int health, int armor, int currentFuel,

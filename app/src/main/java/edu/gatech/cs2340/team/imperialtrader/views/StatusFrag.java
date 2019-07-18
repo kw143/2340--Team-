@@ -32,45 +32,29 @@ public class StatusFrag extends Fragment {
         }
     }
 
-    private PlayerViewModel viewModel;
-
-    private TextView nameField;
-    private TextView pilotField;
-    private TextView fighterField;
-    private TextView traderField;
-    private TextView engineerField;
-    private TextView difficulty;
-    private TextView ship;
-    private TextView money;
-    private TextView currentFuel;
-
-    private Player player;
-
-    private Button invButton;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.player_current_status,
                 container, false);
-        viewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
-        player = viewModel.getPlayer();
+        PlayerViewModel viewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+        Player player = viewModel.getPlayer();
 
         /*
          * Grab the dialog widgets so we can get info for later
          */
-        nameField = view.findViewById(R.id.playerName);
-        pilotField = view.findViewById(R.id.pilotPoints);
-        fighterField = view.findViewById(R.id.fighterPoints);
-        traderField = view.findViewById(R.id.traderPoints);
-        engineerField = view.findViewById(R.id.engineerPoints);
-        difficulty = view.findViewById(R.id.dif);
-        ship = view.findViewById(R.id.ship);
-        money = view.findViewById(R.id.mon);
-        currentFuel = view.findViewById(R.id.currentFuel);
+        TextView nameField = view.findViewById(R.id.playerName);
+        TextView pilotField = view.findViewById(R.id.pilotPoints);
+        TextView fighterField = view.findViewById(R.id.fighterPoints);
+        TextView traderField = view.findViewById(R.id.traderPoints);
+        TextView engineerField = view.findViewById(R.id.engineerPoints);
+        TextView difficulty = view.findViewById(R.id.dif);
+        TextView ship = view.findViewById(R.id.ship);
+        TextView money = view.findViewById(R.id.mon);
+        TextView currentFuel = view.findViewById(R.id.currentFuel);
 
-        invButton = view.findViewById(R.id.invbutton);
+        Button invButton = view.findViewById(R.id.invbutton);
 
         nameField.setText(player.getName());
         pilotField.setText(String.valueOf(player.getPilotPoints()));
