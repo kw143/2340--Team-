@@ -2,16 +2,6 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 
 public class PoliceShip extends Ship {
 
-    private String name = "Police Ship";
-    private int cost;
-    private int speed;
-    private int health;
-    private int armor;
-    private int currentFuel;
-    private final int maxFuel = 15;
-    private int weapons;
-    private int cargoCapacity;
-
     /**
      * Constructor for a Police Ship
      * @param name Police Ship's name
@@ -26,7 +16,7 @@ public class PoliceShip extends Ship {
      */
     public PoliceShip(String name, int cost, int speed, int health, int armor, int currentFuel,
                       int maxFuel, int weapons, int cargoCapacity) {
-        super("Police", 0, 50, 100, 25, 15, 15, 2, 10);
+        super(name, cost, speed, health, armor, currentFuel, maxFuel, weapons, cargoCapacity);
     }
 
     @Override
@@ -48,7 +38,7 @@ public class PoliceShip extends Ship {
      * Repair method
      */
     public void repair() {
-        this.health = 100;
+        this.setHealth(100);
     }
 
     @Override
@@ -56,9 +46,9 @@ public class PoliceShip extends Ship {
      * Upgrade method
      */
     public void upgrade() {
-        armor += 5;
-        weapons += 1;
-        cargoCapacity += 2;
+        this.setArmor(getArmor() + 5);
+        this.setWeapons(getWeapons() + 1);
+        this.setCargoCapacity(getCargoCapacity() + 2);
     }
 
 
