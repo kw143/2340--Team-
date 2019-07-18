@@ -247,7 +247,10 @@
         android:layout_marginStart="170dp"
         android:layout_marginLeft="170dp"
         android:layout_marginTop="16dp"
-        android:text="Money Held:"
+        android:text="Money:"
+        android:textSize="20sp"
+        android:typeface="sans"
+        app:fontFamily="sans-serif"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -259,6 +262,8 @@
         android:layout_marginLeft="11dp"
         android:layout_marginTop="15dp"
         android:text="0"
+        android:textSize="20sp"
+        android:typeface="sans"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="parent" />
 

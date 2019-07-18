@@ -4,9 +4,10 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_create_player">New Player</string>
     <string name="title_map">Map</string>
-    <string name="title_status">Current Status</string>
+    <string name="title_status">Player Status</string>
     <string name="region_status">Current Region</string>
     <string name="title_notifications">Notifications</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_port">Port</string>
 </resources>

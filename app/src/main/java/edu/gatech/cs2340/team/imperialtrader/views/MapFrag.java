@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
+import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,6 +55,7 @@ public class MapFrag extends Fragment {
     private Button button8;
     private Button button9;
     private Button button10;
+    private Button helpButton;
     private TextView textView1;
     private TextView textView2;
     private TextView textView3;
@@ -78,6 +81,7 @@ public class MapFrag extends Fragment {
         regionList = regionViewModel.getRegionList();
         player = playerViewModel.getPlayer();
 
+
         currentFuel = view.findViewById(R.id.currentFuel);
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
 
@@ -94,6 +98,7 @@ public class MapFrag extends Fragment {
         button8 = view.findViewById(R.id.buttonVIII);
         button9 = view.findViewById(R.id.buttonIX);
         button10 = view.findViewById(R.id.buttonX);
+        helpButton = view.findViewById(R.id.helpButton);
 
         textView1 = view.findViewById(R.id.textViewI);
         textView2 = view.findViewById(R.id.textViewII);
@@ -105,7 +110,16 @@ public class MapFrag extends Fragment {
         textView8 = view.findViewById(R.id.textViewVIII);
         textView9 = view.findViewById(R.id.textViewIX);
         textView10 = view.findViewById(R.id.textViewX);
-        
+
+        Context context = getActivity().getApplicationContext();
+        Toast helpToast = Toast.makeText(context, "Tap a region to preview or travel to it", Toast.LENGTH_SHORT);
+        helpButton.setText("?");
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                helpToast.show();
+            }
+        });
+
 
         button1.setText(regionList.get(0).getName());
         button1.setOnClickListener(new View.OnClickListener() {
