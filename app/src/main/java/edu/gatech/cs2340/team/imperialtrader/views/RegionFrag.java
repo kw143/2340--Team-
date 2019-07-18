@@ -54,7 +54,8 @@ public class RegionFrag extends Fragment {
     //private TextView errorFuel;
     private Button buttonMap;
     private Button buttonPort;
-    private ImageView img;
+    private ImageView regionLine;
+    private ImageView regionLine2;
 
 
     private Player player;
@@ -84,7 +85,8 @@ public class RegionFrag extends Fragment {
         resourceLevel = view.findViewById(R.id.resourceLevel);
         buttonMap = view.findViewById(R.id.back);
         buttonPort = view.findViewById(R.id.tradePort);
-        img = view.findViewById(R.id.regionLine);
+        regionLine = view.findViewById(R.id.regionLine);
+        regionLine2 = view.findViewById(R.id.regionLine2);
 
         regionName.setText(regionList.get(10).getName());
         regionHomePort.setText(regionList.get(10).getHome());
@@ -98,8 +100,10 @@ public class RegionFrag extends Fragment {
             resourceLevel.setText(String.format("Special Resource:\n%s",
                     regionList.get(10).getResource().toString()));
         }
-        img.setMinimumWidth(regionList.get(10).getName().length() * 20);
-        img.setMaxWidth(regionList.get(10).getName().length() * 20);
+        //img.setMinimumWidth(regionList.get(10).getName().length() * 20);
+        //img.setMaxWidth(regionList.get(10).getName().length() * 20);
+        regionLine.getLayoutParams().width = regionList.get(10).getName().length() * 50;
+        regionLine2.getLayoutParams().width = regionList.get(10).getHome().length() * 30;
 
         buttonMap.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -122,29 +122,6 @@ public class MapFrag extends Fragment {
             }
         });
 
-        button10.setText(regionList.get(9).getName());
-        button10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(),
-                        regionList.get(9))) {
-                    player.setCurRegion(regionList.get(9), distanceCalc(player.getCurRegion(),
-                            regionList.get(9)));
-                    playerViewModel.updatePlayer(player);
-                    mapClickListener.onButtonClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);
-                }
-            }
-        });
 
         button1.setText(regionList.get(0).getName());
         button1.setOnClickListener(new View.OnClickListener() {

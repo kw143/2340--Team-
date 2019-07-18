@@ -18,6 +18,7 @@
         android:layout_marginRight="8dp"
         android:gravity="center_horizontal"
         android:text="Previewing Region:"
+        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,29 +28,28 @@
         android:id="@+id/regionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:ems="10"
-        android:gravity="center_horizontal"
+        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:gravity="center|center_horizontal|center_vertical"
         android:textSize="40sp"
         app:fontFamily="@font/abril_fatface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.121" />
 
     <TextView
         android:id="@+id/regionHome"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_width="408dp"
+        android:layout_height="53dp"
         android:ems="10"
-        android:foregroundGravity="center"
-        android:gravity="center"
+        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:textSize="28sp"
+        app:fontFamily="@font/abril_fatface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.286" />
@@ -60,12 +60,13 @@
         android:layout_height="wrap_content"
         android:foregroundGravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:text="Region Home Port"
+        android:text="Home Port:"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintVertical_bias="0.237" />
 
     <TextView
         android:id="@+id/x-coordinate"
@@ -78,12 +79,13 @@
         android:ems="10"
         android:foregroundGravity="center"
         android:gravity="center"
+        app:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.442" />
 
     <TextView
         android:id="@+id/y-coordinate"
@@ -94,6 +96,7 @@
         android:ems="10"
         android:foregroundGravity="center"
         android:gravity="center"
+        app:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/x-coordinate"
         app:layout_constraintTop_toTopOf="@+id/x-coordinate" />
@@ -104,6 +107,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center_horizontal"
+        app:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -117,6 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:gravity="center_horizontal"
+        app:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/techLevel" />
@@ -175,15 +180,21 @@
     <ImageView
         android:id="@+id/regionLine"
         android:layout_width="350dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regionName"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/regionLine2"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regionHome"
         app:srcCompat="@android:color/darker_gray" />
 
 
