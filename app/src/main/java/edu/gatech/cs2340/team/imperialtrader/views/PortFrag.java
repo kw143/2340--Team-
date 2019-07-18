@@ -42,18 +42,17 @@ public class PortFrag extends Fragment {
 
     public static int priceVarianceEnforce(double newPrice, double variance, int base) {
         double actualPrice = newPrice;
-        if (newPrice > base * (1 + 0.01 * variance)) {
-            actualPrice =  (base * (1 + 0.01 * variance));
+        if (newPrice > (base * (1 + (0.01 * variance)))) {
+            actualPrice = (base * (1 + (0.01 * variance)));
         }
-        if (newPrice < base * (1 - 0.009 * variance)) {
-            actualPrice =  (base * (1 - 0.009 * variance));
+        if (newPrice < (base * (1 - (0.009 * variance)))) {
+            actualPrice = (base * (1 - (0.009 * variance)));
         }
         return (int)actualPrice;
     }
 
     public static int priceCalc(Region Re, double quantity, Good type) {
-        int base = type.getBasePrice();
-        double price = base;
+        double price = type.getBasePrice();
         TechLevel tech = Re.getTechLevel();
         RadicalPriceEvent event = Re.getCurEvent();
         Resource res = Re.getResource();
@@ -77,48 +76,8 @@ public class PortFrag extends Fragment {
         return priceVarianceEnforce(price, type.getVar(), type.getBasePrice());
     }
 
-    private TextView curRegion;
-    private TextView curEvent;
-
-    private Button repairButton;
-    private Button refuelButton;
-
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
-    private Button button5;
-    private Button button6;
-    private Button button7;
-    private Button button8;
-    private Button button9;
-    private Button button10;
-
-    private TextView waterPrice;
-    private TextView furPrice;
-    private TextView foodPrice;
-    private TextView orePrice;
-    private TextView gamePrice;
-    private TextView firearmPrice;
-    private TextView medicinePrice;
-    private TextView machinePrice;
-    private TextView narcoticPrice;
-    private TextView robotPrice;
-
-    private TextView waterQuantity;
-    private TextView furQuantity;
-    private TextView foodQuantity;
-    private TextView oreQuantity;
-    private TextView gameQuantity;
-    private TextView firearmQuantity;
-    private TextView medicineQuantity;
-    private TextView machineQuantity;
-    private TextView narcoticQuantity;
-    private TextView robotQuantity;
-
     private PlayerViewModel playerViewModel;
     private Player player;
-    private Inventory availableGoods;
 
     @Nullable
     @Override
@@ -129,38 +88,38 @@ public class PortFrag extends Fragment {
 
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         player = playerViewModel.getPlayer();
-        availableGoods = player.getCurRegion().getGoodsInRegion();
+        Inventory availableGoods = player.getCurRegion().getGoodsInRegion();
 
-        curRegion = view.findViewById(R.id.currentRegionTrade);
-        curEvent = view.findViewById(R.id.curRadicalEvent);
+        TextView curRegion = view.findViewById(R.id.currentRegionTrade);
+        TextView curEvent = view.findViewById(R.id.curRadicalEvent);
 
         curRegion.setText(player.getCurRegion().getName());
         curEvent.setText(player.getCurRegion().getCurEvent().toString());
 
-        button1 = view.findViewById(R.id.tradeButton1);
-        button2 = view.findViewById(R.id.tradeButton2);
-        button3 = view.findViewById(R.id.tradeButton3);
-        button4 = view.findViewById(R.id.tradeButton4);
-        button5 = view.findViewById(R.id.tradeButton5);
-        button6 = view.findViewById(R.id.tradeButton6);
-        button7 = view.findViewById(R.id.tradeButton7);
-        button8 = view.findViewById(R.id.tradeButton8);
-        button9 = view.findViewById(R.id.tradeButton9);
-        button10 = view.findViewById(R.id.tradeButton10);
+        Button button1 = view.findViewById(R.id.tradeButton1);
+        Button button2 = view.findViewById(R.id.tradeButton2);
+        Button button3 = view.findViewById(R.id.tradeButton3);
+        Button button4 = view.findViewById(R.id.tradeButton4);
+        Button button5 = view.findViewById(R.id.tradeButton5);
+        Button button6 = view.findViewById(R.id.tradeButton6);
+        Button button7 = view.findViewById(R.id.tradeButton7);
+        Button button8 = view.findViewById(R.id.tradeButton8);
+        Button button9 = view.findViewById(R.id.tradeButton9);
+        Button button10 = view.findViewById(R.id.tradeButton10);
 
-        repairButton = view.findViewById(R.id.repair_button);
-        refuelButton = view.findViewById(R.id.refuel_button);
+        Button repairButton = view.findViewById(R.id.repair_button);
+        Button refuelButton = view.findViewById(R.id.refuel_button);
 
-        waterPrice = view.findViewById(R.id.priceI);
-        furPrice = view.findViewById(R.id.priceII);
-        foodPrice = view.findViewById(R.id.priceIII);
-        orePrice = view.findViewById(R.id.priceIV);
-        gamePrice = view.findViewById(R.id.priceV);
-        firearmPrice = view.findViewById(R.id.priceVI);
-        medicinePrice = view.findViewById(R.id.priceVII);
-        machinePrice = view.findViewById(R.id.priceVIII);
-        narcoticPrice = view.findViewById(R.id.priceIX);
-        robotPrice = view.findViewById(R.id.priceX);
+        TextView waterPrice = view.findViewById(R.id.priceI);
+        TextView furPrice = view.findViewById(R.id.priceII);
+        TextView foodPrice = view.findViewById(R.id.priceIII);
+        TextView orePrice = view.findViewById(R.id.priceIV);
+        TextView gamePrice = view.findViewById(R.id.priceV);
+        TextView firearmPrice = view.findViewById(R.id.priceVI);
+        TextView medicinePrice = view.findViewById(R.id.priceVII);
+        TextView machinePrice = view.findViewById(R.id.priceVIII);
+        TextView narcoticPrice = view.findViewById(R.id.priceIX);
+        TextView robotPrice = view.findViewById(R.id.priceX);
 
         waterPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
                 availableGoods.getCount(Good.WATER), Good.WATER)));
@@ -183,16 +142,16 @@ public class PortFrag extends Fragment {
         robotPrice.setText(String.valueOf(priceCalc(player.getCurRegion(),
                 availableGoods.getCount(Good.ROBOTS), Good.ROBOTS)));
 
-        waterQuantity = view.findViewById(R.id.quantityI);
-        furQuantity = view.findViewById(R.id.quantityII);
-        foodQuantity = view.findViewById(R.id.quantityIII);
-        oreQuantity = view.findViewById(R.id.quantityIV);
-        gameQuantity = view.findViewById(R.id.quantityV);
-        firearmQuantity = view.findViewById(R.id.quantityVI);
-        medicineQuantity = view.findViewById(R.id.quantityVII);
-        machineQuantity = view.findViewById(R.id.quantityVIII);
-        narcoticQuantity = view.findViewById(R.id.quantityIX);
-        robotQuantity = view.findViewById(R.id.quantityX);
+        TextView waterQuantity = view.findViewById(R.id.quantityI);
+        TextView furQuantity = view.findViewById(R.id.quantityII);
+        TextView foodQuantity = view.findViewById(R.id.quantityIII);
+        TextView oreQuantity = view.findViewById(R.id.quantityIV);
+        TextView gameQuantity = view.findViewById(R.id.quantityV);
+        TextView firearmQuantity = view.findViewById(R.id.quantityVI);
+        TextView medicineQuantity = view.findViewById(R.id.quantityVII);
+        TextView machineQuantity = view.findViewById(R.id.quantityVIII);
+        TextView narcoticQuantity = view.findViewById(R.id.quantityIX);
+        TextView robotQuantity = view.findViewById(R.id.quantityX);
 
         waterQuantity.setText(String.valueOf(availableGoods.getCount(Good.WATER)));
         furQuantity.setText(String.valueOf(availableGoods.getCount(Good.FURS)));

@@ -3,7 +3,7 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 public class PlayerShip extends Ship {
 
     private String name = "Gnat";
-    private int cost;
+    private int cost = 0;
     private int speed = 30;
     private int health = 75;
     private int armor = 10;

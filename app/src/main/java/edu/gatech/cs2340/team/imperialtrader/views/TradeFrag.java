@@ -49,11 +49,6 @@ public class TradeFrag extends Fragment {
     private int tradePrice;
     private Good curGood;
 
-    private TextView currentGoodText;
-    private TextView currentMoney;
-    private TextView portQuantity;
-    private TextView playerQuantity;
-    private TextView tradePriceText;
     private EditText buyQuantityField;
     private EditText sellQuantityField;
     private TextView errorAvailable;
@@ -64,17 +59,13 @@ public class TradeFrag extends Fragment {
     private TextView errorNumberFormat;
     private TextView errorNegative;
 
-    private Button sellButton;
-    private Button buyButton;
-    private Button invButton;
-
     private int priceVarianceEnforce(double newPrice, double variance, int base) {
         double actualPrice = newPrice;
-        if (newPrice > base * (1 + 0.01 * variance)) {
-            actualPrice =  (base * (1 + 0.01 * variance));
+        if (newPrice > (base * (1 + (0.01 * variance)))) {
+            actualPrice = (base * (1 + (0.01 * variance)));
         }
-        if (newPrice < base * (1 - 0.009 * variance)) {
-            actualPrice =  (base * (1 - 0.009 * variance));
+        if (newPrice < (base * (1 - (0.009 * variance)))) {
+            actualPrice = (base * (1 - (0.009 * variance)));
         }
         return (int)actualPrice;
     }
@@ -119,15 +110,15 @@ public class TradeFrag extends Fragment {
         curGood = player.getGood();
 
 
-        currentGoodText = view.findViewById(R.id.currentGood);
-        currentMoney = view.findViewById(R.id.currentMoney);
-        portQuantity = view.findViewById(R.id.portQuantity);
-        playerQuantity = view.findViewById(R.id.playerQuantity);
-        tradePriceText = view.findViewById(R.id.tradePrice);
+        TextView currentGoodText = view.findViewById(R.id.currentGood);
+        TextView currentMoney = view.findViewById(R.id.currentMoney);
+        TextView portQuantity = view.findViewById(R.id.portQuantity);
+        TextView playerQuantity = view.findViewById(R.id.playerQuantity);
+        TextView tradePriceText = view.findViewById(R.id.tradePrice);
         buyQuantityField = view.findViewById(R.id.buyQuantField);
         sellQuantityField = view.findViewById(R.id.sellQuantField);
-        buyButton = view.findViewById(R.id.buyButton);
-        sellButton = view.findViewById(R.id.sellButton);
+        Button buyButton = view.findViewById(R.id.buyButton);
+        Button sellButton = view.findViewById(R.id.sellButton);
         errorAvailable = view.findViewById(R.id.errorAvailable);
         errorEmptyText = view.findViewById(R.id.errorEmptyText);
         errorNotEnoughMoney = view.findViewById(R.id.errorNotEnoughMoney);
@@ -135,13 +126,11 @@ public class TradeFrag extends Fragment {
         errorNotEnoughGoods = view.findViewById(R.id.errorNotEnoughGoods);
         errorNumberFormat = view.findViewById(R.id.errorNumberFormat);
         errorNegative = view.findViewById(R.id.errorNegative);
-        invButton = view.findViewById(R.id.toInventory);
-        currentGoodText.setText("Trading for: " + String.valueOf(curGood));
-        currentMoney.setText("Money: $" + String.valueOf(player.getMoney()));
-        portQuantity.setText("Available to buy: " +
-                String.valueOf(availableGoods.getCount(curGood)));
-        playerQuantity.setText("Available to sell: " +
-                String.valueOf(currentInv.getCount(curGood)));
+        Button invButton = view.findViewById(R.id.toInventory);
+        currentGoodText.setText("Trading for: " + curGood);
+        currentMoney.setText("Money: $" + player.getMoney());
+        portQuantity.setText("Available to buy: " + availableGoods.getCount(curGood));
+        playerQuantity.setText("Available to sell: " + currentInv.getCount(curGood));
         tradePrice = priceCalc(player.getCurRegion(), availableGoods.getCount(curGood), curGood);
         tradePriceText.setText("Trade price: $" + tradePrice);
 
@@ -156,7 +145,7 @@ public class TradeFrag extends Fragment {
                         2000);
                 return;
             }
-            int buyQuantity = 0;
+            int buyQuantity;
             try {
                 buyQuantity = Integer.parseInt(buyQuantityField.getText().toString());
             } catch (NumberFormatException e) {
@@ -203,18 +192,11 @@ public class TradeFrag extends Fragment {
                         () -> errorNotEnoughSpace.setVisibility(View.INVISIBLE),
                         2000);
             } else {
-                // set inventory to the new inventory
-                player.setInventory(currentInv);
-                player.setMoney(player.getMoney() - cost);
-                // subtract goods from the inventory at the region
-                availableGoods.subtract(curGood, buyQuantity);
-                // DO WE NEED AN UPDATE REGION??
-                player.getCurRegion().setGoodsInRegion(availableGoods);
+                // call the static buy method
+                buy(buyQuantity, cost, player, currentInv, availableGoods);
                 playerViewModel.updatePlayer(player);
                 tradeClickListener.toBuyClicked();
             }
-            // validate - check if have enough money
-            // then subtract money and add goods
         });
 
         sellButton.setOnClickListener(v -> {
@@ -227,7 +209,7 @@ public class TradeFrag extends Fragment {
                         2000);
                 return;
             }
-            int sellQuantity = 0;
+            int sellQuantity;
             try {
                 sellQuantity = Integer.parseInt(sellQuantityField.getText().toString());
             } catch (NumberFormatException e) {
@@ -267,21 +249,36 @@ public class TradeFrag extends Fragment {
                         () -> errorNotEnoughGoods.setVisibility(View.INVISIBLE),
                         2000);
             } else {
-                // set inventory to the new inventory
-                player.setInventory(currentInv);
-                player.setMoney(player.getMoney() + profit);
-                // subtract goods from the inventory at the region
-                availableGoods.add(curGood, sellQuantity);
-                // DO WE NEED AN UPDATE REGION??
-                player.getCurRegion().setGoodsInRegion(availableGoods);
+                // call static sell method
+                sell(sellQuantity, profit, player, currentInv, availableGoods);
                 playerViewModel.updatePlayer(player);
                 tradeClickListener.toSellClicked();
             }
         });
 
         invButton.setOnClickListener(v -> tradeClickListener.onInventoryClicked());
-
-
         return view;
+    }
+
+    public static void buy(int buyQuantity, int cost, Player player, Inventory currentInv,
+                           Inventory availableGoods) {
+        // set inventory to new inventory
+        player.setInventory(currentInv);
+        player.setMoney(player.getMoney() - cost);
+        // subtract goods from the inventory at the region
+        availableGoods.subtract(player.getGood(), buyQuantity);
+        // DO WE NEED AN UPDATE REGION??
+        player.getCurRegion().setGoodsInRegion(availableGoods);
+    }
+
+    public static void sell(int sellQuantity, int profit, Player player, Inventory currentInv,
+                           Inventory availableGoods) {
+        // set inventory to the new inventory
+        player.setInventory(currentInv);
+        player.setMoney(player.getMoney() + profit);
+        // add goods to the inventory at the region
+        availableGoods.add(player.getGood(), sellQuantity);
+        // DO WE NEED AN UPDATE REGION??
+        player.getCurRegion().setGoodsInRegion(availableGoods);
     }
 }
