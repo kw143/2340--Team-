@@ -43,23 +43,12 @@ public class RegionFrag extends Fragment {
     }
 
     private PlayerViewModel viewModel;
-    private RegionViewModel regionViewModel;
 
-    private TextView regionName;
-    private TextView regionHomePort;
-    private TextView xCoord;
-    private TextView yCoord;
-    private TextView techLevel;
-    private TextView resourceLevel;
-    //private TextView errorFuel;
-    private Button buttonMap;
-    private Button buttonPort;
-    private ImageView regionLine;
-    private ImageView regionLine2;
+    private TextView errorFuel;
+
 
 
     private Player player;
-    private Region region;
     private ArrayList<Region> regionList;
     @Nullable
     @Override
@@ -68,25 +57,26 @@ public class RegionFrag extends Fragment {
         View view = inflater.inflate(R.layout.region,
                 container, false);
         viewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
-        regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
+        RegionViewModel regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
         player = viewModel.getPlayer();
-        region = player.getCurRegion();
+        Region region = player.getCurRegion();
         regionList = regionViewModel.getRegionList();
         //errorFuel = view.findViewById(R.id.errorFuel);
 
         /*
          * Grab the dialog widgets so we can get info for later
          */
-        regionName = view.findViewById(R.id.regionName);
-        regionHomePort = view.findViewById(R.id.regionHome);
-        xCoord = view.findViewById(R.id.x_coordinate);
-        yCoord = view.findViewById(R.id.y_coordinate);
-        techLevel = view.findViewById(R.id.techLevel);
-        resourceLevel = view.findViewById(R.id.resourceLevel);
-        buttonMap = view.findViewById(R.id.back);
-        buttonPort = view.findViewById(R.id.tradePort);
-        regionLine = view.findViewById(R.id.regionLine);
-        regionLine2 = view.findViewById(R.id.regionLine2);
+
+        ImageView regionLine = view.findViewById(R.id.regionLine);
+        ImageView regionLine2 = view.findViewById(R.id.regionLine2);
+        TextView regionName = view.findViewById(R.id.regionName);
+        TextView regionHomePort = view.findViewById(R.id.regionHome);
+        TextView xCoord = view.findViewById(R.id.x_coordinate);
+        TextView yCoord = view.findViewById(R.id.y_coordinate);
+        TextView techLevel = view.findViewById(R.id.techLevel);
+        TextView resourceLevel = view.findViewById(R.id.resourceLevel);
+        Button buttonMap = view.findViewById(R.id.back);
+        Button buttonPort = view.findViewById(R.id.tradePort);
 
         regionName.setText(regionList.get(10).getName());
         regionHomePort.setText(regionList.get(10).getHome());
@@ -110,7 +100,7 @@ public class RegionFrag extends Fragment {
         buttonPort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (player.getShip().getCurrentFuel() * 50 >= distanceCalc(player.getCurRegion(), regionList.get(10))) {
+                if ((player.getShip().getCurrentFuel() * 50) >= distanceCalc(player.getCurRegion(), regionList.get(10))) {
                     player.setCurRegion(regionList.get(10), distanceCalc(player.getCurRegion(), regionList.get(10)));
                     viewModel.updatePlayer(player);
                     regionClickListener.travelClicked();
