@@ -5,9 +5,13 @@ public enum Resource {
     DESERT(3), LOTSOFWATER(4), RICHSOIL(5), POORSOIL(6),
     RICHFAUNA(7), LIFELESS(8), WEIRDMUSHROOMS(9),
     LOTSOFHERBS(10), ARTISTIC(11), WARLIKE(12);
-    private int resourseKey;
+    private int resourceKey;
 
-    Resource(int resourseKey) {
-        this.resourseKey = resourseKey;
+    /**
+     * Constructor for Resource
+     * @param resourceKey resourceKey
+     */
+    Resource(int resourceKey) {
+        this.resourceKey = resourceKey;
     }
 }

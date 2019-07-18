@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity
         StatusClickListener, InvClickListener, TradeClickListener {
 
     @Override
+    /**
+     * Method for onCreate
+     * @param savedInstanceState Bundle
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -24,6 +28,11 @@ public class MainActivity extends AppCompatActivity
         loadFragment(new HomeFrag());
     }
 
+    /**
+     * loadFragment method
+     * @param fragment
+     * @return t/f
+     */
     private boolean loadFragment(Fragment fragment){
         if(fragment != null) {
             getSupportFragmentManager()
@@ -36,6 +45,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    /**
+     * onNavigationItemSelected method
+     * @param menuItem
+     * @return t/f
+     */
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
 
@@ -57,22 +71,37 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    /**
+     * onNPClick method
+     */
     public void onNpClick() {
         loadFragment(new CreatePlayerFrag());
     }
 
+    /**
+     * onCreateClick method
+     */
     @Override
     public void onCreateClick() {
         loadFragment(new MapFrag());
     }
 
+    /**
+     * onButtonClicked method
+     */
     @Override
     public void onButtonClicked() { loadFragment(new RegionFrag()); }
 
     @Override
+    /**
+     * mapClicked method
+     */
     public void mapClicked() { loadFragment(new MapFrag()); }
 
     @Override
+    /**
+     * travelClicked method
+     */
     public void travelClicked() {
         loadFragment(new PortFrag());
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -80,27 +109,51 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    /**
+     * toTradeClicked method
+     */
     public void toTradeClicked() { loadFragment(new TradeFrag()); }
 
     @Override
+    /**
+     * onRefuelClicked method
+     */
     public void onRefuelClicked() { loadFragment(new PortFrag()); }
 
     @Override
+    /**
+     * onRepairClicked method
+     */
     public void onRepairClicked() { loadFragment(new PortFrag()); }
 
     @Override
+    /**
+     * toInvClicked method
+     */
     public void toInvClicked() { loadFragment(new InvFrag()); }
 
     @Override
+    /**
+     * onTradeClicked method
+     */
     public void onTradeClicked() { loadFragment(new TradeFrag()); }
 
     @Override
+    /**
+     * onInventoryClicked method
+     */
     public void onInventoryClicked() { loadFragment(new InvFrag()); }
 
     @Override
+    /**
+     * toBuyClicked method
+     */
     public void toBuyClicked() { loadFragment(new TradeFrag()); }
 
     @Override
+    /**
+     * toSellClicked method
+     */
     public void toSellClicked() { loadFragment(new TradeFrag()); }
 
 

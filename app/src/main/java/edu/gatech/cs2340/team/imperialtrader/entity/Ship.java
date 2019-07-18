@@ -12,10 +12,25 @@ public abstract class Ship {
     private int weapons;
     private int cargoCapacity;
 
+    /**
+     * Default Ship Constructor
+     */
     public Ship() {
         this("", 0, 25, 50, 5, 20, 20, 1, 5 );
     }
 
+    /**
+     * Ship constructor with given data
+     * @param name Ship's name
+     * @param cost Ship's cost
+     * @param speed Ship's speed
+     * @param health Ship's health
+     * @param armor Ship's armor
+     * @param currentFuel Ship's currentFuel
+     * @param maxFuel Ship's maxFuel
+     * @param weapons Ship's weapons
+     * @param cargoCapacity Ship's cargoCapacity
+     */
     public Ship(String name, int cost, int speed, int health, int armor, int currentFuel,
                 int maxFuel, int weapons, int cargoCapacity) {
         this.name = name;
@@ -29,12 +44,24 @@ public abstract class Ship {
         this.cargoCapacity = cargoCapacity;
     }
 
+    /**
+     * Abstract fly Method
+     */
     public abstract void fly();
 
+    /**
+     * Abstract shoot method
+     */
     public abstract void shoot();
 
+    /**
+     * Abstract repair method
+     */
     public abstract void repair();
 
+    /**
+     * Abstract upgrade method
+     */
     public abstract void upgrade();
 
 }

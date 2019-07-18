@@ -15,6 +15,10 @@ public class RegionViewModel extends AndroidViewModel {
     private ArrayList<Region> regionList;
     private Region home;
 
+    /**
+     * Constructor for RegionViewModel
+     * @param application Application
+     */
     public RegionViewModel(@NonNull Application application) {
         super(application);
         model = Model.getInstance().getRegionInteractor();
@@ -22,14 +26,30 @@ public class RegionViewModel extends AndroidViewModel {
         home = model.getHomeRegion();
     }
 
+    /**
+     * Method to update Region list
+     * @param li regionList
+     */
     public void updateRegionList(ArrayList<Region> li) {
         model.updateRegionList(li);
     }
 
+    /**
+     * Method to update home region
+     * @param r Region
+     */
     public void updateHomeRegion(Region r) { model.updateHomeRegion(r); }
 
+    /**
+     * Getter for home region
+     * @return homeRegion
+     */
     public Region getHomeRegion() { return home; }
 
+    /**
+     * Getter for regionList
+     * @return regionList
+     */
     public ArrayList<Region> getRegionList() {
         return regionList;
     }

@@ -16,16 +16,28 @@ public class PlayerViewModel extends AndroidViewModel {
     private PlayerInteractor model;
     private Player player;
 
+    /**
+     * Constructor for PlayerViewModel
+     * @param application Application
+     */
     public PlayerViewModel(@NonNull Application application) {
         super(application);
         model = Model.getInstance().getPlayerInteractor();
         player = model.getPlayer();
     }
 
+    /**
+     * Method to update a player
+     * @param p Player
+     */
     public void updatePlayer(Player p) {
         model.updatePlayer(p);
     }
 
+    /**
+     * Getter for a player
+     * @return Player
+     */
     public Player getPlayer() {
             return player;
     }
