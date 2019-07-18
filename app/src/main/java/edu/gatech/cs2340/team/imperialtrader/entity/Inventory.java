@@ -58,9 +58,7 @@ public class Inventory {
         return (inventoryMap.get(good) >= count);
     }
 
-    public boolean hasGood(Good good) {
-        return (inventoryMap.get(good) != null);
-    }
+    public boolean hasGood(Good good) { return (inventoryMap.get(good) != null); }
 
     public int add(Good good, int count) {
         if (count + curCapacity <= capacity) {
@@ -68,6 +66,8 @@ public class Inventory {
                 inventoryMap.put(good, inventoryMap.get(good) + count);
                 curCapacity += count;
                 return count;
+            }  else if (good == null) {
+                return 0;
             } else {
                 inventoryMap.put(good, count);
                 curCapacity += count;
@@ -80,15 +80,17 @@ public class Inventory {
     }
 
     public int subtract(Good good, int count) {
-        if (count < inventoryMap.get(good)) {
-            inventoryMap.put(good, inventoryMap.get(good) - count);
-            return count;
-        } else if (count == inventoryMap.get(good)) {
-            inventoryMap.remove(good);
-            size--;
-            return count;
-        } else if (count >= inventoryMap.get(good)) {
-            return 0;
+        if (good != null) {
+            if (count < inventoryMap.get(good)) {
+                inventoryMap.put(good, inventoryMap.get(good) - count);
+                return count;
+            } else if (count == inventoryMap.get(good)) {
+                inventoryMap.remove(good);
+                size--;
+                return count;
+            } else if (count >= inventoryMap.get(good)) {
+                return 0;
+            }
         }
         return 0; // subtract failed
     }
