@@ -36,54 +36,64 @@ public class EventFrag extends Fragment {
         }
     }
 
-    private PlayerViewModel viewModel;
+    private PlayerViewModel playerViewModel;
     private Player player;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.event,
                 container, false);
-        viewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
-        player = viewModel.getPlayer();
+        playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+        player = playerViewModel.getPlayer();
         EventViewModel eventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);
 
         TextView eventMessage = view.findViewById(R.id.eventMessage);
-        TextView resultMessage = view.findViewById(R.id.resultMessage);
 
         Button proceedButton = view.findViewById(R.id.proceedButton);
-        int eventNumber;
+        String returnMessage = eventViewModel.randomEvent();
 
+        if (returnMessage != "Police") {
+            // not a police event
+            eventMessage.setText();
 
-        if (eventNumber == 10) {
+        } else {
+            // POLICE EVENT
             eventMessage.setText("You have been approached by the police. "
                     + "They want to check your bags.");
 
             Button fightButton = view.findViewById(R.id.fightButton);
             Button obligeButton = view.findViewById(R.id.obligeButton);
+            TextView resultMessage = view.findViewById(R.id.resultMessage);
+            proceedButton.setVisibility(View.INVISIBLE);
 
             fightButton.setText("Fight!");
+            fightButton.setVisibility(View.VISIBLE);
             fightButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     player.setMoney(player.getMoney() + 300);
                     player.getShip().setHealth(player.getShip().getHealth() - 20);
+                    playerViewModel.updatePlayer(player);
                     resultMessage.setText("You defeated the police and stole $300 "
                             + "but your ship lost health.");
                     resultMessage.setVisibility(View.VISIBLE);
                     proceedButton.setVisibility(View.VISIBLE);
                 }
             });
+
             obligeButton.setText("Oblige.");
+            obligeButton.setVisibility(View.VISIBLE);
             obligeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (player.getInventory().hasGood(NARCOTICS)) {
-                        // display a message
+                        // confiscate narcotics and fine player
                         player.getInventory().subtract(NARCOTICS,
                                 player.getInventory().getCount(NARCOTICS));
                         player.setMoney(player.getMoney() - 1000);
-                        resultMessage.setText("The police confiscated your narcotics! "
-                                + "They also fined you $1000.");
+                        playerViewModel.updatePlayer(player);
+                        resultMessage.setText("The police confiscated your narcotics "
+                                + "and fined you $1000!");
                     } else {
                         resultMessage.setText("The police didn't find anything.");
                     }
@@ -92,6 +102,7 @@ public class EventFrag extends Fragment {
                 }
             });
         }
+
 
         proceedButton.setText("Proceed");
         proceedButton.setOnClickListener(new View.OnClickListener() {
