@@ -37,12 +37,12 @@ public class TradeFragTest {
         TradeFrag.buy(10, 10000, player2, currentInv, testRe.getGoodsInRegion());
 
         // one big assertion
-        assertTrue(800 == player.getMoney()
-                && 10 == player.getInventory().getCount(WATER)
-                && 90 == testRe.getGoodsInRegion().getCount(WATER)
-                && 1000 == player2.getMoney()
-                && 0 == player2.getInventory().getCount(WATER)
-                && 90 == testRe.getGoodsInRegion().getCount(WATER));
+        assertTrue((800 == player.getMoney())
+                && (10 == player.getInventory().getCount(WATER))
+                && (90 == testRe.getGoodsInRegion().getCount(WATER))
+                && (1000 == player2.getMoney())
+                && (0 == player2.getInventory().getCount(WATER))
+                && (90 == testRe.getGoodsInRegion().getCount(WATER)));
     }
 
     @Test

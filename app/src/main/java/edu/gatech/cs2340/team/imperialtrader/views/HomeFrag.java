@@ -37,19 +37,8 @@ public class HomeFrag extends Fragment {
                 container, false);
         Button btn1 = view.findViewById(R.id.ex);
         Button btnNewPlayer = view.findViewById(R.id.np);
-        btn1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                System.exit(0);
-            }
-        });
-        btnNewPlayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                homeClickListener.onNpClick();
-            }
-        });
+        btn1.setOnClickListener(v -> System.exit(0));
+        btnNewPlayer.setOnClickListener(v -> homeClickListener.onNpClick());
         return view;
     }
 }

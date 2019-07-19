@@ -1,13 +1,11 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
-import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +44,7 @@ public class MapFrag extends Fragment {
     private ArrayList<Region> regionList;
     private Player player;
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.map,
@@ -67,13 +66,10 @@ public class MapFrag extends Fragment {
 
 
         Context context = getActivity().getApplicationContext();
-        Toast helpToast = Toast.makeText(context, "Tap a region to preview or travel to it", Toast.LENGTH_SHORT);
+        Toast helpToast = Toast.makeText(context, "Tap a region to preview or travel to it",
+                Toast.LENGTH_SHORT);
         helpButton.setText("?");
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                helpToast.show();
-            }
-        });
+        helpButton.setOnClickListener(v -> helpToast.show());
 
         Button button1 = view.findViewById(R.id.buttonI);
         Button button2 = view.findViewById(R.id.buttonII);
@@ -98,94 +94,64 @@ public class MapFrag extends Fragment {
         TextView textView10 = view.findViewById(R.id.textViewX);
 
         button1.setText(regionList.get(0).getName());
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(0));
-                mapClickListener.onButtonClicked();
-            }
+        button1.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(0));
+            mapClickListener.onButtonClicked();
         });
 
         button2.setText(regionList.get(1).getName());
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(1));
-                mapClickListener.onButtonClicked();
-            }
+        button2.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(1));
+            mapClickListener.onButtonClicked();
         });
 
         button3.setText(regionList.get(2).getName());
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(2));
-                mapClickListener.onButtonClicked();
-            }
+        button3.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(2));
+            mapClickListener.onButtonClicked();
         });
 
         button4.setText(regionList.get(3).getName());
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(3));
-                mapClickListener.onButtonClicked();
-            }
+        button4.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(3));
+            mapClickListener.onButtonClicked();
         });
 
         button5.setText(regionList.get(4).getName());
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        button5.setOnClickListener(v -> {
 
-                regionList.set(10, regionList.get(4));
-                mapClickListener.onButtonClicked();
-            }
+            regionList.set(10, regionList.get(4));
+            mapClickListener.onButtonClicked();
         });
 
         button6.setText(regionList.get(5).getName());
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(5));
-                mapClickListener.onButtonClicked();
-            }
+        button6.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(5));
+            mapClickListener.onButtonClicked();
         });
 
         button7.setText(regionList.get(6).getName());
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(6));
-                mapClickListener.onButtonClicked();
-            }
+        button7.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(6));
+            mapClickListener.onButtonClicked();
         });
 
         button8.setText(regionList.get(7).getName());
-        button8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(7));
-                mapClickListener.onButtonClicked();
-            }
+        button8.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(7));
+            mapClickListener.onButtonClicked();
         });
 
         button9.setText(regionList.get(8).getName());
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(8));
-                mapClickListener.onButtonClicked();
-            }
+        button9.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(8));
+            mapClickListener.onButtonClicked();
         });
 
         button10.setText(regionList.get(9).getName());
-        button10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                regionList.set(10, regionList.get(9));
-                mapClickListener.onButtonClicked();
-            }
+        button10.setOnClickListener(v -> {
+            regionList.set(10, regionList.get(9));
+            mapClickListener.onButtonClicked();
         });
 
         textView1.setText(String.format("Distance: %.2f", distanceCalc(player.getCurRegion(),

@@ -97,31 +97,30 @@ public class RegionFrag extends Fragment {
 
         buttonMap.setOnClickListener(v -> regionClickListener.mapClicked());
 
-        buttonPort.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ((player.getShip().getCurrentFuel() * 50) >= distanceCalc(player.getCurRegion(), regionList.get(10))) {
-                    player.setCurRegion(regionList.get(10), distanceCalc(player.getCurRegion(), regionList.get(10)));
-                    viewModel.updatePlayer(player);
-                    regionClickListener.toEventClicked();
-                } else {
-                    Log.d("Error", "Not enough fuel left to travel there!");
-                    Context context = getActivity().getApplicationContext();
-                    Toast noFuel = Toast.makeText(context, "Not enough fuel to travel that far!",
-                    Toast.LENGTH_LONG);
-                    noFuel.show();
-                    /*errorFuel.setVisibility(View.VISIBLE);
-                    new android.os.Handler().postDelayed(
-                            new Runnable() {
-                                public void run() {
-                                    errorFuel.setVisibility(View.INVISIBLE);
-                                }
-                            },
-                            2000);*/
-
-                }
+        buttonPort.setOnClickListener(v -> {
+            if ((player.getShip().getCurrentFuel() * 50) >= distanceCalc(player.getCurRegion(),
+                    regionList.get(10))) {
+                player.setCurRegion(regionList.get(10), distanceCalc(player.getCurRegion(),
+                        regionList.get(10)));
+                viewModel.updatePlayer(player);
+                regionClickListener.toEventClicked();
+            } else {
+                Log.d("Error", "Not enough fuel left to travel there!");
+                Context context = getActivity().getApplicationContext();
+                Toast noFuel = Toast.makeText(context, "Not enough fuel to travel that far!",
+                Toast.LENGTH_LONG);
+                noFuel.show();
+                /*errorFuel.setVisibility(View.VISIBLE);
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                errorFuel.setVisibility(View.INVISIBLE);
+                            }
+                        },
+                        2000);*/
 
             }
+
         });
 
         return view;
