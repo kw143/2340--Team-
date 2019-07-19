@@ -12,7 +12,7 @@ import edu.gatech.cs2340.team.imperialtrader.R;
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener, HomeClickListener,
         CreatePlayerClickListener, MapClickListener, RegionClickListener, PortClickListener,
-        StatusClickListener, InvClickListener, TradeClickListener {
+        StatusClickListener, InvClickListener, TradeClickListener, EventClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,5 +103,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void toSellClicked() { loadFragment(new TradeFrag()); }
 
-
+    @Override
+    public void toEventClicked() { loadFragment(new EventFrag()); }
 }
