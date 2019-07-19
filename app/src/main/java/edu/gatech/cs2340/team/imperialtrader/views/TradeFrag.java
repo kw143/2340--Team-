@@ -263,6 +263,9 @@ public class TradeFrag extends Fragment {
     public static void buy(int buyQuantity, int cost, Player player, Inventory currentInv,
                            Inventory availableGoods) {
         // set inventory to new inventory
+        if (cost > player.getMoney()) {
+            return;
+        }
         player.setInventory(currentInv);
         player.setMoney(player.getMoney() - cost);
         // subtract goods from the inventory at the region

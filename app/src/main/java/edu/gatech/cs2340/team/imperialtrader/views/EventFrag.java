@@ -15,6 +15,8 @@ import android.widget.TextView;
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
+import edu.gatech.cs2340.team.imperialtrader.viewmodels.EventViewModel;
+
 
 import static edu.gatech.cs2340.team.imperialtrader.entity.Good.NARCOTICS;
 
@@ -54,7 +56,7 @@ public class EventFrag extends Fragment {
 
         if (returnMessage != "Police") {
             // not a police event
-            eventMessage.setText();
+            eventMessage.setText(returnMessage);
 
         } else {
             // POLICE EVENT

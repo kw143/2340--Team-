@@ -28,13 +28,21 @@ public class TradeFragTest {
         Inventory currentInv = player.getInventory();
         currentInv.add(WATER, 10);
 
+        Player player2 = new Player("test not enough money");
+        player2.setGood(WATER);
+        player2.setCurRegion(testRe, 0);
+
+
         TradeFrag.buy(10, 200, player, currentInv, testRe.getGoodsInRegion());
-        // check player money
-        assertEquals(800, player.getMoney());
-        // check player inventory
-        assertEquals(10, player.getInventory().getCount(WATER));
-        // check region inventory
-        assertEquals(90, testRe.getGoodsInRegion().getCount(WATER));
+        TradeFrag.buy(10, 10000, player2, currentInv, testRe.getGoodsInRegion());
+
+        // one big assertion
+        assertTrue(800 == player.getMoney()
+                && 10 == player.getInventory().getCount(WATER)
+                && 90 == testRe.getGoodsInRegion().getCount(WATER)
+                && 1000 == player2.getMoney()
+                && 0 == player2.getInventory().getCount(WATER)
+                && 90 == testRe.getGoodsInRegion().getCount(WATER));
     }
 
     @Test
@@ -52,9 +60,9 @@ public class TradeFragTest {
         currentInv.add(WATER, 50);
         currentInv.subtract(WATER, 40);
 
-        TradeFrag.sell(40, 200, player, currentInv, testRe.getGoodsInRegion());
+        TradeFrag.sell(40, 400, player, currentInv, testRe.getGoodsInRegion());
         // check player money
-        assertEquals(1200, player.getMoney());
+        assertEquals(1400, player.getMoney());
         // check player inventory
         assertEquals(10, player.getInventory().getCount(WATER));
         // check region inventory
