@@ -13,8 +13,8 @@ public class Region {
     private RadicalPriceEvent curEvent;
 
 
-
-    private Inventory goodsInRegion = new Inventory(10000);
+    int regionCapacity = 10000;
+    private Inventory goodsInRegion = new Inventory(regionCapacity);
     Random rand = new Random();
 
 
@@ -34,11 +34,12 @@ public class Region {
      * constructor chain
      */
     public Region(String name, String home) {
-
-        int x = rand.nextInt(150);
+        int xbound = 150;
+        int rbound = 13;
+        int x = rand.nextInt(xbound);
         int y = rand.nextInt(100);
         int t = rand.nextInt(8);
-        int r = rand.nextInt(13);
+        int r = rand.nextInt(rbound);
 
         this.name = name;
         this.home = home;

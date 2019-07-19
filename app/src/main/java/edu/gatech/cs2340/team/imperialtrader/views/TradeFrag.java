@@ -135,6 +135,7 @@ public class TradeFrag extends Fragment {
         tradePriceText.setText("Trade price: $" + tradePrice);
 
 
+        int delay = 2000;
         buyButton.setOnClickListener(v -> {
             if ("".equals(buyQuantityField.getText().toString())) {
                 // no input
@@ -142,7 +143,7 @@ public class TradeFrag extends Fragment {
                 errorEmptyText.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorEmptyText.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             }
             int buyQuantity;
@@ -153,7 +154,7 @@ public class TradeFrag extends Fragment {
                 errorNumberFormat.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorNumberFormat.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             }
             if (availableGoods.getCount(curGood) == 0) {
@@ -162,7 +163,7 @@ public class TradeFrag extends Fragment {
                 errorAvailable.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorAvailable.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             }
             if (buyQuantity <= 0) {
@@ -171,7 +172,7 @@ public class TradeFrag extends Fragment {
                 errorNegative.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorNegative.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             } else if (buyQuantity >= availableGoods.getCount(curGood)) {
                 // if the player wants to buy more goods than there are
@@ -184,13 +185,13 @@ public class TradeFrag extends Fragment {
                 errorNotEnoughMoney.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorNotEnoughMoney.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
             } else if (currentInv.add(curGood, buyQuantity) == 0) {
                 Log.d("Error", "Player does not have enough space in inventory.");
                 errorNotEnoughSpace.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorNotEnoughSpace.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
             } else {
                 // call the static buy method
                 buy(buyQuantity, cost, player, currentInv, availableGoods);
@@ -206,7 +207,7 @@ public class TradeFrag extends Fragment {
                 errorEmptyText.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorEmptyText.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             }
             int sellQuantity;
@@ -217,7 +218,7 @@ public class TradeFrag extends Fragment {
                 errorNumberFormat.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorNumberFormat.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             }
             if (currentInv.getCount(curGood) == 0) {
@@ -226,7 +227,7 @@ public class TradeFrag extends Fragment {
                 errorAvailable.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorAvailable.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             }
             if (sellQuantity <= 0) {
@@ -234,7 +235,7 @@ public class TradeFrag extends Fragment {
                 errorNegative.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorNegative.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
                 return;
             } else if (sellQuantity >= currentInv.getCount(curGood)) {
                 // if the player wants to sell more goods than there are
@@ -247,7 +248,7 @@ public class TradeFrag extends Fragment {
                 errorNotEnoughGoods.setVisibility(View.VISIBLE);
                 new android.os.Handler().postDelayed(
                         () -> errorNotEnoughGoods.setVisibility(View.INVISIBLE),
-                        2000);
+                        delay);
             } else {
                 // call static sell method
                 sell(sellQuantity, profit, player, currentInv, availableGoods);

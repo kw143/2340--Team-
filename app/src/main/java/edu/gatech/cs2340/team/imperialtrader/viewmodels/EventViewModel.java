@@ -45,7 +45,8 @@ public class EventViewModel extends AndroidViewModel {
             return "A rival ship attacked you and you had to use all "
                     + "of your firearms to fight them off.";
         } else if (number == 7) {
-            player.getInventory().add(FIREARMS, 40);
+            int addQuantity;
+            player.getInventory().add(FIREARMS, addQuantity);
             updatePlayer(player);
             return "A friendly ship approached you and gifted you 40 firearms "
                     + "to fight off other ships.";
