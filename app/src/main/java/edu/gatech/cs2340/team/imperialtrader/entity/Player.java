@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+import static edu.gatech.cs2340.team.imperialtrader.entity.Good.WATER;
+
 public class Player {
 
     /** name of the player */
@@ -34,6 +36,7 @@ public class Player {
         this.money = money;
         this.ship = ship;
         inventory = new Inventory();
+        curGood = WATER;
     }
 
 

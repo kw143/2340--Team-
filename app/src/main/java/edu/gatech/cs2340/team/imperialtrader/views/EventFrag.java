@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
@@ -67,6 +68,11 @@ public class EventFrag extends Fragment {
             Button obligeButton = view.findViewById(R.id.obligeButton);
             TextView resultMessage = view.findViewById(R.id.resultMessage);
             proceedButton.setVisibility(View.INVISIBLE);
+            TextView question = view.findViewById(R.id.question);
+            question.setVisibility(View.VISIBLE);
+            ImageView line = view.findViewById(R.id.staticLine);
+            line.setVisibility(View.VISIBLE);
+
 
             fightButton.setText("Fight!");
             fightButton.setVisibility(View.VISIBLE);
@@ -76,10 +82,14 @@ public class EventFrag extends Fragment {
                     player.setMoney(player.getMoney() + 300);
                     player.getShip().setHealth(player.getShip().getHealth() - 20);
                     playerViewModel.updatePlayer(player);
-                    resultMessage.setText("You defeated the police and stole $300 "
+                    resultMessage.setText("You defeated the police and stole $300, "
                             + "but your ship lost health.");
                     resultMessage.setVisibility(View.VISIBLE);
                     proceedButton.setVisibility(View.VISIBLE);
+                    fightButton.setVisibility(View.INVISIBLE);
+                    obligeButton.setVisibility(View.INVISIBLE);
+                    question.setVisibility(View.INVISIBLE);
+                    line.setVisibility(View.INVISIBLE);
                 }
             });
 
@@ -101,6 +111,10 @@ public class EventFrag extends Fragment {
                     }
                     resultMessage.setVisibility(View.VISIBLE);
                     proceedButton.setVisibility(View.VISIBLE);
+                    fightButton.setVisibility(View.INVISIBLE);
+                    obligeButton.setVisibility(View.INVISIBLE);
+                    question.setVisibility(View.INVISIBLE);
+                    line.setVisibility(View.INVISIBLE);
                 }
             });
         }
