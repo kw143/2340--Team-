@@ -59,7 +59,7 @@ public class InvFrag extends Fragment {
         TextView narcoticQuantity = view.findViewById(R.id.quantityIX);
         TextView robotQuantity = view.findViewById(R.id.quantityX);
 
-        currentMoney.setText(String.valueOf(player.getMoney()));
+        currentMoney.setText(String.format("Money: %d", player.getMoney()));
         waterQuantity.setText(String.valueOf(currentInv.getCount(Good.WATER)));
         furQuantity.setText(String.valueOf(currentInv.getCount(Good.FURS)));
         foodQuantity.setText(String.valueOf(currentInv.getCount(Good.FOOD)));

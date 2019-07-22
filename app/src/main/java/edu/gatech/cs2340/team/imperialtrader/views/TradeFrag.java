@@ -127,7 +127,7 @@ public class TradeFrag extends Fragment {
         errorNumberFormat = view.findViewById(R.id.errorNumberFormat);
         errorNegative = view.findViewById(R.id.errorNegative);
         Button invButton = view.findViewById(R.id.toInventory);
-        currentGoodText.setText("Trading for: " + curGood);
+        currentGoodText.setText("Trading for " + curGood.getName());
         currentMoney.setText("Money: $" + player.getMoney());
         portQuantity.setText("Available to buy: " + availableGoods.getCount(curGood));
         playerQuantity.setText("Available to sell: " + currentInv.getCount(curGood));

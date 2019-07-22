@@ -100,10 +100,14 @@ public class RegionFrag extends Fragment {
         buttonPort.setOnClickListener(v -> {
             if ((player.getShip().getCurrentFuel() * 50) >= distanceCalc(player.getCurRegion(),
                     regionList.get(10))) {
-                player.setCurRegion(regionList.get(10), distanceCalc(player.getCurRegion(),
-                        regionList.get(10)));
-                viewModel.updatePlayer(player);
-                regionClickListener.toEventClicked();
+                if (regionList.get(10) != player.getCurRegion()) {
+                    player.setCurRegion(regionList.get(10), distanceCalc(player.getCurRegion(),
+                            regionList.get(10)));
+                    viewModel.updatePlayer(player);
+                    regionClickListener.toEventClicked();
+                } else {
+                    regionClickListener.toPortClicked();
+                }
             } else {
                 Log.d("Error", "Not enough fuel left to travel there!");
                 Context context = getActivity().getApplicationContext();

@@ -11,6 +11,8 @@
         android:layout_width="287dp"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +22,8 @@
             android:id="@+id/currentGood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            android:gravity="center"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:textSize="26dp" />
@@ -28,6 +32,8 @@
             android:id="@+id/tradePrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            android:gravity="center_horizontal"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:textSize="26dp" />
@@ -36,6 +42,8 @@
             android:id="@+id/currentMoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            android:gravity="center_horizontal"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:textSize="22dp" />
@@ -44,10 +52,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutII"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="190dp"
+        android:layout_height="201dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -71,14 +79,17 @@
             android:id="@+id/buyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buy" />
+            android:background="#00FFFFFF"
+            android:text="Buy"
+            android:textSize="30sp"
+            app:fontFamily="sans-serif-thin" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayoutIII"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_width="190dp"
+        android:layout_height="201dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -106,7 +117,10 @@
             android:id="@+id/sellButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sell" />
+            android:background="#00FFFFFF"
+            android:text="Sell"
+            android:textSize="30sp"
+            app:fontFamily="sans-serif-thin" />
 
     </LinearLayout>
 
@@ -274,12 +288,29 @@
 
     <Button
         android:id="@+id/toInventory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="36dp"
-        android:text="Check Inventory"
+        android:layout_width="416dp"
+        android:layout_height="75dp"
+        android:background="#00FFFFFF"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:text="Inventory"
+        android:textColor="@android:color/secondary_text_dark"
+        android:textSize="40sp"
+        android:typeface="sans"
+        app:fontFamily="sans-serif-thin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="160dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/toInventory"
+        app:layout_constraintEnd_toEndOf="@+id/toInventory"
+        app:layout_constraintStart_toStartOf="@+id/toInventory"
+        app:srcCompat="@android:color/darker_gray" />
 </android.support.constraint.ConstraintLayout>

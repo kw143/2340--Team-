@@ -94,7 +94,8 @@ public class PortFrag extends Fragment {
         TextView curEvent = view.findViewById(R.id.curRadicalEvent);
 
         curRegion.setText(player.getCurRegion().getName());
-        curEvent.setText(player.getCurRegion().getCurEvent().toString());
+        curEvent.setText(String.format("Current radical event: %s",
+                player.getCurRegion().getCurEvent().toString()));
 
         Button button1 = view.findViewById(R.id.tradeButton1);
         Button button2 = view.findViewById(R.id.tradeButton2);
@@ -109,6 +110,7 @@ public class PortFrag extends Fragment {
 
         Button repairButton = view.findViewById(R.id.repair_button);
         Button refuelButton = view.findViewById(R.id.refuel_button);
+
 
         TextView waterPrice = view.findViewById(R.id.priceI);
         TextView furPrice = view.findViewById(R.id.priceII);

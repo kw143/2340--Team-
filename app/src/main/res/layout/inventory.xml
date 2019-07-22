@@ -8,11 +8,16 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="87dp"
-        android:layout_height="680dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_width="82dp"
+        android:layout_height="387dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9">
 
@@ -20,91 +25,101 @@
             android:id="@+id/GoodI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:text="Water"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:text="Furs"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodIII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:text="Food"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodIV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:text="Ore"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:text="Game"
-            android:textSize="18dp" />
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="Games"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodVI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:text="Firearm"
-            android:textSize="18dp" />
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="Firearms"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodVII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:text="Medicine"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodVIII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:text="Machine"
-            android:textSize="18dp" />
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="Machines"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodIX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:text="Narcotic"
-            android:textSize="18dp" />
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="Narcotics"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/GoodX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:text="Robot"
-            android:textSize="18dp" />
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="Robots"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
 
     </LinearLayout>
@@ -112,92 +127,127 @@
     <LinearLayout
         android:id="@+id/linearLayoutIII"
         android:layout_width="75dp"
-        android:layout_height="522dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_height="393dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:foregroundGravity="left"
+        android:gravity="left"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11">
 
         <TextView
             android:id="@+id/quantityI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityIII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityIV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityVI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityVII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityVIII"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityIX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
         <TextView
             android:id="@+id/quantityX"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:textSize="18dp" />
+            android:foregroundGravity="center_vertical|center|center_horizontal"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textSize="18dp"
+            app:fontFamily="sans-serif-light" />
 
 
     </LinearLayout>
@@ -207,75 +257,115 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="327dp"
-        android:layout_marginRight="327dp"
         android:text="Goods"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        android:textSize="24sp"
+        android:typeface="normal"
+        app:fontFamily="sans-serif"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
+        android:layout_marginTop="70dp"
         android:text="Quantity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        android:text="Region"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="16dp"
-        android:text="Money:"
-        android:textSize="20sp"
-        android:typeface="sans"
+        android:textSize="24sp"
         app:fontFamily="sans-serif"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayoutIII"
+        app:layout_constraintStart_toStartOf="@+id/linearLayoutIII"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/currentMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="15dp"
-        android:text="0"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Money:"
         android:textSize="20sp"
         android:typeface="sans"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintBottom_toTopOf="@+id/backToTrade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
 
     <Button
         android:id="@+id/backToTrade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="16dp"
-        android:text="Continue Trade At Current Region"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="#00FFFFFF"
+        android:text="Trade at current port"
+        android:textSize="32sp"
+        app:fontFamily="sans-serif-thin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/backToTrade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/inventoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="INVENTORY"
+        android:textSize="36sp"
+        app:fontFamily="@font/abril_fatface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="70dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="60dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@android:color/darker_gray" />
+
 
 </android.support.constraint.ConstraintLayout>

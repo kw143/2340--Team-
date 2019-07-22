@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity
     public void toInvClicked() { loadFragment(new InvFrag()); }
 
     @Override
-    public void onTradeClicked() { loadFragment(new TradeFrag()); }
+    public void onTradeClicked() { loadFragment(new PortFrag()); }
 
     @Override
     public void onInventoryClicked() { loadFragment(new InvFrag()); }
@@ -105,4 +105,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void toEventClicked() { loadFragment(new EventFrag()); }
+
+    @Override
+    public void toPortClicked() { loadFragment(new PortFrag()); }
 }
