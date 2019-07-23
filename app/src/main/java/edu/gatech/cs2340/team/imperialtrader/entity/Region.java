@@ -13,18 +13,19 @@ public class Region {
     private RadicalPriceEvent curEvent;
 
 
-    int regionCapacity = 10000;
+    private final int regionCapacity = 10000;
     private Inventory goodsInRegion = new Inventory(regionCapacity);
-    Random rand = new Random();
+    private final Random rand = new Random();
 
     /**
      * Constructor for Region
-     * @param name Region name
-     * @param home Region home
-     * @param xCoord Region's x-coordinate
-     * @param yCoord Region's y-coordinate
+     *
+     * @param name      Region name
+     * @param home      Region home
+     * @param xCoord    Region's x-coordinate
+     * @param yCoord    Region's y-coordinate
      * @param techLevel Region's techLevel
-     * @param resource Region's resource
+     * @param resource  Region's resource
      */
     public Region(String name, String home, int xCoord, int yCoord,
                   TechLevel techLevel, Resource resource) {
@@ -42,8 +43,8 @@ public class Region {
      * Constructor for region with randomly-generated values
      */
     public Region(String name, String home) {
-        int xbound = 150;
-        int rbound = 13;
+        final int xbound = 150;
+        final int rbound = 13;
         int x = rand.nextInt(xbound);
         int y = rand.nextInt(100);
         int t = rand.nextInt(8);
@@ -59,17 +60,18 @@ public class Region {
         restockInventory();
     }
 
+
     /**
      * Random event generator
      */
-    public void rollEvent() {
+    private void rollEvent() {
         curEvent = RadicalPriceEvent.getRandomEvent();
     }
 
     /**
      * Method to restock Region's Inventory
      */
-    public void restockInventory() {
+    private void restockInventory() {
         for (int x = 0; x < 4; x++) {
             Good newGood = Good.values()[rand.nextInt(10)];
             if (newGood.getMLTP().ordinal() > techLevel.ordinal()) {
@@ -86,6 +88,7 @@ public class Region {
 
     /**
      * Getter for goods in the Region
+     *
      * @return goodsInRegion
      */
     public Inventory getGoodsInRegion() {
@@ -94,6 +97,7 @@ public class Region {
 
     /**
      * Setter for Region's inventory
+     *
      * @param goodsInRegion Region's inventory
      */
     public void setGoodsInRegion(Inventory goodsInRegion) {
@@ -102,6 +106,7 @@ public class Region {
 
     /**
      * Setter for Region name
+     *
      * @param n Region name
      */
     public void setName(String n) {
@@ -110,6 +115,7 @@ public class Region {
 
     /**
      * Setter for Region's home
+     *
      * @param h Region's home
      */
     public void setHome(String h) {
@@ -118,6 +124,7 @@ public class Region {
 
     /**
      * Setter for Region's x-coordinate
+     *
      * @param x x-coordinate
      */
     public void setXcoord(int x) {
@@ -126,6 +133,7 @@ public class Region {
 
     /**
      * Setter for Region's y-coordinate
+     *
      * @param y y-coordinate
      */
     public void setYcoord(int y) {
@@ -134,6 +142,7 @@ public class Region {
 
     /**
      * Setter for Region's tech level
+     *
      * @param t Region's tech level
      */
     public void setTechLevel(TechLevel t) {
@@ -142,6 +151,7 @@ public class Region {
 
     /**
      * Settter for Region's resource
+     *
      * @param r resource
      */
     public void setResource(Resource r) {
@@ -150,6 +160,7 @@ public class Region {
 
     /**
      * Setter for current event
+     *
      * @param curEvent current event
      */
     public void setCurEvent(RadicalPriceEvent curEvent) {
@@ -158,6 +169,7 @@ public class Region {
 
     /**
      * Getter for Region's name
+     *
      * @return name
      */
     public String getName() {
@@ -166,6 +178,7 @@ public class Region {
 
     /**
      * Getter for Region's home
+     *
      * @return home
      */
     public String getHome() {
@@ -174,6 +187,7 @@ public class Region {
 
     /**
      * Getter for Region's x-coordinate
+     *
      * @return x-coordinate
      */
     public int getXcoord() {
@@ -182,6 +196,7 @@ public class Region {
 
     /**
      * Getter for Region's y-coordinate
+     *
      * @return y-coordinate
      */
     public int getYcoord() {
@@ -190,6 +205,7 @@ public class Region {
 
     /**
      * Getter for Region's tech level
+     *
      * @return techLevel
      */
     public TechLevel getTechLevel() {
@@ -198,6 +214,7 @@ public class Region {
 
     /**
      * Getter for Region's resource
+     *
      * @return resource
      */
     public Resource getResource() {
@@ -206,13 +223,12 @@ public class Region {
 
     /**
      * Getter for current event
+     *
      * @return curEvent
      */
     public RadicalPriceEvent getCurEvent() {
         return curEvent;
     }
-
-
 
 
 }

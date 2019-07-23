@@ -75,7 +75,7 @@ public class CreatePlayerFrag extends Fragment {
     /* ***********************
        flag for whether this is a new player being created or an existing player being edited;
      */
-    private boolean editing;
+    //private boolean editing;
 
 
     @Nullable
@@ -144,17 +144,20 @@ public class CreatePlayerFrag extends Fragment {
                 player.setDifficulty((String) difficultySpinner.getSelectedItem());
                 player.setCurRegion(regionViewModel.getHomeRegion(), -1);
 
-                if (player.getTotalPoints() != 16) {
+                final int totalPoints = 16;
+
+                if (player.getTotalPoints() != totalPoints) {
                     errorText.setVisibility(View.VISIBLE);
                     successfulText.setVisibility(View.INVISIBLE);
                 } else {
+                    final int delay = 2000;
                     Log.d("Edit", "Got new player data: " + player);
                     errorText.setVisibility(View.INVISIBLE);
                     successfulText.setVisibility(View.VISIBLE);
                     ConfigViewModel.createPlayer(player);
                     new android.os.Handler().postDelayed(
                             () -> cpClickListener.onCreateClick(),
-                            2000);
+                            delay);
                 }
             }
         });

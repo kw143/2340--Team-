@@ -56,11 +56,58 @@ public class EventFrag extends Fragment {
         Button proceedButton = view.findViewById(R.id.proceedButton);
         String returnMessage = eventViewModel.randomEvent();
 
-        if (!returnMessage.equals("Police")) {
-            // not a police event
-            eventMessage.setText(returnMessage);
+        if ("Pirates".equals(returnMessage)) {
+            eventMessage.setText("A ship of pirates approaches you! They demand that you "
+                    + "surrender half of your money.");
 
-        } else {
+            Button fightButton = view.findViewById(R.id.fightButton);
+            Button obligeButton = view.findViewById(R.id.obligeButton);
+            TextView resultMessage = view.findViewById(R.id.resultMessage);
+            proceedButton.setVisibility(View.INVISIBLE);
+            TextView question = view.findViewById(R.id.question);
+            question.setVisibility(View.VISIBLE);
+            ImageView line = view.findViewById(R.id.staticLine);
+            line.setVisibility(View.VISIBLE);
+
+
+            fightButton.setText("Fight!");
+            fightButton.setVisibility(View.VISIBLE);
+            fightButton.setOnClickListener(v -> {
+                final int profit = 1000;
+                final int damage = 40;
+                player.setMoney(player.getMoney() + profit);
+                player.getShip().setHealth(player.getShip().getHealth() - damage);
+                playerViewModel.updatePlayer(player);
+                resultMessage.setText("You defeated the pirates and stole $1000, "
+                        + "but your ship lost a lot of health.");
+                resultMessage.setVisibility(View.VISIBLE);
+                proceedButton.setVisibility(View.VISIBLE);
+                fightButton.setVisibility(View.INVISIBLE);
+                obligeButton.setVisibility(View.INVISIBLE);
+                question.setVisibility(View.INVISIBLE);
+                line.setVisibility(View.INVISIBLE);
+            });
+
+            obligeButton.setText("Oblige.");
+            obligeButton.setVisibility(View.VISIBLE);
+            obligeButton.setOnClickListener(v -> {
+
+                int halfMoney = player.getMoney() / 2;
+                
+                player.setMoney(player.getMoney() - halfMoney);
+                playerViewModel.updatePlayer(player);
+                resultMessage.setText("You surrendered and the pirates took $"
+                        + halfMoney + " from you.");
+            
+                resultMessage.setVisibility(View.VISIBLE);
+                proceedButton.setVisibility(View.VISIBLE);
+                fightButton.setVisibility(View.INVISIBLE);
+                obligeButton.setVisibility(View.INVISIBLE);
+                question.setVisibility(View.INVISIBLE);
+                line.setVisibility(View.INVISIBLE);
+            });
+
+        } else if ("Police".equals(returnMessage)) {
             // POLICE EVENT
             eventMessage.setText("You have been approached by the police. "
                     + "They want to check your bags.");
@@ -78,8 +125,8 @@ public class EventFrag extends Fragment {
             fightButton.setText("Fight!");
             fightButton.setVisibility(View.VISIBLE);
             fightButton.setOnClickListener(v -> {
-                int profit = 300;
-                int damage = 20;
+                final int profit = 300;
+                final int damage = 20;
                 player.setMoney(player.getMoney() + profit);
                 player.getShip().setHealth(player.getShip().getHealth() - damage);
                 playerViewModel.updatePlayer(player);
@@ -114,6 +161,9 @@ public class EventFrag extends Fragment {
                 question.setVisibility(View.INVISIBLE);
                 line.setVisibility(View.INVISIBLE);
             });
+        } else {
+            // not police or pirates
+            eventMessage.setText(returnMessage);
         }
 
 

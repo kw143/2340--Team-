@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
-public interface TradeClickListener {
+interface TradeClickListener {
 
     /**
      * Listener for onInventoryClicked

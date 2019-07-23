@@ -1,7 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
 
-public interface StatusClickListener {
+interface StatusClickListener {
 
     /**
      * Listener for toInvClicked

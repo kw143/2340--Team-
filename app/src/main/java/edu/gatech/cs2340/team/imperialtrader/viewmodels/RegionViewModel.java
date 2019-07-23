@@ -11,9 +11,8 @@ import edu.gatech.cs2340.team.imperialtrader.model.Model;
 import edu.gatech.cs2340.team.imperialtrader.model.RegionInteractor;
 
 public class RegionViewModel extends AndroidViewModel {
-    private RegionInteractor model;
-    private ArrayList<Region> regionList;
-    private Region home;
+    private final ArrayList<Region> regionList;
+    private final Region home;
 
     /**
      * Constructor for RegionViewModel
@@ -21,7 +20,7 @@ public class RegionViewModel extends AndroidViewModel {
      */
     public RegionViewModel(@NonNull Application application) {
         super(application);
-        model = Model.getInstance().getRegionInteractor();
+        RegionInteractor model = Model.getInstance().getRegionInteractor();
         regionList = model.getRegionList();
         home = model.getHomeRegion();
     }
@@ -29,16 +28,16 @@ public class RegionViewModel extends AndroidViewModel {
     /**
      * Method to update Region list
      * @param li regionList
-     */
     public void updateRegionList(ArrayList<Region> li) {
         model.updateRegionList(li);
     }
 
-    /**
+    *//**
      * Method to update home region
      * @param r Region
-     */
-    public void updateHomeRegion(Region r) { model.updateHomeRegion(r); }
+     *//*
+    public void updateHomeRegion(Region r) { model.updateHomeRegion(r); }*/
+
 
     /**
      * Getter for home region

@@ -20,25 +20,29 @@ public class Player {
 
     /**
      * Creates a new Player object with given name and default data
+     *
      * @param name name of Player
      */
-    public Player(String name) { this(name, 0, 0, 0, 0,
-            "Easy", 1000, new PlayerShip("Gnat",0, 30, 75, 10,
-                    14, 14, 2, 15)); }
+    public Player(String name) {
+        this(name, 0, 0, 0, 0,
+                "Easy", 1000, new PlayerShip("Gnat", 0, 30, 75,
+                        14, 14));
+    }
 
     /**
      * Creates a new Player object with given data
-     * @param name name of Player
-     * @param pilotPoints pilotPoints of Player
-     * @param fighterPoints fighterPoints of Player
-     * @param traderPoints traderPoints of Player
+     *
+     * @param name           name of Player
+     * @param pilotPoints    pilotPoints of Player
+     * @param fighterPoints  fighterPoints of Player
+     * @param traderPoints   traderPoints of Player
      * @param engineerPoints engineerPoints of Player
-     * @param dif difficulty of game
-     * @param money money owned by Player
-     * @param ship ship owned by Player
+     * @param dif            difficulty of game
+     * @param money          money owned by Player
+     * @param ship           ship owned by Player
      */
-    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints,
-                  int engineerPoints, String dif, int money, PlayerShip ship) {
+    private Player(String name, int pilotPoints, int fighterPoints, int traderPoints,
+                   int engineerPoints, String dif, int money, PlayerShip ship) {
         this.name = name;
         this.pilotPoints = pilotPoints;
         this.fighterPoints = fighterPoints;
@@ -55,6 +59,7 @@ public class Player {
 
     /**
      * Setter for pilotPoints
+     *
      * @param pilotPoints pilotPoints of Player
      */
     public void setPilotPoints(int pilotPoints) {
@@ -64,6 +69,7 @@ public class Player {
 
     /**
      * Setter for fighterPoints
+     *
      * @param fighterPoints fighterPoints of Player
      */
     public void setFighterPoints(int fighterPoints) {
@@ -73,6 +79,7 @@ public class Player {
 
     /**
      * Setter for traderPoints
+     *
      * @param traderPoints traderPoints of Player
      */
     public void setTraderPoints(int traderPoints) {
@@ -82,6 +89,7 @@ public class Player {
 
     /**
      * setter for engineerPointss
+     *
      * @param engineerPoints engineerPoints of Player
      */
     public void setEngineerPoints(int engineerPoints) {
@@ -91,43 +99,58 @@ public class Player {
 
     /**
      * Setter for current region
-     * @param r region
+     *
+     * @param r        region
      * @param distance distance from current region
      */
     public void setCurRegion(Region r, double distance) {
+        final int multiplier = 50;
         if (distance > 0) {
-            this.getShip().setCurrentFuel((int) ((this.getShip().getCurrentFuel() * 50) - distance)
-                    / 50);
+            this.getShip().setCurrentFuel((int) ((this.getShip().getCurrentFuel() * multiplier)
+                    - distance) / multiplier);
         }
         curRegion = r;
     }
 
     /**
      * Setter for name
+     *
      * @param n name of Player
      */
-    public void setName(String n) { name = n; }
+    public void setName(String n) {
+        name = n;
+    }
 
     /**
      * Setter for difficulty
+     *
      * @param d difficulty
      */
-    public void setDifficulty (String d) {difficulty = d; }
+    public void setDifficulty(String d) {
+        difficulty = d;
+    }
 
     /**
      * Setter for Player's money
+     *
      * @param m money
      */
-    public void setMoney (int m) { money = m; }
+    public void setMoney(int m) {
+        money = m;
+    }
 
     /**
      * Setter for Player's ship
+     *
      * @param s ship
      */
-    public void setShip (PlayerShip s) { ship = s; }
+    public void setShip(PlayerShip s) {
+        ship = s;
+    }
 
     /**
      * Setter for Inventory
+     *
      * @param i inventory
      */
     public void setInventory(Inventory i) {
@@ -136,36 +159,52 @@ public class Player {
 
     /**
      * Setter for Good
+     *
      * @param g good
      */
-    public void setGood(Good g) { curGood = g; }
+    public void setGood(Good g) {
+        curGood = g;
+    }
 
     /**
      * Getter for game difficulty
+     *
      * @return difficulty
      */
-    public String getDifficulty () { return difficulty; }
+    public String getDifficulty() {
+        return difficulty;
+    }
 
     /**
      * Getter for Player name
+     *
      * @return name
      */
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     /**
      * Getter for Player ship
+     *
      * @return ship
      */
-    public PlayerShip getShip() { return ship;}
+    public PlayerShip getShip() {
+        return ship;
+    }
 
     /**
      * Getter for Player's money
+     *
      * @return money
      */
-    public int getMoney() { return money;}
+    public int getMoney() {
+        return money;
+    }
 
     /**
      * Getter for pilotPoints
+     *
      * @return pilotPoints
      */
     public int getPilotPoints() {
@@ -174,6 +213,7 @@ public class Player {
 
     /**
      * Getter for fighterPoints
+     *
      * @return fighterPoints
      */
     public int getFighterPoints() {
@@ -182,6 +222,7 @@ public class Player {
 
     /**
      * Getter for traderPoints
+     *
      * @return traderPoints
      */
     public int getTraderPoints() {
@@ -190,6 +231,7 @@ public class Player {
 
     /**
      * Getter for engineerPoints
+     *
      * @return engineerPoints
      */
     public int getEngineerPoints() {
@@ -198,12 +240,16 @@ public class Player {
 
     /**
      * Getter for totalPoints
+     *
      * @return totalPoints
      */
-    public int getTotalPoints(){ return totalPoints; }
+    public int getTotalPoints() {
+        return totalPoints;
+    }
 
     /**
      * Getter for Inventory
+     *
      * @return inventory
      */
     public Inventory getInventory() {
@@ -212,14 +258,20 @@ public class Player {
 
     /**
      * Gettter for current region
+     *
      * @return curRegion
      */
-    public Region getCurRegion() { return curRegion; }
+    public Region getCurRegion() {
+        return curRegion;
+    }
 
     /**
      * Getter for current good
+     *
      * @return curGood
      */
-    public Good getGood() { return curGood; }
+    public Good getGood() {
+        return curGood;
+    }
 
 }

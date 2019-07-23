@@ -13,8 +13,8 @@ import edu.gatech.cs2340.team.imperialtrader.model.PlayerInteractor;
  * This viewmodel would support activities that need to interact with player
  */
 public class PlayerViewModel extends AndroidViewModel {
-    private PlayerInteractor model;
-    private Player player;
+    private final PlayerInteractor model;
+    private final Player player;
 
     /**
      * Constructor for PlayerViewModel

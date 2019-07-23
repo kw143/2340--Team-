@@ -73,11 +73,13 @@ public class TradeFrag extends Fragment {
      */
     private int priceVarianceEnforce(double newPrice, double variance, int base) {
         double actualPrice = newPrice;
-        if (newPrice > (base * (1 + (0.01 * variance)))) {
-            actualPrice = (base * (1 + (0.01 * variance)));
+        final double factor = 0.01;
+        final double factor2 = 0.009;
+        if (newPrice > (base * (1 + (factor * variance)))) {
+            actualPrice = (base * (1 + (factor * variance)));
         }
-        if (newPrice < (base * (1 - (0.009 * variance)))) {
-            actualPrice = (base * (1 - (0.009 * variance)));
+        if (newPrice < (base * (1 - (factor2 * variance)))) {
+            actualPrice = (base * (1 - (factor2 * variance)));
         }
         return (int)actualPrice;
     }
@@ -96,17 +98,21 @@ public class TradeFrag extends Fragment {
         Resource res = Re.getResource();
         //price change based on tech level
         price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal());
+        final int factor = 2;
+        final double factor2 = 0.7;
+        final double factor3 = 1.3;
+        final int factor4 = 50;
         if (event.ordinal() == type.getIE().ordinal()) {
-            price *= 2;
+            price *= factor;
         }
         if((type.getCR() != null) && (res.ordinal() == type.getCR().ordinal())) {
-            price *= 0.7;
+            price *= factor2;
         }
         if((type.getER() != null) && (res.ordinal() == type.getER().ordinal())) {
-            price *= 1.3;
+            price *= factor3;
         }
         if ((quantity / 1000) > 1) {
-            price /= (quantity / 1000 / 50) + 1;
+            price /= (quantity / 1000 / factor4) + 1;
         } else {
             price *= ((1000 - quantity) / 100) + 1;
         }
@@ -161,7 +167,7 @@ public class TradeFrag extends Fragment {
         tradePriceText.setText("Trade price: $" + tradePrice);
 
 
-        int delay = 2000;
+        final int delay = 2000;
         buyButton.setOnClickListener(v -> {
             if ("".equals(buyQuantityField.getText().toString())) {
                 // no input

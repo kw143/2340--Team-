@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
-public interface RegionClickListener {
+interface RegionClickListener {
 
     /**
      * Listener for mapClicked

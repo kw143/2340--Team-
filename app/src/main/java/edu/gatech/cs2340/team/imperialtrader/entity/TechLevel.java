@@ -5,8 +5,9 @@ public enum TechLevel {
     RENAISSANCE(3, "Renaissance"), EARLYINDUSTRIAL(4, "Early Industrial"),
     INDUSTRIAL(5, "Industrial"), POSTINDUSTRIAL(6, "Post-Industrial"),
     HITECH(7, "Hi-Tech");
+
     private int level;
-    private String name;
+    private final String name;
     /**
      * Constructor for TechLevel given a level
      * @param level
