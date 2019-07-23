@@ -31,15 +31,20 @@ public class RegionViewModel extends AndroidViewModel {
     /**
      * Method to update Region list
      * @param li regionList
+     */
     public void updateRegionList(ArrayList<Region> li) {
+        RegionInteractor model = Model.getInstance().getRegionInteractor();
         model.updateRegionList(li);
     }
 
-    *//**
+    /**
      * Method to update home region
      * @param r Region
-     *//*
-    public void updateHomeRegion(Region r) { model.updateHomeRegion(r); }*/
+     */
+    public void updateHomeRegion(Region r) {
+        RegionInteractor model = Model.getInstance().getRegionInteractor();
+        model.updateHomeRegion(r);
+    }
 
 
     /**

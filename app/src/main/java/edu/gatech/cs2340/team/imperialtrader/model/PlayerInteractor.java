@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.team.imperialtrader.model;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.util.Log;
 
 import com.google.gson.Gson;

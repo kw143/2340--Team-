@@ -1,7 +1,6 @@
 package edu.gatech.cs2340.team.imperialtrader.model;
 
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -74,22 +73,10 @@ class Universe {
             for(int y = 0; y < regionList.size(); y++){
                 if(regionList.get(y).getXcoord() == startingRegions.get(index).getXcoord()){
                     if(regionList.get(y).getYcoord() == startingRegions.get(index).getYcoord()){
-                        boolean checker = false;
-                        while(!checker){
                             startingRegions.set(index,
                                     new Region(startingRegions.get(index).getName(),
                                     startingRegions.get(index).getHome()));
-                            checker = true;
-                            if(regionList.get(y).getXcoord() ==
-                                    startingRegions.get(index).getXcoord()) {
-                                if (regionList.get(y).getYcoord() ==
-                                        startingRegions.get(index).getYcoord()) {
-                                    checker = false;
                                     y = 0;
-                                }
-                            }
-
-                        }
                     }
                 }
             }

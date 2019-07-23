@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
@@ -56,7 +55,8 @@ public class MainActivity extends AppCompatActivity
             String contents = new String(bytes);
             in.close();
             Log.d("FileFromLastInstance", contents);
-            if (!contents.equals("")) {
+            String empty = "";
+            if (!contents.equals(empty)) {
                 Player previousState = gson.fromJson(contents, Player.class);
                 viewModel.updatePlayer(previousState);
             }

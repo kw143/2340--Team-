@@ -14,35 +14,43 @@ public class PortFragTest {
 
     @Test
     public void priceCalc() {
-        Region re = new Region("test", "test", 0, 0, TechLevel.RENAISSANCE, Resource.DESERT);
+        Region re = new Region("test", "test",
+                0, 0, TechLevel.RENAISSANCE, Resource.DESERT);
         re.setCurEvent(RadicalPriceEvent.DROUGHT);
         int quan = 1000;
         Good type = Good.FIREARMS;
         int price = PortFrag.priceCalc(re, quan, type);
-        assertEquals(1250, price); // check base price when none of the conditions are met to change price
+        assertEquals(1250, price); // check
+        // base price when none of the conditions are met to change price
 
         re.setResource(Resource.WARLIKE);
         price = PortFrag.priceCalc(re, quan, type);
-        assertEquals(875, price); // check price drop when the region has abundant CR resource type.
+        assertEquals(875, price); // check
+        // price drop when the region has abundant CR resource type.
 
         re.setResource(Resource.DESERT);
         re.setTechLevel(TechLevel.HITECH);
         price = PortFrag.priceCalc(re, quan, type);
-        assertEquals(950, price); // check price increase when the region's tech level is above MLTP Techlevel
+        assertEquals(950, price); // check
+        // price increase when the region's tech level is above MLTP Techlevel
 
         re.setTechLevel(TechLevel.RENAISSANCE);
         re.setCurEvent(RadicalPriceEvent.WAR);
         price = PortFrag.priceCalc(re, quan, type);
-        assertEquals(2500, price); // check price increase when the region's current event matches the condition to make good more expensive
+        assertEquals(2500, price); // check
+        // price increase when the region's current
+        // event matches the condition to make good more expensive
 
         re.setCurEvent(RadicalPriceEvent.DROUGHT);
         quan = 2000;
         price = PortFrag.priceCalc(re, quan, type);
-        assertEquals(1201, price); // check price decrease when the quantity is high
+        assertEquals(1201, price); // check
+        // price decrease when the quantity is high
 
         quan = 967;
         price = PortFrag.priceCalc(re, quan, type);
-        assertEquals(1662, price); // check price increase when the quantity is low
+        assertEquals(1662, price); // check
+        // price increase when the quantity is low
     }
 
     @Test
@@ -52,20 +60,28 @@ public class PortFragTest {
         int correctedPrice = 0;
 
         priceToCheck = 200000000;
-        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck, variance, Good.FIREARMS.getBasePrice());
-        assertEquals(2500, correctedPrice); // check if price is capped when it's calculated to be too high
+        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck,
+                variance, Good.FIREARMS.getBasePrice());
+        assertEquals(2500, correctedPrice); // check
+        // if price is capped when it's calculated to be too high
 
         priceToCheck = 1;
-        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck, variance, Good.FIREARMS.getBasePrice());
-        assertEquals(125, correctedPrice); // check if price is capped when it's calculated to be too low
+        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck,
+                variance, Good.FIREARMS.getBasePrice());
+        assertEquals(125, correctedPrice); // check
+        // if price is capped when it's calculated to be too low
 
         variance = Good.FOOD.getVar();
         priceToCheck = 200000000;
-        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck, variance, Good.FOOD.getBasePrice());
-        assertEquals(105, correctedPrice); // check if price is capped when it's calculated to be too high
+        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck,
+                variance, Good.FOOD.getBasePrice());
+        assertEquals(105, correctedPrice); // check
+        // if price is capped when it's calculated to be too high
 
         priceToCheck = 1;
-        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck, variance, Good.FOOD.getBasePrice());
-        assertEquals(95, correctedPrice); // check if price is capped when it's calculated to be too low
+        correctedPrice = PortFrag.priceVarianceEnforce(priceToCheck,
+                variance, Good.FOOD.getBasePrice());
+        assertEquals(95, correctedPrice); // check
+        // if price is capped when it's calculated to be too low
     }
 }

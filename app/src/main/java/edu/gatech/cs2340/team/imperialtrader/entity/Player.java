@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
-import java.io.File;
-
 import static edu.gatech.cs2340.team.imperialtrader.entity.Good.WATER;
 
 public class Player {

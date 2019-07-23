@@ -66,6 +66,9 @@ public class MapFrag extends Fragment {
         PlayerViewModel playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         regionList = regionViewModel.getRegionList();
         Player player = playerViewModel.getPlayer();
+        regionViewModel.updateHomeRegion(regionViewModel.getHomeRegion());
+        regionViewModel.updateRegionList(regionList);
+
 
 
         TextView currentFuel = view.findViewById(R.id.currentFuel);

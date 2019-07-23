@@ -1,30 +1,17 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 
-import com.google.gson.Gson;
-
-import java.io.File;
-
 import edu.gatech.cs2340.team.imperialtrader.R;
-
-import java.io.File;
-import java.io.FileOutputStream;
-
-import edu.gatech.cs2340.team.imperialtrader.R;
-import edu.gatech.cs2340.team.imperialtrader.entity.Player;
-import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 /**
  * Fragment for Home region

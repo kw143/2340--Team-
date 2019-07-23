@@ -1,6 +1,5 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
-import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.EventViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;

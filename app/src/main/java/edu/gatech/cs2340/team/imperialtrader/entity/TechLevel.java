@@ -7,19 +7,17 @@ import android.support.annotation.NonNull;
  * TechLevel enum for a region's tech-level
  */
 public enum TechLevel {
-    PREAGRICULTURE(0, "Preagriculture"), AGRICULTURE(1, "Agriculture"), MEDIEVAL(2, "Medieval"),
-    RENAISSANCE(3, "Renaissance"), EARLYINDUSTRIAL(4, "Early Industrial"),
-    INDUSTRIAL(5, "Industrial"), POSTINDUSTRIAL(6, "Post-Industrial"),
-    HITECH(7, "Hi-Tech");
+    PREAGRICULTURE("Preagriculture"), AGRICULTURE("Agriculture"), MEDIEVAL("Medieval"),
+    RENAISSANCE( "Renaissance"), EARLYINDUSTRIAL("Early Industrial"),
+    INDUSTRIAL("Industrial"), POSTINDUSTRIAL("Post-Industrial"),
+    HITECH("Hi-Tech");
 
-    private final int level;
     private final String name;
     /**
      * Constructor for TechLevel given a level
-     * @param level
+     * @param name
      */
-    TechLevel(int level, String name) {
-        this.level = level;
+    TechLevel(String name) {
         this.name = name;
     }
 
