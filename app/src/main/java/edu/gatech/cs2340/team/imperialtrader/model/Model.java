@@ -26,6 +26,10 @@ public class Model {
      */
     private static  Model instance = new Model();
 
+    /**
+     * Getter for Instance
+     * @return instance
+     */
     public static Model getInstance() { return instance; }
 
     /**
@@ -48,10 +52,18 @@ public class Model {
     }
 
 
+    /**
+     * Get a PlayerInteractor
+     * @return PlayerInteractor
+     */
     public PlayerInteractor getPlayerInteractor() {
         return (PlayerInteractor) interactorMap.get("Player");
     }
 
+    /**
+     * Get a RegionInteractor
+     * @return RegionInteractor
+     */
     public RegionInteractor getRegionInteractor() {
         return (RegionInteractor) interactorMap.get("Region");
     }

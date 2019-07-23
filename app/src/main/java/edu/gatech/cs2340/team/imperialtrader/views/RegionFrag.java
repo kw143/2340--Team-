@@ -24,11 +24,15 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Resource;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
-public class RegionFrag extends Fragment {
+public class    RegionFrag extends Fragment {
 
     private RegionClickListener regionClickListener;
 
     @Override
+    /**
+     * onAttach method
+     * @param context Context
+     */
     public void onAttach(Context context) {
         super.onAttach(context);
 
@@ -52,6 +56,13 @@ public class RegionFrag extends Fragment {
     private ArrayList<Region> regionList;
     @Nullable
     @Override
+    /**
+     * Method for onCreateView
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return View
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.region,
@@ -129,6 +140,13 @@ public class RegionFrag extends Fragment {
 
         return view;
     }
+
+    /**
+     * Static method to calculate distance between two regions
+     * @param region1
+     * @param region2
+     * @return distance
+     */
     private static double distanceCalc(Region region1, Region region2) {
         return (Math.pow(
                 Math.pow(region1.getXcoord() - region2.getXcoord(), 2) +

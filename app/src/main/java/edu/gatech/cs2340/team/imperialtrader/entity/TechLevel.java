@@ -7,6 +7,10 @@ public enum TechLevel {
     HITECH(7, "Hi-Tech");
     private int level;
     private String name;
+    /**
+     * Constructor for TechLevel given a level
+     * @param level
+     */
     private TechLevel(int level, String name) {
         this.level = level;
         this.name = name;

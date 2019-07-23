@@ -12,77 +12,50 @@ public class PlayerShip extends Ship {
     private int weapons = 2;
     private int cargoCapacity = 15;
 
+    /**
+     * Constructor for PlayerShip
+     * @param name ship's name
+     * @param cost ship's cost
+     * @param speed ship's speed
+     * @param health ship's health
+     * @param armor ship's armor
+     * @param currentFuel ship's currentFuel
+     * @param maxFuel ship's maxFuel
+     * @param weapons ship's weapon
+     * @param cargoCapacity ship's cargoCapacity
+     */
     public PlayerShip(String name, int cost, int speed, int health, int armor, int currentFuel,
                       int maxFuel, int weapons, int cargoCapacity) {
-        super("Gnat",0, 30, 75, 10, 14, 14, 2, 15);
-    }
-
-    public int getCurrentFuel() {
-        return currentFuel;
-    }
-
-    public void setCurrentFuel(int currentFuel) {
-        this.currentFuel = currentFuel;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        if(cost >= 0) {
-            this.cost = cost;
-        } else {
-            throw new IllegalArgumentException("Cost is less than zero.");
-        }
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        if(speed > 0) {
-            this.speed = speed;
-        } else {
-            throw new IllegalArgumentException("Speed is less than or equal to zero.");
-        }
-
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public String getName() {
-        return name;
+        super(name, cost, speed, health, armor, currentFuel, maxFuel, weapons, cargoCapacity);
     }
 
     @Override
+    /**
+     * Fly method
+     */
     public void fly() {
     }
 
     @Override
+    /**
+     * Shoot method
+     */
     public void shoot() {
     }
 
     @Override
-    public void repair() {
-        this.health = 100;
-    }
+    /**
+     * Repair method
+     */
+    public void repair() { this.setHealth(100); }
 
     @Override
+    /**
+     * Upgrade method
+     */
     public void upgrade() {
-        armor += 5;
-        weapons += 1;
-        cargoCapacity += 2;
+        this.setArmor(getArmor() + 5);
+        this.setWeapons(getWeapons() + 1);
+        this.setCargoCapacity(getCargoCapacity() + 2);
     }
 }

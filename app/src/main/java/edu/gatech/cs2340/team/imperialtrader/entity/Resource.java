@@ -18,7 +18,12 @@ public enum Resource {
     public String toString() {
         return this.getName();
     }
-    private Resource(int resourseKey, String name) {
+    /**
+     * Constructor for Resource
+     * @param resourceKey resourceKey that matches the enum.
+     * @param name name of the resource.
+     */
+    private Resource(int resourceKey, String name) {
         this.resourseKey = resourseKey;
         this.name = name;
     }

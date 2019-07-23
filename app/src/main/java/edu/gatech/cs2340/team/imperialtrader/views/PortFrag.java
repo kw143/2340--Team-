@@ -27,6 +27,10 @@ public class PortFrag extends Fragment {
     private PortClickListener portClickListener;
 
     @Override
+    /**
+     * onAttach method
+     * @param context Context
+     */
     public void onAttach(Context context) {
         super.onAttach(context);
 
@@ -40,6 +44,13 @@ public class PortFrag extends Fragment {
         }
     }
 
+    /**
+     * Static method to enforce price variance
+     * @param newPrice
+     * @param variance
+     * @param base
+     * @return new price
+     */
     public static int priceVarianceEnforce(double newPrice, double variance, int base) {
         double actualPrice = newPrice;
         if (newPrice > (base * (1 + (0.01 * variance)))) {
@@ -51,6 +62,13 @@ public class PortFrag extends Fragment {
         return (int)actualPrice;
     }
 
+    /**
+     * Price calculation method
+     * @param Re region
+     * @param quantity quantity of good
+     * @param type type of good
+     * @return generated price
+     */
     public static int priceCalc(Region Re, double quantity, Good type) {
         double price = type.getBasePrice();
         TechLevel tech = Re.getTechLevel();
@@ -81,6 +99,13 @@ public class PortFrag extends Fragment {
 
     @Nullable
     @Override
+    /**
+     * Method for onCreateView
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return View
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.port,

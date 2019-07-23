@@ -21,6 +21,10 @@ public class StatusFrag extends Fragment {
     private StatusClickListener statusClickListener;
 
     @Override
+    /**
+     * onAttach method
+     * @param context Context
+     */
     public void onAttach(Context context) {
         super.onAttach(context);
 
@@ -34,6 +38,13 @@ public class StatusFrag extends Fragment {
 
     @Nullable
     @Override
+    /**
+     * Method for onCreateView
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return View
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.player_current_status,

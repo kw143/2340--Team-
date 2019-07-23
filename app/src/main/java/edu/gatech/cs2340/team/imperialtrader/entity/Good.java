@@ -38,6 +38,22 @@ public enum Good {
     private double MTL;
     private double MTH;
 
+    /**
+     * Creates a Good object holding given data
+     *
+     * @param name name
+     * @param MLTP MLTP
+     * @param MLTU MLTU
+     * @param TTP TTP
+     * @param basePrice basePrice of Good
+     * @param IPL IPL
+     * @param var var
+     * @param IE IE
+     * @param CR CR
+     * @param ER ER
+     * @param MTL MTL
+     * @param MTH MTH
+     */
     Good(String name, TechLevel MLTP, TechLevel MLTU, TechLevel TTP, int basePrice,
          double IPL, double var, RadicalPriceEvent IE,
          Resource CR, Resource ER, double MTL, double MTH) {
@@ -57,60 +73,106 @@ public enum Good {
     }
 
 
-
+    /**
+     * Getter for MLTP
+     * @return MLTP
+     */
     public TechLevel getMLTP() {
         return MLTP;
     }
 
-
+    /**
+     * Getter for MLTU
+     * @return MLTU
+     */
     public TechLevel getMLTU() {
         return MLTU;
     }
 
-
+    /**
+     * Getter for TTP
+     * @return TTP
+     */
     public TechLevel getTTP() {
         return TTP;
     }
 
-
+    /**
+     * Getter for base price of a good
+     * @return basePrice
+     */
     public int getBasePrice() {
         return basePrice;
     }
 
-
+    /**
+     * Getter for IPL
+     * @return IPL
+     */
     public double getIPL() {
         return IPL;
     }
 
-
+    /**
+     * Getter for var
+     * @return var
+     */
     public double getVar() {
         return var;
     }
 
+    /**
+     * Getter for IE
+     * @return IE
+     */
     public RadicalPriceEvent getIE() {
         return IE;
     }
 
+    /**
+     * Getter for CR
+     * @return CR
+     */
     public Resource getCR() {
         return CR;
     }
 
+    /**
+     * Getter for ER
+     * @return ER
+     */
     public Resource getER() {
         return ER;
     }
 
+    /**
+     * Getter for MTL
+     * @return MTL
+     */
     public double getMTL() {
         return MTL;
     }
 
+    /**
+     * Getter for MTH
+     * @return MTH
+     */
     public double getMTH() {
         return MTH;
     }
 
+    /**
+     * Getter for name
+     * @return name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Getter for price
+     * @return price
+     */
     public double getPrice() {
         return price;
     }

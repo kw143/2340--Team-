@@ -15,11 +15,19 @@ public class ConfigurationViewModel extends AndroidViewModel {
 
     private PlayerInteractor interactor;
 
+    /**
+     * Constructor for ConfigurationViewModel
+     * @param application Application
+     */
     public ConfigurationViewModel(@NonNull Application application) {
         super(application);
         interactor = Model.getInstance().getPlayerInteractor();
     }
 
+    /**
+     * Method to create a player
+     * @param p Player
+     */
     public void createPlayer(Player p) {
         interactor.createPlayer(p);
     }

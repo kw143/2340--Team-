@@ -13,15 +13,27 @@ public enum RadicalPriceEvent {
 
     private final String event;
 
+    /**
+     * Constructor for a RadicalPriceEvent
+     * @param event Random event
+     */
     RadicalPriceEvent(String event) {
         this.event = event;
     }
 
     @Override
+    /**
+     * Overriding object toString method
+     * @return event
+     */
     public String toString() {
         return event;
     }
 
+    /**
+     * Getter for a random event
+     * @return random events
+     */
     public static RadicalPriceEvent getRandomEvent() {
         Random random = new Random();
         return values()[random.nextInt(values().length)];

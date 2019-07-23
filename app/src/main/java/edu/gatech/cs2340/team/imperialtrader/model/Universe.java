@@ -58,6 +58,9 @@ public class Universe {
                     new Region("Washington", "Seattle"),
                     new Region("Vietnam", "Ho Chi Minh City")));
 
+    /**
+     * Default Universe constructor
+     */
     public Universe() {
         homeRegion = new Region("HomeCountry", "Home Port");
         regionList.add(homeRegion);
@@ -92,37 +95,72 @@ public class Universe {
         player.setCurRegion(homeRegion, -1);
     }
 
+    /**
+     * homeRegion setter
+     * @param homeRegion homeRegion
+     */
     public void setHomeRegion(Region homeRegion) {
         this.homeRegion = homeRegion;
     }
 
+    /**
+     * Region list setter
+     * @param regionList list of regions
+     */
     public void setRegionList(ArrayList<Region> regionList) {
         this.regionList = regionList;
     }
 
+    /**
+     * Method to add region to regionList
+     * @param r Region
+     */
     public void addRegion(Region r) {
         regionList.add(r);
     }
 
+    /**
+     * Method to remove region from regionLits
+     * @param r Region
+     */
     public void removeRegion(Region r) {
         regionList.remove(r);
     }
 
+    /**
+     * Getter for regionList
+     * @return regionList
+     */
     public ArrayList<Region> getRegionList() {
         return regionList;
     }
 
+    /**
+     * Getter for homeRegion
+     * @return homeRegion
+     */
     public Region getHomeRegion() {
         return homeRegion;
     }
 
+    /**
+     * Method to create a new Player
+     * @param p Player
+     */
     public void createPlayer(Player p) {
         player = p;
     }
 
-
+    /**
+     * Getter for Player
+     * @return Player
+     */
     public Player getPlayer() { return player; }
 
+    /**
+     * Method to update a player
+     * @param p Player
+     */
     public void updatePlayer(Player p) {
         player = p;
     }

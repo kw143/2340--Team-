@@ -6,19 +6,36 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 
 
 public class PlayerInteractor extends Interactor {
+
+    /**
+     * Constructor for PlayerInteractor
+     * @param dat Universe data
+     */
     public PlayerInteractor(Universe dat) {
         super(dat);
     }
 
 
+    /**
+     * Method to create a player
+     * @param p Player
+     */
     public void createPlayer (Player p) {
         getUniverse().createPlayer(p);
     }
 
+    /**
+     * Getter for player
+     * @return Player
+     */
     public Player getPlayer () {
         return getUniverse().getPlayer();
     }
 
+    /**
+     * Method to update a player
+     * @param p Player
+     */
     public void updatePlayer(Player p) {
         getUniverse().updatePlayer(p);
         Log.d("APP", "Interactor: updating player: " + p);

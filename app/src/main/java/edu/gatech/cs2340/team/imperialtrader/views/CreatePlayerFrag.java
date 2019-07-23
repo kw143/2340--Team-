@@ -30,6 +30,10 @@ public class CreatePlayerFrag extends Fragment {
     private CreatePlayerClickListener cpClickListener;
 
     @Override
+    /**
+     * Method for onAttach
+     * @param context Context
+     */
     public void onAttach(Context context) {
         super.onAttach(context);
 
@@ -76,6 +80,13 @@ public class CreatePlayerFrag extends Fragment {
 
     @Nullable
     @Override
+    /**
+     * Method for onCreateView
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return View
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
