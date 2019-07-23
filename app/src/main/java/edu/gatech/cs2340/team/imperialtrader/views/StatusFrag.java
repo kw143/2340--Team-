@@ -67,6 +67,7 @@ public class StatusFrag extends Fragment {
         TextView ship = view.findViewById(R.id.ship);
         TextView money = view.findViewById(R.id.mon);
         TextView currentFuel = view.findViewById(R.id.currentFuel);
+        TextView health = view.findViewById(R.id.currentHealth);
 
         Button invButton = view.findViewById(R.id.invbutton);
 
@@ -79,6 +80,7 @@ public class StatusFrag extends Fragment {
         ship.setText(String.valueOf(player.getShip().getName()));
         money.setText(String.valueOf(player.getMoney()));
         currentFuel.setText(String.valueOf(player.getShip().getCurrentFuel()));
+        health.setText(String.valueOf(player.getShip().getHealth()));
 
         invButton.setOnClickListener(v -> statusClickListener.toInvClicked());
 
