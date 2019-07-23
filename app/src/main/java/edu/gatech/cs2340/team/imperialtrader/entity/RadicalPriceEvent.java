@@ -4,6 +4,9 @@ import android.support.annotation.NonNull;
 
 import java.util.Random;
 
+/**
+ * Random price inflation/deflation event creator
+ */
 public enum RadicalPriceEvent {
     DROUGHT("Drought"),
     COLD("Cold"),

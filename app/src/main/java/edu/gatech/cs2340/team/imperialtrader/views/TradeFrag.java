@@ -24,6 +24,10 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Resource;
 import edu.gatech.cs2340.team.imperialtrader.entity.TechLevel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
+/**
+ * Fragment for trading
+ */
+
 public class TradeFrag extends Fragment {
 
     private TradeClickListener tradeClickListener;
@@ -307,6 +311,14 @@ public class TradeFrag extends Fragment {
         player.getCurRegion().setGoodsInRegion(availableGoods);
     }
 
+    /**
+     * Method to sell items
+     * @param sellQuantity quantity
+     * @param profit profit
+     * @param player player
+     * @param currentInv player's inventory
+     * @param availableGoods available goods
+     */
     public static void sell(int sellQuantity, int profit, Player player, Inventory currentInv,
                            Inventory availableGoods) {
         // set inventory to the new inventory

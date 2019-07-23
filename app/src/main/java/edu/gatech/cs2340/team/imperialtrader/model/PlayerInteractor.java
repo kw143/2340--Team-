@@ -1,9 +1,19 @@
 package edu.gatech.cs2340.team.imperialtrader.model;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.util.Log;
 
-import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import edu.gatech.cs2340.team.imperialtrader.views.MainActivity;
+
+/**
+ * Class for our Player interactors
+ */
 
 public class PlayerInteractor extends Interactor {
 
@@ -21,7 +31,34 @@ public class PlayerInteractor extends Interactor {
      * @param p Player
      */
     public void createPlayer (Player p) {
+
         getUniverse().createPlayer(p);
+
+        writeToFile(p);
+    }
+
+    private void writeToFile (Player p) {
+        Gson gson;
+        gson = new Gson();
+
+        //make object and JSON
+        Player playerState = p;
+        Log.d("APP", ""+playerState);
+        String json = gson.toJson(playerState);
+        Log.d("CurrentFile", json);
+
+
+        //Make file
+        File file = new File(MainActivity.path, "Player.json");
+
+        //write to file
+        try {
+            FileOutputStream stream = new FileOutputStream(file);
+            stream.write(json.getBytes());
+            stream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -39,5 +76,7 @@ public class PlayerInteractor extends Interactor {
     public void updatePlayer(Player p) {
         getUniverse().updatePlayer(p);
         Log.d("APP", "Interactor: updating player: " + p);
+
+        writeToFile(p);
     }
 }

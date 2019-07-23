@@ -19,6 +19,9 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Inventory;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
+/**
+ * Fragment for inventory management
+ */
 public class InvFrag extends Fragment {
 
     private InvClickListener invClickListener;

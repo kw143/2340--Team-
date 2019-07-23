@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+import java.io.File;
+
 import static edu.gatech.cs2340.team.imperialtrader.entity.Good.WATER;
 
 public class Player {
@@ -18,6 +20,7 @@ public class Player {
     private Region curRegion;
     private Good curGood;
 
+
     /**
      * Creates a new Player object with given name and default data
      *
@@ -31,7 +34,6 @@ public class Player {
 
     /**
      * Creates a new Player object with given data
-     *
      * @param name           name of Player
      * @param pilotPoints    pilotPoints of Player
      * @param fighterPoints  fighterPoints of Player

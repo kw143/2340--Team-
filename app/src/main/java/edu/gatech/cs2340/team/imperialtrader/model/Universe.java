@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.model;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -8,10 +9,14 @@ import java.util.Random;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 
+/**
+ * Class for our Universe that holds regions
+ */
 class Universe {
     private Player player = new Player("Default");
     private Region homeRegion;
     private ArrayList<Region> regionList = new ArrayList<>();
+
 
     /**
      * Default Universe constructor

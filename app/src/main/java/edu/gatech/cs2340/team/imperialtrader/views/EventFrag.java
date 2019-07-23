@@ -24,11 +24,18 @@ import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
 import static edu.gatech.cs2340.team.imperialtrader.entity.Good.NARCOTICS;
 
+/**
+ * Fragment for events
+ */
 public class EventFrag extends Fragment {
 
     private EventClickListener eventClickListener;
 
     @Override
+    /**
+     * onAttach method
+     * @paramm context
+     */
     public void onAttach(Context context) {
         super.onAttach(context);
 
@@ -46,6 +53,12 @@ public class EventFrag extends Fragment {
     private Player player;
 
     @Override
+    /**
+     * onCreateView method
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.event,
