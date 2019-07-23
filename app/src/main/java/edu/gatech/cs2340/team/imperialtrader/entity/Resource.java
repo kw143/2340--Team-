@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+import android.support.annotation.NonNull;
+
 public enum Resource {
     NOSPECIALRESOURCES(0, "No Special Resources"), MINERALRICH(1, "Mineral Rich"),
     MINERALPOOR(2, "Mineral Poor"),
@@ -9,12 +11,13 @@ public enum Resource {
     WEIRDMUSHROOMS(9, "Weird Mushrooms"),
     LOTSOFHERBS(10, "Abundant Herbs"), ARTISTIC(11, "Artistic"),
     WARLIKE(12, "Warlike");
-    // --Commented out by Inspection (7/23/2019 12:33 AM):private final int resourseKey;
+    // --Commented out by Inspection (7/23/2019 12:33 AM):private final int resourceKey;
 
     private final String name;
     private String getName() {
         return name;
     }
+    @NonNull
     public String toString() {
         return this.getName();
     }
@@ -23,7 +26,7 @@ public enum Resource {
      * @param resourceKey resourceKey that matches the enum.
      * @param name name of the resource.
      */
-    private Resource(int resourceKey, String name) {
+    Resource(int resourceKey, String name) {
         this.name = name;
     }
 }

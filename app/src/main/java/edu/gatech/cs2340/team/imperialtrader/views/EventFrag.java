@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
+import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,8 +16,10 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.EventViewModel;
+import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
 
 import static edu.gatech.cs2340.team.imperialtrader.entity.Good.NARCOTICS;
@@ -48,13 +51,17 @@ public class EventFrag extends Fragment {
         View view = inflater.inflate(R.layout.event,
                 container, false);
         playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+        RegionViewModel regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
         player = playerViewModel.getPlayer();
         EventViewModel eventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);
 
         TextView eventMessage = view.findViewById(R.id.eventMessage);
+        TextView deathMessage = view.findViewById(R.id.deathMessage);
 
         Button proceedButton = view.findViewById(R.id.proceedButton);
         String returnMessage = eventViewModel.randomEvent();
+
+        final int delay = 5000;
 
         if ("Pirates".equals(returnMessage)) {
             eventMessage.setText("A ship of pirates approaches you! They demand that you "
@@ -81,11 +88,21 @@ public class EventFrag extends Fragment {
                 resultMessage.setText("You defeated the pirates and stole $1000, "
                         + "but your ship lost a lot of health.");
                 resultMessage.setVisibility(View.VISIBLE);
-                proceedButton.setVisibility(View.VISIBLE);
                 fightButton.setVisibility(View.INVISIBLE);
                 obligeButton.setVisibility(View.INVISIBLE);
                 question.setVisibility(View.INVISIBLE);
                 line.setVisibility(View.INVISIBLE);
+                if (player.getShip().getHealth() <= 0) {
+                    deathMessage.setVisibility(View.VISIBLE);
+                    player = new Player("default");
+                    player.setCurRegion(regionViewModel.getHomeRegion(), -1);
+                    playerViewModel.updatePlayer(player);
+                    new android.os.Handler().postDelayed(
+                            () -> eventClickListener.toHomeClicked(),
+                            delay);
+                } else {
+                    proceedButton.setVisibility(View.VISIBLE);
+                }
             });
 
             obligeButton.setText("Oblige.");
@@ -95,16 +112,27 @@ public class EventFrag extends Fragment {
                 int halfMoney = player.getMoney() / 2;
                 
                 player.setMoney(player.getMoney() - halfMoney);
+                player.getShip().setHealth(player.getShip().getHealth() - 10);
                 playerViewModel.updatePlayer(player);
-                resultMessage.setText("You surrendered and the pirates took $"
-                        + halfMoney + " from you.");
+                resultMessage.setText("You surrendered. The pirates took $"
+                        + halfMoney + " and did 10 damage to your ship.");
             
                 resultMessage.setVisibility(View.VISIBLE);
-                proceedButton.setVisibility(View.VISIBLE);
                 fightButton.setVisibility(View.INVISIBLE);
                 obligeButton.setVisibility(View.INVISIBLE);
                 question.setVisibility(View.INVISIBLE);
                 line.setVisibility(View.INVISIBLE);
+                if (player.getShip().getHealth() <= 0) {
+                    deathMessage.setVisibility(View.VISIBLE);
+                    player = new Player("default");
+                    player.setCurRegion(regionViewModel.getHomeRegion(), -1);
+                    playerViewModel.updatePlayer(player);
+                    new android.os.Handler().postDelayed(
+                            () -> eventClickListener.toHomeClicked(),
+                            delay);
+                } else {
+                    proceedButton.setVisibility(View.VISIBLE);
+                }
             });
 
         } else if ("Police".equals(returnMessage)) {
@@ -133,11 +161,21 @@ public class EventFrag extends Fragment {
                 resultMessage.setText("You defeated the police and stole $300, "
                         + "but your ship lost health.");
                 resultMessage.setVisibility(View.VISIBLE);
-                proceedButton.setVisibility(View.VISIBLE);
                 fightButton.setVisibility(View.INVISIBLE);
                 obligeButton.setVisibility(View.INVISIBLE);
                 question.setVisibility(View.INVISIBLE);
                 line.setVisibility(View.INVISIBLE);
+                if (player.getShip().getHealth() <= 0) {
+                    deathMessage.setVisibility(View.VISIBLE);
+                    player = new Player("default");
+                    player.setCurRegion(regionViewModel.getHomeRegion(), -1);
+                    playerViewModel.updatePlayer(player);
+                    new android.os.Handler().postDelayed(
+                            () -> eventClickListener.toHomeClicked(),
+                            delay);
+                } else {
+                    proceedButton.setVisibility(View.VISIBLE);
+                }
             });
 
             obligeButton.setText("Oblige.");
@@ -164,6 +202,15 @@ public class EventFrag extends Fragment {
         } else {
             // not police or pirates
             eventMessage.setText(returnMessage);
+            if (player.getShip().getHealth() <= 0) {
+                deathMessage.setVisibility(View.VISIBLE);
+                player = new Player("default");
+                player.setCurRegion(regionViewModel.getHomeRegion(), -1);
+                playerViewModel.updatePlayer(player);
+                new android.os.Handler().postDelayed(
+                        () -> eventClickListener.toHomeClicked(),
+                        delay);
+            }
         }
 
 

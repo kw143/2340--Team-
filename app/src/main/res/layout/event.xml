@@ -91,20 +91,40 @@
         app:layout_constraintTop_toBottomOf="@+id/staticLine"
         app:layout_constraintVertical_bias="0.19999999" />
 
+    <TextView
+        android:id="@+id/deathMessage"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:shadowColor="#505050"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:text="Your ship lost too much health and you died! Returning to the main screen in 5 seconds."
+        android:textColor="#B64747"
+        android:textColorLink="#8DE67F"
+        android:textSize="16sp"
+        android:typeface="serif"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_container"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_container"
+        app:layout_constraintStart_toStartOf="@+id/fragment_container"
+        app:layout_constraintTop_toBottomOf="@+id/resultMessage"
+        app:layout_constraintVertical_bias="0.19999999" />
+
     <Button
         android:id="@+id/proceedButton"
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:layout_marginLeft="105dp"
         android:layout_marginRight="105dp"
-        android:layout_marginTop="20dp"
         android:background="#00000000"
         android:text="Proceed"
         android:textColor="#B8B8B8"
         android:textSize="20sp"
         android:typeface="sans"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/deathMessage" />
 
     <Button
         android:id="@+id/fightButton"

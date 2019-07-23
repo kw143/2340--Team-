@@ -16,11 +16,12 @@ public class HomeFrag extends Fragment {
 
     private HomeClickListener homeClickListener;
 
-    @Override
+
     /**
      * onAttach method
      * @param context Context
      */
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 

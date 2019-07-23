@@ -11,7 +11,7 @@ abstract class Interactor {
      * Interactor constructor given a Universe
      * @param dat
      */
-    protected Interactor(Universe dat) {
+    Interactor(Universe dat) {
         gameData = dat;
     }
 
@@ -19,7 +19,7 @@ abstract class Interactor {
      * Getter for Universe's data
      * @return Universe's data
      */
-    protected Universe getUniverse() {
+    Universe getUniverse() {
         return gameData;
     }
 }

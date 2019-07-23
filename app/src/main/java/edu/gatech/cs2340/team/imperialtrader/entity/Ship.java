@@ -1,6 +1,6 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
-public abstract class Ship {
+abstract class Ship {
 
     private String name;
     private int cost;
@@ -15,7 +15,7 @@ public abstract class Ship {
     /**
      * Default Ship Constructor
      */
-    public Ship() {
+    Ship() {
         this("", 0, 25, 50, 5, 20, 20, 1,5 );
     }
 
@@ -31,8 +31,8 @@ public abstract class Ship {
      * @param weapons Ship's weapons
      * @param cargoCapacity Ship's cargoCapacity
      */
-    public Ship(String name, int cost, int speed, int health, int armor, int currentFuel,
-                int maxFuel, int weapons, int cargoCapacity) {
+    Ship(String name, int cost, int speed, int health, int armor, int currentFuel,
+         int maxFuel, int weapons, int cargoCapacity) {
         this.name = name;
         this.cost = cost;
         this.speed = speed;
@@ -104,7 +104,7 @@ public abstract class Ship {
      * Set Ship's health
      * @param health
      */
-    public void setHealth(int health) {
+    void setHealth(int health) {
         this.health = health;
     }
 
@@ -112,7 +112,7 @@ public abstract class Ship {
      * Get Ship's armor
      * @return armor
      */
-    public int getArmor() {
+    int getArmor() {
         return armor;
     }
 
@@ -120,7 +120,7 @@ public abstract class Ship {
      * Set Ship's armor
      * @param armor
      */
-    public void setArmor(int armor) {
+    void setArmor(int armor) {
         this.armor = armor;
     }
 
@@ -160,7 +160,7 @@ public abstract class Ship {
      * Get Ship's weapons
      * @return weapons
      */
-    public int getWeapons() {
+    int getWeapons() {
         return weapons;
     }
 
@@ -168,7 +168,7 @@ public abstract class Ship {
      * Set Ship's weapons
      * @param weapons
      */
-    public void setWeapons(int weapons) {
+    void setWeapons(int weapons) {
         this.weapons = weapons;
     }
 
@@ -176,7 +176,7 @@ public abstract class Ship {
      * Get Ship's cargoCapacity
      * @return cargoCapacity
      */
-    public int getCargoCapacity() {
+    int getCargoCapacity() {
         return cargoCapacity;
     }
 
@@ -184,7 +184,7 @@ public abstract class Ship {
      * Set Ship's cargoCapacity
      * @param cargoCapacity
      */
-    public void setCargoCapacity(int cargoCapacity) {
+    void setCargoCapacity(int cargoCapacity) {
         this.cargoCapacity = cargoCapacity;
     }
 

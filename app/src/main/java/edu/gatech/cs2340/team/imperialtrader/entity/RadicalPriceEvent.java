@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+import android.support.annotation.NonNull;
+
 import java.util.Random;
 
 public enum RadicalPriceEvent {
@@ -22,6 +24,7 @@ public enum RadicalPriceEvent {
     }
 
     @Override
+    @NonNull
     /**
      * Overriding object toString method
      * @return event

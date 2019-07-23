@@ -7,7 +7,7 @@ public class PlayerShip {
     private int speed;
     private int health;
     private int currentFuel;
-    private int maxFuel;
+    private final int maxFuel;
 
     /**
      * Constructor for PlayerShip

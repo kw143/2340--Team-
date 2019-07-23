@@ -78,6 +78,16 @@ public class MainActivity extends AppCompatActivity
         loadFragment(new CreatePlayerFrag());
     }
 
+    @Override
+    /**
+     * toHomeClicked method
+     */
+    public void toHomeClicked() {
+        loadFragment(new HomeFrag());
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView.setSelectedItemId(R.id.navigation_home);
+    }
+
     /**
      * onCreateClick method
      */

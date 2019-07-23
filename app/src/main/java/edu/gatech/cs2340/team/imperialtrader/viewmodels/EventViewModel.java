@@ -28,7 +28,11 @@ public class EventViewModel extends AndroidViewModel {
         final int bound = 12;
         final int number = random.nextInt(bound);
 
-        if (number == 4) {
+        if (number == 3) {
+            player.getShip().setHealth(player.getShip().getHealth() - 10);
+            updatePlayer(player);
+            return "Your ship went through a bad storm and lost 10 health.";
+        } else if (number == 4) {
             if (player.getInventory().hasGood(WATER)) {
                 player.getInventory().subtract(WATER, player.getInventory().getCount(WATER) / 2);
             }
