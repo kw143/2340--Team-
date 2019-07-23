@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
@@ -39,10 +40,7 @@ public class MapFrag extends Fragment {
         }
     }
 
-    private PlayerViewModel playerViewModel;
-
     private ArrayList<Region> regionList;
-    private Player player;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,9 +48,9 @@ public class MapFrag extends Fragment {
         View view = inflater.inflate(R.layout.map,
                 container, false);
         RegionViewModel regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
-        playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+        PlayerViewModel playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         regionList = regionViewModel.getRegionList();
-        player = playerViewModel.getPlayer();
+        Player player = playerViewModel.getPlayer();
 
 
         TextView currentFuel = view.findViewById(R.id.currentFuel);
@@ -65,7 +63,7 @@ public class MapFrag extends Fragment {
         Button helpButton = view.findViewById(R.id.helpButton);
 
 
-        Context context = getActivity().getApplicationContext();
+        Context context = Objects.requireNonNull(getActivity()).getApplicationContext();
         Toast helpToast = Toast.makeText(context, "Tap a region to preview or travel to it",
                 Toast.LENGTH_SHORT);
         helpButton.setText("?");
@@ -177,8 +175,9 @@ public class MapFrag extends Fragment {
         return view;
     }
     public static double distanceCalc(Region region1, Region region2) {
+        final double pow = .5;
         return (Math.pow(
                 Math.pow(region1.getXcoord() - region2.getXcoord(), 2) +
-                        Math.pow(region1.getYcoord() - region2.getYcoord(), 2), .5));
+                        Math.pow(region1.getYcoord() - region2.getYcoord(), 2), pow));
     }
 }

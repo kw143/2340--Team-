@@ -12,19 +12,19 @@ import java.util.Map;
  * It is a Singleton so that it can be accessed from anywhere in the application
  */
 
-public class Model {
+public final class Model {
 
     /** the data repository */
-    private Universe gameDat;
+    private final Universe gameDat;
 
-    private Map<String, Object> interactorMap;
+    private final Map<String, Object> interactorMap;
 
     /** Singleton Pattern Code
      *  this allows us to get access to this class
      *  anywhere, which will allow our View models to access
      *  the "back end"  more easily
      */
-    private static  Model instance = new Model();
+    private static final Model instance = new Model();
 
     public static Model getInstance() { return instance; }
 

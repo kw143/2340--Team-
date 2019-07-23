@@ -24,19 +24,19 @@ public enum Good {
     ROBOTS("Robots",  TechLevel.POSTINDUSTRIAL,  TechLevel.EARLYINDUSTRIAL,  TechLevel.HITECH,
             5000,-150,100,RadicalPriceEvent.LACKOFWORKERS, null,null,3500,5000);
 
-    private String name;
-    private int price;
-    private TechLevel MLTP;
-    private TechLevel MLTU;
-    private TechLevel TTP;
-    private int basePrice;
-    private double IPL;
-    private double var;
-    private RadicalPriceEvent IE;
-    private Resource CR;
-    private Resource ER;
-    private double MTL;
-    private double MTH;
+    private final String name;
+    // --Commented out by Inspection (7/23/2019 12:31 AM):private int price;
+    private final TechLevel MLTP;
+    private final TechLevel MLTU;
+    private final TechLevel TTP;
+    private final int basePrice;
+    private final double IPL;
+    private final double var;
+    private final RadicalPriceEvent IE;
+    private final Resource CR;
+    private final Resource ER;
+    private final double MTL;
+    private final double MTH;
 
     Good(String name, TechLevel MLTP, TechLevel MLTU, TechLevel TTP, int basePrice,
          double IPL, double var, RadicalPriceEvent IE,
@@ -109,9 +109,5 @@ public enum Good {
 
     public String getName() {
         return this.name;
-    }
-
-    public double getPrice() {
-        return price;
     }
 }

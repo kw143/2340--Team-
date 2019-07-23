@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
@@ -44,7 +45,7 @@ public class RegionFrag extends Fragment {
 
     private PlayerViewModel viewModel;
 
-    private TextView errorFuel;
+    // --Commented out by Inspection (7/23/2019 12:32 AM):private TextView errorFuel;
 
 
 
@@ -59,7 +60,7 @@ public class RegionFrag extends Fragment {
         viewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         RegionViewModel regionViewModel = ViewModelProviders.of(this).get(RegionViewModel.class);
         player = viewModel.getPlayer();
-        Region region = player.getCurRegion();
+        // Region region = player.getCurRegion();
         regionList = regionViewModel.getRegionList();
         //errorFuel = view.findViewById(R.id.errorFuel);
 
@@ -92,13 +93,16 @@ public class RegionFrag extends Fragment {
         }
         //img.setMinimumWidth(regionList.get(10).getName().length() * 20);
         //img.setMaxWidth(regionList.get(10).getName().length() * 20);
-        regionLine.getLayoutParams().width = regionList.get(10).getName().length() * 50;
-        regionLine2.getLayoutParams().width = regionList.get(10).getHome().length() * 30;
+        final int lineWidth = 50;
+        final int lineWidth2 = 30;
+        regionLine.getLayoutParams().width = regionList.get(10).getName().length() * lineWidth;
+        regionLine2.getLayoutParams().width = regionList.get(10).getHome().length() * lineWidth2;
 
         buttonMap.setOnClickListener(v -> regionClickListener.mapClicked());
 
         buttonPort.setOnClickListener(v -> {
-            if ((player.getShip().getCurrentFuel() * 50) >= distanceCalc(player.getCurRegion(),
+            final int factor = 50;
+            if ((player.getShip().getCurrentFuel() * factor) >= distanceCalc(player.getCurRegion(),
                     regionList.get(10))) {
                 player.setCurRegion(regionList.get(10), distanceCalc(player.getCurRegion(),
                         regionList.get(10)));
@@ -106,7 +110,7 @@ public class RegionFrag extends Fragment {
                 regionClickListener.toEventClicked();
             } else {
                 Log.d("Error", "Not enough fuel left to travel there!");
-                Context context = getActivity().getApplicationContext();
+                Context context = Objects.requireNonNull(getActivity()).getApplicationContext();
                 Toast noFuel = Toast.makeText(context, "Not enough fuel to travel that far!",
                 Toast.LENGTH_LONG);
                 noFuel.show();
@@ -126,9 +130,10 @@ public class RegionFrag extends Fragment {
         return view;
     }
     private static double distanceCalc(Region region1, Region region2) {
+        final double pow = .5;
         return (Math.pow(
                 Math.pow(region1.getXcoord() - region2.getXcoord(), 2) +
-                        Math.pow(region1.getYcoord() - region2.getYcoord(), 2), .5));
+                        Math.pow(region1.getYcoord() - region2.getYcoord(), 2), pow));
     }
 
 }

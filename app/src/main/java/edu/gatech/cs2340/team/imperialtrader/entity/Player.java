@@ -20,12 +20,14 @@ public class Player {
     private Region curRegion;
     private Good curGood;
 
-    public Player(String name) { this(name, 0, 0, 0, 0,
-            "Easy", 1000, new PlayerShip("Gnat",0, 30, 75, 10,
-                    14, 14, 2, 15)); }
+    public Player(String name) {
+        this(name, 0, 0, 0, 0,
+                "Easy", 1000, new PlayerShip("Gnat",0, 30, 75,
+                        14, 14));
+    }
 
-    public Player(String name, int pilotPoints, int fighterPoints, int traderPoints,
-                  int engineerPoints, String dif, int money, PlayerShip ship) {
+    private Player(String name, int pilotPoints, int fighterPoints, int traderPoints,
+                   int engineerPoints, String dif, int money, PlayerShip ship) {
         this.name = name;
         this.pilotPoints = pilotPoints;
         this.fighterPoints = fighterPoints;
@@ -62,9 +64,10 @@ public class Player {
     }
 
     public void setCurRegion(Region r, double distance) {
+        final int multiplier = 50;
         if (distance > 0) {
-            this.getShip().setCurrentFuel((int) ((this.getShip().getCurrentFuel() * 50) - distance)
-                    / 50);
+            this.getShip().setCurrentFuel((int) ((this.getShip().getCurrentFuel() * multiplier)
+                    - distance) / multiplier);
         }
         curRegion = r;
     }

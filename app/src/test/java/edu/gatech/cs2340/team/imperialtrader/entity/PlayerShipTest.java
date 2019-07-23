@@ -4,10 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class PlayerShipTest {
-    PlayerShip ship;
+    private PlayerShip ship;
     @Before
     public void setup(){
         ship = new PlayerShip("Gnat",0, 30, 75, 10, 14, 14, 2, 15);

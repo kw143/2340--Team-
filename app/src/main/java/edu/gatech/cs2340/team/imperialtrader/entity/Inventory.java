@@ -5,7 +5,7 @@ import java.util.HashMap;
 import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 
 public class Inventory {
-    HashMap<Good, Integer> inventoryMap;
+    private final HashMap<Good, Integer> inventoryMap;
 
     public int getCapacity() {
         return capacity;
@@ -47,16 +47,18 @@ public class Inventory {
     }
 
     public int getCount(Good good) {
-        try {
+        if (inventoryMap.containsKey(good)) {
             return inventoryMap.get(good);
-        } catch (NullPointerException e) {
+        } else {
             return 0;
         }
     }
 
-    public boolean hasCount(Good good, int count) {
-        return (inventoryMap.get(good) >= count);
-    }
+// --Commented out by Inspection START (7/23/2019 12:31 AM):
+//    public boolean hasCount(Good good, int count) {
+//        return (inventoryMap.get(good) >= count);
+//    }
+// --Commented out by Inspection STOP (7/23/2019 12:31 AM)
 
     public boolean hasGood(Good good) {
         return (inventoryMap.get(good) != null);
@@ -82,9 +84,11 @@ public class Inventory {
     public int subtract(Good good, int count) {
         if (count < inventoryMap.get(good)) {
             inventoryMap.put(good, inventoryMap.get(good) - count);
+            curCapacity -= count;
             return count;
         } else if (count == inventoryMap.get(good)) {
             inventoryMap.remove(good);
+            curCapacity -= count;
             size--;
             return count;
         } else if (count >= inventoryMap.get(good)) {

@@ -42,11 +42,13 @@ public class PortFrag extends Fragment {
 
     public static int priceVarianceEnforce(double newPrice, double variance, int base) {
         double actualPrice = newPrice;
-        if (newPrice > (base * (1 + (0.01 * variance)))) {
-            actualPrice = (base * (1 + (0.01 * variance)));
+        final double factor = 0.01;
+        final double factor2 = 0.009;
+        if (newPrice > (base * (1 + (factor * variance)))) {
+            actualPrice = (base * (1 + (factor * variance)));
         }
-        if (newPrice < (base * (1 - (0.009 * variance)))) {
-            actualPrice = (base * (1 - (0.009 * variance)));
+        if (newPrice < (base * (1 - (factor2 * variance)))) {
+            actualPrice = (base * (1 - (factor2 * variance)));
         }
         return (int)actualPrice;
     }
@@ -58,17 +60,21 @@ public class PortFrag extends Fragment {
         Resource res = Re.getResource();
         //price change based on tech level
         price += type.getIPL() * (tech.ordinal() - type.getMLTP().ordinal());
+        final int factor = 2;
+        final double factor2 = 0.7;
+        final double factor3 = 1.3;
+        final int factor4 = 50;
         if (event.ordinal() == type.getIE().ordinal()) {
-            price *= 2;
+            price *= factor;
         }
         if((type.getCR() != null) && (res.ordinal() == type.getCR().ordinal())) {
-            price *= 0.7;
+            price *= factor2;
         }
         if((type.getER() != null) && (res.ordinal() == type.getER().ordinal())) {
-            price *= 1.3;
+            price *= factor3;
         }
         if ((quantity / 1000) > 1) {
-            price /= (quantity / 1000 / 50) + 1;
+            price /= (quantity / 1000 / factor4) + 1;
         } else {
             price *= ((1000 - quantity) / 100) + 1;
         }
@@ -166,15 +172,16 @@ public class PortFrag extends Fragment {
 
 
         refuelButton.setOnClickListener(v -> {
-            player.setMoney(player.getMoney()-100);
-            player.getShip().setCurrentFuel(player.getShip().getCurrentFuel()+10);
+            player.setMoney(player.getMoney() - 100);
+            player.getShip().refuel();
             playerViewModel.updatePlayer(player);
             portClickListener.onRefuelClicked();
         });
 
         repairButton.setOnClickListener(v -> {
-            player.setMoney(player.getMoney()-200);
-            player.getShip().setHealth(player.getShip().getHealth()+50);
+            final int repairCost = 400;
+            player.setMoney(player.getMoney() - repairCost);
+            player.getShip().repair();
             playerViewModel.updatePlayer(player);
             portClickListener.onRepairClicked();
         });

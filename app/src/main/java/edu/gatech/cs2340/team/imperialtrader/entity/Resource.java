@@ -9,17 +9,16 @@ public enum Resource {
     WEIRDMUSHROOMS(9, "Weird Mushrooms"),
     LOTSOFHERBS(10, "Abundant Herbs"), ARTISTIC(11, "Artistic"),
     WARLIKE(12, "Warlike");
-    private int resourseKey;
+    // --Commented out by Inspection (7/23/2019 12:33 AM):private final int resourseKey;
 
-    private String name;
+    private final String name;
     private String getName() {
         return name;
     }
     public String toString() {
         return this.getName();
     }
-    private Resource(int resourseKey, String name) {
-        this.resourseKey = resourseKey;
+    Resource(int resourceKey, String name) {
         this.name = name;
     }
 }

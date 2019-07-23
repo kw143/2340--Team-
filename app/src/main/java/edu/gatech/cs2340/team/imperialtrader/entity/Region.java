@@ -13,9 +13,9 @@ public class Region {
     private RadicalPriceEvent curEvent;
 
 
-    int regionCapacity = 10000;
+    private final int regionCapacity = 10000;
     private Inventory goodsInRegion = new Inventory(regionCapacity);
-    Random rand = new Random();
+    private final Random rand = new Random();
 
 
     public Region(String name, String home, int xCoord, int yCoord,
@@ -34,8 +34,8 @@ public class Region {
      * constructor chain
      */
     public Region(String name, String home) {
-        int xbound = 150;
-        int rbound = 13;
+        final int xbound = 150;
+        final int rbound = 13;
         int x = rand.nextInt(xbound);
         int y = rand.nextInt(100);
         int t = rand.nextInt(8);
@@ -51,11 +51,11 @@ public class Region {
         restockInventory();
     }
 
-    public void rollEvent() {
+    private void rollEvent() {
         curEvent = RadicalPriceEvent.getRandomEvent();
     }
 
-    public void restockInventory() {
+    private void restockInventory() {
         for (int x = 0; x < 4; x++) {
             Good newGood = Good.values()[rand.nextInt(10)];
             if (newGood.getMLTP().ordinal() > techLevel.ordinal()) {

@@ -13,7 +13,7 @@ import edu.gatech.cs2340.team.imperialtrader.model.PlayerInteractor;
  */
 public class ConfigurationViewModel extends AndroidViewModel {
 
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     public ConfigurationViewModel(@NonNull Application application) {
         super(application);

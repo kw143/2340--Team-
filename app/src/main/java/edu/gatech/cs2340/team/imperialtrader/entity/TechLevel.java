@@ -5,10 +5,8 @@ public enum TechLevel {
     RENAISSANCE(3, "Renaissance"), EARLYINDUSTRIAL(4, "Early Industrial"),
     INDUSTRIAL(5, "Industrial"), POSTINDUSTRIAL(6, "Post-Industrial"),
     HITECH(7, "Hi-Tech");
-    private int level;
-    private String name;
-    private TechLevel(int level, String name) {
-        this.level = level;
+    private final String name;
+    TechLevel(int level, String name) {
         this.name = name;
     }
     private String getName() {
