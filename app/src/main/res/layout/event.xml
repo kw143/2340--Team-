@@ -29,7 +29,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/eventMessage"
@@ -75,6 +83,8 @@
         android:id="@+id/resultMessage"
         android:layout_width="300dp"
         android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
         android:shadowColor="#505050"
         android:shadowDx="1"
         android:shadowDy="1"
@@ -84,12 +94,10 @@
         android:textSize="16sp"
         android:typeface="serif"
         android:visibility="invisible"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_container"
         app:layout_constraintEnd_toEndOf="@+id/fragment_container"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/fragment_container"
-        app:layout_constraintTop_toBottomOf="@+id/staticLine"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintTop_toTopOf="@+id/question" />
 
     <Button
         android:id="@+id/proceedButton"
@@ -98,8 +106,8 @@
         android:layout_marginLeft="105dp"
         android:layout_marginRight="105dp"
         android:layout_marginTop="20dp"
-        android:background="#00000000"
         android:text="Proceed"
+        android:background="#00000000"
         android:textColor="#B8B8B8"
         android:textSize="20sp"
         android:typeface="sans"
@@ -171,6 +179,31 @@
         app:layout_constraintTop_toTopOf="@+id/fragment_container"
         app:layout_constraintVertical_bias="0.94"
         app:srcCompat="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/travelvideo"
+        android:scaleX="1"
+        android:scaleY="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:color/darker_gray"
+        tools:layout_editor_absoluteY="271dp" />
+
+    <VideoView
+        android:id="@+id/videoView2"
+        android:layout_width="419dp"
+        android:layout_height="727dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="488dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_container"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toStartOf="@+id/fragment_container"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

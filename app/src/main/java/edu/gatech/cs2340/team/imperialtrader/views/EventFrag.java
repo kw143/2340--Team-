@@ -2,6 +2,8 @@ package edu.gatech.cs2340.team.imperialtrader.views;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,7 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
+
+import java.util.Objects;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
@@ -55,6 +61,16 @@ public class EventFrag extends Fragment {
 
         Button proceedButton = view.findViewById(R.id.proceedButton);
         String returnMessage = eventViewModel.randomEvent();
+        Context context = Objects.requireNonNull(getActivity()).getApplicationContext();
+        VideoView video = (VideoView) view.findViewById(R.id.videoView2);
+        String videoPath = "android.resource://"
+                + getActivity().getApplicationContext().getPackageName() + "/" + R.raw.travelvideo;
+        Uri uri = Uri.parse(videoPath);
+        video.setVideoURI(uri);
+        video.start();
+        //MediaController mediaController = new MediaController(context);
+        //video.setMediaController(mediaController);
+        //mediaController.setAnchorView(video);
 
         if ("Pirates".equals(returnMessage)) {
             eventMessage.setText("A ship of pirates approaches you! They demand that you "
