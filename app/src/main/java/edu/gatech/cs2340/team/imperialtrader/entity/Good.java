@@ -1,5 +1,9 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+/**
+ * This Good enum contains the goods available to buy and sell in the game
+ */
+
 public enum Good {
     WATER("Water", TechLevel.PREAGRICULTURE,  TechLevel.PREAGRICULTURE, TechLevel.MEDIEVAL,
             30,  3, 4,RadicalPriceEvent.DROUGHT, Resource.LOTSOFWATER, Resource.DESERT, 30, 50),

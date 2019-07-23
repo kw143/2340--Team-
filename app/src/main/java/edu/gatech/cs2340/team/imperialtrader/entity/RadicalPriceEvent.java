@@ -2,6 +2,9 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 
 import java.util.Random;
 
+/**
+ * Random price inflation/deflation event creator
+ */
 public enum RadicalPriceEvent {
     DROUGHT("Drought"),
     COLD("Cold"),

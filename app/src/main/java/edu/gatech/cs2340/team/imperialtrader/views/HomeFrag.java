@@ -12,6 +12,9 @@ import android.widget.Button;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 
+/**
+ * Fragment for Home region
+ */
 public class HomeFrag extends Fragment {
 
     private HomeClickListener homeClickListener;

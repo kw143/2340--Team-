@@ -4,6 +4,9 @@ import android.util.Log;
 
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 
+/**
+ * Class for our Player interactors
+ */
 
 public class PlayerInteractor extends Interactor {
 

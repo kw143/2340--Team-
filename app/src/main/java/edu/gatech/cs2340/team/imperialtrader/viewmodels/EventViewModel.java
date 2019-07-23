@@ -13,16 +13,27 @@ import edu.gatech.cs2340.team.imperialtrader.model.PlayerInteractor;
 import static edu.gatech.cs2340.team.imperialtrader.entity.Good.FIREARMS;
 import static edu.gatech.cs2340.team.imperialtrader.entity.Good.WATER;
 
+/**
+ * Event View Model to create random events
+ */
 public class EventViewModel extends AndroidViewModel {
     private final PlayerInteractor model;
     private final Player player;
 
+    /**
+     * EventViewModel constructor
+     * @param application Application
+     */
     public EventViewModel(@NonNull Application application) {
         super(application);
         model = Model.getInstance().getPlayerInteractor();
         player = model.getPlayer();
     }
 
+    /**
+     * Random event generator method
+     * @return String describing random event
+     */
     public String randomEvent() {
         Random random = new Random();
         final int bound = 12;
@@ -60,7 +71,10 @@ public class EventViewModel extends AndroidViewModel {
         }
     }
 
-    
+    /**
+     * Update player method
+     * @param p Player
+     */
     private void updatePlayer(Player p) {
         model.updatePlayer(p);
     }

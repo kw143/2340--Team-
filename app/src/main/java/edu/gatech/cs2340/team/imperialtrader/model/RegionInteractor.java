@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 
+/**
+ * RegionInteractor class that inherits from Interactor superclass
+ */
 
 public class RegionInteractor extends Interactor {
 

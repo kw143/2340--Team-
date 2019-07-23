@@ -12,12 +12,23 @@ public enum Resource {
     // --Commented out by Inspection (7/23/2019 12:33 AM):private final int resourseKey;
 
     private final String name;
+
+    /**
+     * Get name method
+     * @return name
+     */
     private String getName() {
         return name;
     }
+
+    /**
+     * toString method
+     * @return name as a String
+     */
     public String toString() {
         return this.getName();
     }
+
     /**
      * Constructor for Resource
      * @param resourceKey resourceKey that matches the enum.

@@ -25,7 +25,10 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Resource;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
-public class    RegionFrag extends Fragment {
+/**
+ * Fragment for Region view and logic
+ */
+public class RegionFrag extends Fragment {
 
     private RegionClickListener regionClickListener;
 

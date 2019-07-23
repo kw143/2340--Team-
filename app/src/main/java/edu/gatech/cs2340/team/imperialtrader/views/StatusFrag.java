@@ -16,6 +16,9 @@ import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
+/**
+ * Fragment for Player's status
+ */
 public class StatusFrag extends Fragment {
 
     private StatusClickListener statusClickListener;

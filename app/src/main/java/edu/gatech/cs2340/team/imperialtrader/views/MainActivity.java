@@ -9,6 +9,10 @@ import android.view.MenuItem;
 
 import edu.gatech.cs2340.team.imperialtrader.R;
 
+/**
+ * MainActivity class to load fragments
+ */
+
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener, HomeClickListener,
         CreatePlayerClickListener, MapClickListener, RegionClickListener, PortClickListener,
@@ -159,8 +163,14 @@ public class MainActivity extends AppCompatActivity
     public void toSellClicked() { loadFragment(new TradeFrag()); }
 
     @Override
+    /**
+     * toEventClicked method
+     */
     public void toEventClicked() { loadFragment(new EventFrag()); }
 
     @Override
+    /**
+     * toPortClicked method
+     */
     public void toPortClicked() { loadFragment(new PortFrag()); }
 }

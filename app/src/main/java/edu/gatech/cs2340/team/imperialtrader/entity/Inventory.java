@@ -4,6 +4,10 @@ import java.util.HashMap;
 
 import edu.gatech.cs2340.team.imperialtrader.entity.Good;
 
+/**
+ * Inventory class that holds the Player's goods
+ */
+
 public class Inventory {
     private final HashMap<Good, Integer> inventoryMap;
 

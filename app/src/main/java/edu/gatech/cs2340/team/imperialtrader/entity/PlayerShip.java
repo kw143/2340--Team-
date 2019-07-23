@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+/**
+ * PlayerShip class for the Player's ship
+ */
 public class PlayerShip {
 
     private String name;

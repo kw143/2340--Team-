@@ -25,6 +25,10 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.ConfigurationViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
+/**
+ * Fragment to create a player
+ */
+
 public class CreatePlayerFrag extends Fragment {
 
     private CreatePlayerClickListener cpClickListener;
