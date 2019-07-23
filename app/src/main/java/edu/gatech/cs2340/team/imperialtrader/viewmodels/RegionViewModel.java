@@ -10,6 +10,9 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 import edu.gatech.cs2340.team.imperialtrader.model.Model;
 import edu.gatech.cs2340.team.imperialtrader.model.RegionInteractor;
 
+/**
+ * This RegionViewModel support activites needed for region creation
+ */
 public class RegionViewModel extends AndroidViewModel {
     private final ArrayList<Region> regionList;
     private final Region home;

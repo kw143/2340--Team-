@@ -1,5 +1,9 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+/**
+ * PoliceShip for NPC Police encounters
+ */
+
 public class PoliceShip extends Ship {
 
     /**

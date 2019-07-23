@@ -26,6 +26,9 @@ import edu.gatech.cs2340.team.imperialtrader.R;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
+/**
+ * Fragment for Home region
+ */
 public class HomeFrag extends Fragment {
 
     private HomeClickListener homeClickListener;

@@ -1,5 +1,9 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
+/**
+ * Listener interface for port clicks
+ */
+
 interface PortClickListener {
     /**
      * Listener for toTradeClicked

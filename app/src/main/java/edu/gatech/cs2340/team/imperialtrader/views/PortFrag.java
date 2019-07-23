@@ -22,6 +22,9 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Resource;
 import edu.gatech.cs2340.team.imperialtrader.entity.TechLevel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
+/**
+ * Port frag primarily for prices
+ */
 public class PortFrag extends Fragment {
 
     private PortClickListener portClickListener;

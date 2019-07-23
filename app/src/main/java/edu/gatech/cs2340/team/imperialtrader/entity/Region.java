@@ -2,6 +2,9 @@ package edu.gatech.cs2340.team.imperialtrader.entity;
 
 import java.util.Random;
 
+/**
+ * Region class holding information about the different regions available for travel
+ */
 public class Region {
 
     private String name;
@@ -19,7 +22,6 @@ public class Region {
 
     /**
      * Constructor for Region
-     *
      * @param name      Region name
      * @param home      Region home
      * @param xCoord    Region's x-coordinate

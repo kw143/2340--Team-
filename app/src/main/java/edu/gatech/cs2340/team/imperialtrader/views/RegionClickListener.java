@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
+/**
+ * Listener for clicks to/in regions
+ */
 interface RegionClickListener {
 
     /**

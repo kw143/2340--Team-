@@ -22,6 +22,10 @@ import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 import edu.gatech.cs2340.team.imperialtrader.viewmodels.RegionViewModel;
 
+/**
+ * Fragment for map which inherits properties from Fragment superclass
+ */
+
 public class MapFrag extends Fragment {
 
     private MapClickListener mapClickListener;

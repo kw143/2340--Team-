@@ -34,7 +34,6 @@ public class Player {
 
     /**
      * Creates a new Player object with given data
-     *
      * @param name           name of Player
      * @param pilotPoints    pilotPoints of Player
      * @param fighterPoints  fighterPoints of Player

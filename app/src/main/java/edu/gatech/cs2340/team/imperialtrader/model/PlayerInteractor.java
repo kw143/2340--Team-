@@ -11,6 +11,9 @@ import java.io.FileOutputStream;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.views.MainActivity;
 
+/**
+ * Class for our Player interactors
+ */
 
 public class PlayerInteractor extends Interactor {
 

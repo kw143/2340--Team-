@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+/**
+ * PirateShip class for NPC Pirates
+ */
 public class PirateShip extends Ship {
 
     private String name;

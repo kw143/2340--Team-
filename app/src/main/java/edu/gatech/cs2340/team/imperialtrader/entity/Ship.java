@@ -1,5 +1,8 @@
 package edu.gatech.cs2340.team.imperialtrader.entity;
 
+/**
+ * Abstract Ship class that other ships inherit
+ */
 public abstract class Ship {
 
     private String name;

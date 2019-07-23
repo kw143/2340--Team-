@@ -9,6 +9,9 @@ import java.util.Random;
 import edu.gatech.cs2340.team.imperialtrader.entity.Player;
 import edu.gatech.cs2340.team.imperialtrader.entity.Region;
 
+/**
+ * Class for our Universe that holds regions
+ */
 class Universe {
     private Player player = new Player("Default");
     private Region homeRegion;
