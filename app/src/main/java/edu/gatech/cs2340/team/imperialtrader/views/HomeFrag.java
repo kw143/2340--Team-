@@ -1,16 +1,30 @@
 package edu.gatech.cs2340.team.imperialtrader.views;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
+import com.google.gson.Gson;
+
+import java.io.File;
+
 import edu.gatech.cs2340.team.imperialtrader.R;
+
+import java.io.File;
+import java.io.FileOutputStream;
+
+import edu.gatech.cs2340.team.imperialtrader.R;
+import edu.gatech.cs2340.team.imperialtrader.entity.Player;
+import edu.gatech.cs2340.team.imperialtrader.viewmodels.PlayerViewModel;
 
 public class HomeFrag extends Fragment {
 
@@ -48,7 +62,9 @@ public class HomeFrag extends Fragment {
                 container, false);
         Button btn1 = view.findViewById(R.id.ex);
         Button btnNewPlayer = view.findViewById(R.id.np);
-        btn1.setOnClickListener(v -> System.exit(0));
+
+
+        btn1.setOnClickListener(v -> homeClickListener.onExitClick());
         btnNewPlayer.setOnClickListener(v -> homeClickListener.onNpClick());
         return view;
     }

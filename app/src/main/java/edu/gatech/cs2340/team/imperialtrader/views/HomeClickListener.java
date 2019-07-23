@@ -5,4 +5,9 @@ interface HomeClickListener {
      * Listener for home click
      */
     void onNpClick();
+
+    /**
+     * Listener for exit click
+     */
+    void onExitClick();
 }
